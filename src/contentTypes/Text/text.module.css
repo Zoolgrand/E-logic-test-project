@@ -1,0 +1,75 @@
+.root {
+    display: flex;
+    flex-direction: column;
+    word-wrap: break-word;
+    font-family: 'Poppins';
+    font-style: normal;
+}
+
+.title {
+    composes: root;
+    font-weight: 300;
+    font-size: 38px;
+    line-height: 46px;
+    margin-bottom: 12px;
+    color: #393D46;
+}
+
+.titleCentred {
+    composes: title;
+    text-align: center;
+}
+
+.description {
+    composes: root;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 18px;
+    color: #5F6C81;
+}
+
+.descriptionCentred {
+    composes: description;
+    text-align: center;
+}
+
+.blogDescription {
+    composes: root;
+    font-weight: 600;
+    font-size: 17px;
+    line-height: 24px;
+    letter-spacing: 0.2px;
+    max-width: 390px;
+    color: #393D46;
+}
+
+.blogDate {
+    composes: root;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 16px;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+    color: rgba(57, 61, 70, 0.8);
+}
+
+.keepConnectedTitle {
+    composes: root;
+    margin-bottom: 14px;
+    margin-left: 100px;
+    margin-top: 90px;
+    font-weight: 400;
+    font-size: 60px;
+    line-height: 60px;
+    color: #393D46;
+}
+
+.keepConnectedDescription {
+    composes: root;
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 20px;
+    margin-left: 100px;
+    margin-bottom: 45px;
+    color: #5F6C81;
+}

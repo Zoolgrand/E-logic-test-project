@@ -1,0 +1,128 @@
+.root {
+    composes: content-start from global;
+    composes: grid from global;
+    composes: gap-y-2xs from global;
+    height: 550px;
+}
+
+.images {
+    composes: grid from global;
+    grid-template-areas: 'main';
+    position: relative;
+}
+
+.imageContainer {
+    grid-area: main;
+}
+
+.image {
+    composes: block from global;
+    composes: h-full from global;
+    composes: object-contain from global;
+    composes: w-full from global;
+    transition: opacity 512ms ease-out;
+}
+
+.imageLoaded {
+    composes: loaded from '@magento/venia-ui/lib/components/Image/image.module.css';
+
+    composes: opacity-100 from global;
+}
+
+.imageNotLoaded {
+    composes: notLoaded from '@magento/venia-ui/lib/components/Image/image.module.css';
+
+    composes: opacity-0 from global;
+}
+
+.imagePlaceholder {
+    composes: image;
+
+    composes: bg-subtle from global;
+}
+
+.actionsContainer {
+    composes: gap-x-xs from global;
+    composes: grid from global;
+    composes: pl-2xs from global;
+    grid-template-columns: auto auto;
+}
+
+/* TODO @TW: cannot compose */
+.actionsContainer:empty {
+    display: none;
+}
+
+.name {
+    composes: font-semibold from global;
+    height: 18px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 18px;
+    letter-spacing: 0.6px;
+    color: #393D46;
+}
+
+.name,
+.price {
+    composes: text-colorDefault from global;
+    min-height: 1rem;
+}
+
+.price {
+    width: 60px;
+    height: 20px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 17px;
+    line-height: 20px;
+    text-align: center;
+    color: #191A1C;
+}
+
+.unavailableContainer {
+    composes: bg-subtle from global;
+    composes: gap-x-2xs from global;
+    composes: grid from global;
+    composes: grid-flow-col from global;
+    composes: italic from global;
+    composes: items-center from global;
+    composes: justify-start from global;
+    composes: p-3 from global;
+    composes: text-sm from global;
+    composes: text-subtle from global;
+    composes: w-full from global;
+}
+
+.imageWrap {
+    position: relative;
+}
+
+.wishListWrap {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 44px;
+    width: 44px;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(4px);
+}
+
+.compareButtonWrap {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 44px;
+    width: 44px;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(4px);
+}
