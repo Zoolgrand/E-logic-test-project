@@ -17,6 +17,7 @@ import MegaMenu from '../MegaMenu';
 import PageLoadingIndicator from '@magento/venia-ui/lib/components/PageLoadingIndicator';
 import CompareTrigger from './compareTrigger';
 import FavoriteTrigger from './favoriteTrigger';
+import { useWindowSize } from '@magento/peregrine';
 
 const SearchBar = React.lazy(() =>
     import('@magento/venia-ui/lib/components/SearchBar')
@@ -31,6 +32,9 @@ const Header = props => {
         searchRef,
         searchTriggerRef
     } = useHeader();
+
+    const windowSize = useWindowSize();
+    const isMobile = windowSize.innerWidth <= 768;
 
     const classes = useStyle(defaultClasses, props.classes);
     const rootClass = isSearchOpen ? classes.open : classes.closed;
@@ -53,6 +57,22 @@ const Header = props => {
         </Suspense>
     ) : null;
 
+    const triggerBlock = !isMobile ? (
+        <div className={classes.secondaryActions}>
+            <SearchTrigger
+                onClick={handleSearchTriggerClick}
+                ref={searchTriggerRef}
+            />
+            <CompareTrigger />
+            <FavoriteTrigger />
+            <CartTrigger />
+            <AccountTrigger />
+            <StoreSwitcher />
+        </div>
+    ) : (
+        <CartTrigger />
+    );
+
     return (
         <Fragment>
             <header className={rootClass} data-cy="Header-root">
@@ -73,18 +93,7 @@ const Header = props => {
                     </Link>
 
                     <MegaMenu />
-
-                    <div className={classes.secondaryActions}>
-                        <SearchTrigger
-                            onClick={handleSearchTriggerClick}
-                            ref={searchTriggerRef}
-                        />
-                        <CompareTrigger />
-                        <FavoriteTrigger />
-                        <CartTrigger />
-                        <AccountTrigger/>
-                        <StoreSwitcher />
-                    </div>
+                    {triggerBlock}
                 </div>
                 {searchBar}
                 <PageLoadingIndicator absolute />

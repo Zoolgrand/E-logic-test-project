@@ -3,10 +3,10 @@ import { useIntl } from 'react-intl';
 import { bool, func, shape, string } from 'prop-types';
 import { ArrowLeft as ArrowLeftIcon, X as CloseIcon } from 'react-feather';
 
-import { useStyle } from '../../classify';
+import { useStyle } from '@magento/venia-ui/lib/classify';
 import AccountChip from '../AccountChip';
-import Icon from '../Icon';
-import Trigger from '../Trigger';
+import Icon from '@magento/venia-ui/lib/components/Icon';
+import Trigger from '@magento/venia-ui/lib/components/Trigger';
 import defaultClasses from './navHeader.module.css';
 import { useNavigationHeader } from '@magento/peregrine/lib/talons/Navigation/useNavigationHeader';
 

@@ -19,6 +19,7 @@
     composes: whitespace-nowrap from global;
 
     composes: sm_max-w-full from global;
+    margin-left: 74px;
 }
 .trigger::after{
     content: url('../../assets/Vector\ 7.svg');
@@ -97,10 +98,6 @@
  */
 
 @media (max-width: 639px) {
-    .root:only-child {
-        grid-column: 2;
-    }
-
     /* TODO @TW: cannot compose */
     .root:last-child .menu {
         right: 1rem;
