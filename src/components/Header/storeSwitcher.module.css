@@ -22,6 +22,9 @@
 }
 .trigger::after{
     content: url('../../assets/Vector\ 7.svg');
+    position: absolute;
+    top: 10%;
+    padding-left: 5px;
 }
 
 .menu {

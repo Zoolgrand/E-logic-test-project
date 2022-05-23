@@ -20,7 +20,12 @@
  module.exports = targets => {
     const MainComponent = require('./core-overrides/components/Main/main.targetables.js');
     MainComponent(targets);
+    
+    const useMegaMenu = require('./core-overrides/talons/MegaMenu/useMegaMenu.targetables.js')
+    useMegaMenu(targets)
 
+    const AppComponent = require('./core-overrides/components/App/app.targetables.js')
+    AppComponent(targets)
 
     // targets.of('@magento/venia-ui').routes.tap(routes => {
     //     routes.push({

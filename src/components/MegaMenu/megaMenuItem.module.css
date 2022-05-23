@@ -1,6 +1,15 @@
 .megaMenuItem {
     composes: px-3 from global;
     composes: py-0 from global;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: #4C4F57;
+}
+.megaMenuItem:nth-child(4){
+    color: #F4442E;
 }
 
 .megaMenuLink {
@@ -17,6 +26,7 @@
 .megaMenuItem_active {
     composes: megaMenuItem;
     composes: flex from global;
+    color: #191A1C;
 }
 
 .arrowDown {

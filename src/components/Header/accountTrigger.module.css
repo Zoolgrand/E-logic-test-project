@@ -16,6 +16,5 @@
     composes: root from '@magento/venia-ui/lib/components/clickable.module.css';
 
     composes: h-[3rem] from global;
-    composes: min-w-[6rem] from global;
     composes: z-foreground from global;
 }

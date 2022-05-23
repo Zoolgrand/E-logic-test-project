@@ -16,17 +16,18 @@ import SubmenuColumn from './submenuColumn';
  */
 const Submenu = props => {
     const {
+        category,
         items,
         mainNavWidth,
         isFocused,
         subMenuState,
         handleCloseSubMenu,
         categoryUrlSuffix,
-        onNavigate
+        onNavigate,
+        cmsBlock
     } = props;
     const PADDING_OFFSET = 20;
     const classes = useStyle(defaultClasses, props.classes);
-
     const talonProps = useSubMenu({
         isFocused,
         subMenuState,
@@ -54,15 +55,19 @@ const Submenu = props => {
             />
         );
     });
-
+    const submenuItemsClasses =
+        category.name !== 'New Arrivals'
+            ? classes.submenuItems
+            : classes.submenuItemsThree;
     return (
         <div className={subMenuClassname}>
             <div
-                className={classes.submenuItems}
+                className={submenuItemsClasses}
                 style={{ minWidth: mainNavWidth + PADDING_OFFSET }}
             >
                 {subMenus}
             </div>
+            {cmsBlock}
         </div>
     );
 };

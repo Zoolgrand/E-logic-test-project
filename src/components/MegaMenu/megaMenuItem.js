@@ -10,6 +10,7 @@ import { useStyle } from '@magento/venia-ui/lib/classify';
 import defaultClasses from './megaMenuItem.module.css';
 import Submenu from './submenu';
 import Icon from '@magento/venia-ui/lib/components/Icon';
+import CmsBlock from '@magento/venia-ui/lib/components/CmsBlock/block';
 
 /**
  * The MegaMenuItem component displays mega menu item
@@ -29,7 +30,8 @@ const MegaMenuItem = props => {
         disableFocus,
         onNavigate,
         handleSubMenuFocus,
-        handleClickOutside
+        handleClickOutside,
+        cmsBlock
     } = props;
 
     const classes = useStyle(defaultClasses, props.classes);
@@ -57,9 +59,14 @@ const MegaMenuItem = props => {
         ? classes.megaMenuItem_active
         : classes.megaMenuItem;
 
+    const cmsBlockContent = cmsBlock ? (
+        <CmsBlock content={cmsBlock.content} />
+    ) : null;
+
     const children = useMemo(() => {
         return category.children.length ? (
             <Submenu
+                category={category}
                 isFocused={isFocused}
                 subMenuState={subMenuState}
                 items={category.children}
@@ -67,6 +74,7 @@ const MegaMenuItem = props => {
                 handleCloseSubMenu={handleCloseSubMenu}
                 categoryUrlSuffix={categoryUrlSuffix}
                 onNavigate={onNavigate}
+                cmsBlock={cmsBlockContent}
             />
         ) : null;
     }, [

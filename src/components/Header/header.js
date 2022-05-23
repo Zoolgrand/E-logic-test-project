@@ -82,6 +82,7 @@ const Header = props => {
                         <CompareTrigger />
                         <FavoriteTrigger />
                         <CartTrigger />
+                        <AccountTrigger/>
                         <StoreSwitcher />
                     </div>
                 </div>

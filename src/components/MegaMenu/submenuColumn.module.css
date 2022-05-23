@@ -4,7 +4,13 @@
 }
 
 .heading {
-    composes: font-semibold from global;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 16px;
+    letter-spacing: 0.8px;
+    color: #393D46;
 }
 
 .link {
@@ -13,10 +19,17 @@
     composes: focus_underline from global;
 
     composes: hover_underline from global;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    color: rgba(57, 61, 70, 0.8);
 }
 
 .linkActive {
     composes: underline from global;
+    color: #191A1C;
 }
 
 .submenuChild {

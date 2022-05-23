@@ -45,6 +45,7 @@
     border: none;
     border-radius: 0%;
     background-color: transparent;
+    position: relative;
 }
 
 .addToCartButton ::before {
@@ -53,6 +54,8 @@
     left: 0.95px;
     top: 0.91px;
     bottom: 1.91px;
+    position: absolute;
+    top: 5px;
 }
 .addToCartButton:hover{
     background-color: transparent;

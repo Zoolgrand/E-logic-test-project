@@ -5,7 +5,7 @@ import { shape, string } from 'prop-types';
 import { useAccountTrigger } from '@magento/peregrine/lib/talons/Header/useAccountTrigger';
 import { useStyle } from '@magento/venia-ui/lib/classify';
 
-import AccountChip from '@magento/venia-ui/lib/components/AccountChip';
+import AccountChip from '../AccountChip';
 
 import defaultClasses from './accountTrigger.module.css';
 

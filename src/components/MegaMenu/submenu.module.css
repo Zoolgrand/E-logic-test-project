@@ -2,13 +2,14 @@
     composes: absolute from global;
     composes: bg-white from global;
     composes: flex-wrap from global;
-    composes: justify-between from global;
+    /* composes: justify-between from global; */
     composes: left-0 from global;
     composes: px-3 from global;
     composes: py-5 from global;
     composes: right-0 from global;
     composes: top-full from global;
     box-shadow: 0 3px rgb(var(--venia-global-color-gray-100));
+    justify-content: space-around;
 }
 
 /* TODO @TW: cannot compose */
@@ -34,10 +35,18 @@
 }
 
 .submenuItems {
-    composes: flex from global;
-    composes: flex-wrap from global;
-    composes: justify-between from global;
-    composes: max-w-site from global;
-    composes: ml-auto from global;
-    composes: mr-auto from global;
+
+   display: grid;
+   grid-template-columns: repeat(4, 1fr);
+   padding-left: 40px;
+   gap: 50px;
+   
 }
+.submenuItemsThree{
+    composes:submenuItems;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    padding-left: 40px;
+    gap: 50px;
+}
+

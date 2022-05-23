@@ -7,6 +7,7 @@ import { useStyle } from '@magento/venia-ui/lib/classify';
 import MegaMenuItem from './megaMenuItem';
 import defaultClasses from './megaMenu.module.css';
 
+
 /**
  * The MegaMenu component displays menu with categories on desktop devices
  */
@@ -24,6 +25,7 @@ const MegaMenu = props => {
         handleClickOutside
     } = useMegaMenu({ mainNavRef });
 
+ 
     const classes = useStyle(defaultClasses, props.classes);
 
     const [mainNavWidth, setMainNavWidth] = useState(0);
@@ -63,6 +65,7 @@ const MegaMenu = props => {
                       disableFocus={disableFocus}
                       handleSubMenuFocus={handleSubMenuFocus}
                       handleClickOutside={handleClickOutside}
+                      cmsBlock ={category.cms_block}
                   />
               );
           })
