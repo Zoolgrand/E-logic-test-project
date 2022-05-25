@@ -11,11 +11,16 @@ const Branch = props => {
     const { name, children, isRoot, onNavigate } = props;
     const classes = useStyle(defaultClasses, props.classes);
 
-    const {clickHandler, isOpen, setIsOpen} = useCategoryBranch()
+    const { clickHandler, isOpen, setIsOpen } = useCategoryBranch();
 
     const isRootBranch = !!isRoot;
 
-    const branchClasses = isRootBranch ? classes.rootBranch : classes.text;
+    const branchClasses =
+        isRoot && isOpen
+            ? classes.open_root
+            : isRootBranch
+            ? classes.rootBranch
+            : classes.text;
 
     const content = children.map(item => {
         if (item.children_count !== '0') {
@@ -55,9 +60,7 @@ const Branch = props => {
                     type="button"
                     onClick={clickHandler}
                 >
-                    <span className={branchClasses}>
-                        {name}
-                    </span>
+                    <span className={branchClasses}>{name}</span>
                 </button>
                 {showArrows}
             </li>

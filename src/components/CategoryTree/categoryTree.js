@@ -16,7 +16,7 @@ const Tree = props => {
 
     const { data, menuItems} = talonProps;
     const classes = useStyle(defaultClasses, props.classes);
-
+console.log(menuItems)
     const content = data
         ? menuItems.map(item => {
               if (item.include_in_menu === 0) {

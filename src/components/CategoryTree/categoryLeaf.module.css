@@ -31,3 +31,7 @@
     composes: leafText;
     padding-left: 20px;
 }
+.sale{
+    composes:target;
+    color: #F4442E;;
+}

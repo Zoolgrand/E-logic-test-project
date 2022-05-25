@@ -7,7 +7,7 @@
     composes: target from './categoryLeaf.module.css';
 }
 
-.rootBranch{
+.rootBranch {
     composes: text from './categoryLeaf.module.css';
 }
 
@@ -21,4 +21,11 @@
     letter-spacing: 0.8px;
     color: rgba(57, 61, 70, 0.5);
     padding-left: 10px;
+}
+
+.open_root {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: #191A1C;
 }
