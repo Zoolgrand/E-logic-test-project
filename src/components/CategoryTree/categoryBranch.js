@@ -31,6 +31,7 @@ const Branch = props => {
                     setIsOpen={setIsOpen}
                     children={item.children}
                     name={item.name}
+                    onNavigate={onNavigate}
                 />
             );
         }
