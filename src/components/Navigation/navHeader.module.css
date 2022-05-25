@@ -6,4 +6,12 @@
     composes: px-2xs from global;
     composes: py-0 from global;
     composes: text-colorDefault from global;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 22px;
+    text-align: center;
+    letter-spacing: 0.18em;
+    color: rgba(76, 79, 87, 0.9)
 }

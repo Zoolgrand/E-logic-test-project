@@ -19,9 +19,15 @@
     composes: w-full from global;
 }
 
-.text {
-    composes: inline-block from global;
-    composes: overflow-hidden from global;
-    composes: overflow-ellipsis from global;
-    composes: whitespace-nowrap from global;
+.leafText {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    color: rgba(57, 61, 70, 0.9);
+}
+.leafTextChild{
+    composes: leafText;
+    padding-left: 20px;
 }

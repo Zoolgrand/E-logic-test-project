@@ -1,32 +1,18 @@
 import React from 'react';
-import { func, shape, string } from 'prop-types';
+
 import { Link } from 'react-router-dom';
-import { FormattedMessage } from 'react-intl';
-import { useCategoryLeaf } from '@magento/peregrine/lib/talons/CategoryTree';
+
 import resourceUrl from '@magento/peregrine/lib/util/makeUrl';
 
 import { useStyle } from '@magento/venia-ui/lib/classify';
 import defaultClasses from './categoryLeaf.module.css';
 
 const Leaf = props => {
-    const { category, onNavigate, categoryUrlSuffix } = props;
-    const { name, url_path, children } = category;
+    const { url_suffix, url_path, onNavigate, isRoot } = props;
     const classes = useStyle(defaultClasses, props.classes);
-    const { handleClick } = useCategoryLeaf({ onNavigate });
-    const destination = resourceUrl(`/${url_path}${categoryUrlSuffix || ''}`);
+    const destination = resourceUrl(`/${url_path}${url_suffix || ''}`);
 
-    const leafLabel =
-        children && children.length ? (
-            <FormattedMessage
-                id={'categoryLeaf.allLabel'}
-                defaultMessage={'All {name}'}
-                values={{
-                    name: name
-                }}
-            />
-        ) : (
-            name
-        );
+    const leafTextClasses = isRoot ? classes.leafText : classes.leafTextChild;
 
     return (
         <li className={classes.root}>
@@ -34,26 +20,12 @@ const Leaf = props => {
                 className={classes.target}
                 data-cy="CategoryTree-Leaf-target"
                 to={destination}
-                onClick={handleClick}
+                onClick={onNavigate}
             >
-                <span className={classes.text}>{leafLabel}</span>
+                <span className={leafTextClasses}>{props.name}</span>
             </Link>
         </li>
     );
 };
 
 export default Leaf;
-
-Leaf.propTypes = {
-    category: shape({
-        name: string.isRequired,
-        url_path: string.isRequired
-    }).isRequired,
-    classes: shape({
-        root: string,
-        target: string,
-        text: string
-    }),
-    onNavigate: func.isRequired,
-    categoryUrlSuffix: string
-};

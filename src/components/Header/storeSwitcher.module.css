@@ -19,7 +19,6 @@
     composes: whitespace-nowrap from global;
 
     composes: sm_max-w-full from global;
-    margin-left: 74px;
 }
 .trigger::after{
     content: url('../../assets/Vector\ 7.svg');

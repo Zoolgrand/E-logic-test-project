@@ -1,0 +1,111 @@
+.root {
+    composes: gap-sm from global;
+    composes: grid from global;
+    composes: justify-items-stretch from global;
+    composes: px-sm from global;
+    composes: py-xs from global;
+    background: #FFFFFF;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.forgotPassword {
+    composes: block from global;
+    composes: text-error from global;
+    composes: text-sm from global;
+    composes: underline from global;
+}
+
+.form {
+    composes: grid from global;
+    composes: gap-y-xs from global;
+}
+
+.modal {
+    composes: absolute from global;
+    composes: bg-subtle from global;
+    composes: bottom-0 from global;
+    composes: h-full from global;
+    composes: text-center from global;
+    composes: w-full from global;
+
+    /* TODO @TW: review (B6) */
+    /* composes: invisible from global; */
+    visibility: hidden;
+}
+
+.modal_active {
+    composes: modal;
+    composes: opacity-90 from global;
+
+    /* TODO @TW: review (B6) */
+    /* composes: visible from global; */
+    visibility: visible;
+}
+
+.buttonsContainer {
+    composes: gap-sm from global;
+    composes: grid from global;
+    composes: grid-flow-row from global;
+    composes: justify-center from global;
+    composes: mt-xs from global;
+    composes: w-full from global;
+}
+
+.forgotPasswordButtonContainer {
+    composes: flex from global;
+    composes: items-center from global;
+    composes: justify-center from global;
+    composes: justify-self-start from global;
+    composes: text-center from global;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.forgotPasswordButton {
+    composes: root from '@magento/venia-ui/lib/components/LinkButton/linkButton.module.css';
+
+    composes: p-0 from global;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    text-align: right;
+    letter-spacing: 0.4px;
+    text-decoration: none;
+    color: #191A1C;
+}
+
+.title {
+    composes: capitalize from global;
+    composes: pt-2xs from global;
+    composes: text-lg from global;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 23px;
+    line-height: 28px;
+    color: #393D46;
+}
+
+.rememberMe {
+    display: flex;
+    align-items: center;
+}
+
+.rememberMe input {
+    margin-right: 8px;
+    height: 14px;
+    width: 14px;
+}
+
+.titleContainer {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}

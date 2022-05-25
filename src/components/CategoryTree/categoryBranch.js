@@ -1,48 +1,69 @@
 import React from 'react';
-import { func, number, shape, string } from 'prop-types';
-import { useCategoryBranch } from '@magento/peregrine/lib/talons/CategoryTree';
+import arrowDown from '../../assets/arrowDown.svg';
+import arrowUp from '../../assets/arrowUp.svg';
 
 import { useStyle } from '@magento/venia-ui/lib/classify';
 import defaultClasses from './categoryBranch.module.css';
+import Leaf from './categoryLeaf';
+import { useCategoryBranch } from '@magento/peregrine/lib/talons/CategoryTree';
 
 const Branch = props => {
-    const { category, setCategoryId } = props;
-    const { name } = category;
+    const { name, children, isRoot, onNavigate } = props;
     const classes = useStyle(defaultClasses, props.classes);
 
-    const talonProps = useCategoryBranch({ category, setCategoryId });
-    const { exclude, handleClick } = talonProps;
+    const {clickHandler, isOpen, setIsOpen} = useCategoryBranch()
 
-    if (exclude) {
-        return null;
-    }
+    const isRootBranch = !!isRoot;
+
+    const branchClasses = isRootBranch ? classes.rootBranch : classes.text;
+
+    const content = children.map(item => {
+        if (item.children_count !== '0') {
+            return (
+                <Branch
+                    key={item.uid}
+                    isOpen={isOpen}
+                    setIsOpen={setIsOpen}
+                    children={item.children}
+                    name={item.name}
+                />
+            );
+        }
+        if (item.children_count === '0') {
+            return (
+                <Leaf
+                    key={item.uid}
+                    url_path={item.url_path}
+                    url_suffix={item.url_suffix}
+                    name={item.name}
+                    onNavigate={onNavigate}
+                />
+            );
+        }
+    });
+
+    const showArrows =
+        isRootBranch &&
+        (isOpen ? <img src={arrowUp} /> : <img src={arrowDown} />);
 
     return (
-        <li className={classes.root}>
-            <button
-                className={classes.target}
-                data-cy="CategoryTree-Branch-target"
-                type="button"
-                onClick={handleClick}
-            >
-                <span className={classes.text}>{name}</span>
-            </button>
-        </li>
+        <div>
+            <li className={classes.root}>
+                <button
+                    className={classes.target}
+                    data-cy="CategoryTree-Branch-target"
+                    type="button"
+                    onClick={clickHandler}
+                >
+                    <span className={branchClasses}>
+                        {name}
+                    </span>
+                </button>
+                {showArrows}
+            </li>
+            {isOpen && content}
+        </div>
     );
 };
 
 export default Branch;
-
-Branch.propTypes = {
-    category: shape({
-        uid: string.isRequired,
-        include_in_menu: number,
-        name: string.isRequired
-    }).isRequired,
-    classes: shape({
-        root: string,
-        target: string,
-        text: string
-    }),
-    setCategoryId: func.isRequired
-};

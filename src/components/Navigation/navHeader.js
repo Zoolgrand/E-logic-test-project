@@ -1,7 +1,8 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, Suspense } from 'react';
 import { useIntl } from 'react-intl';
 import { bool, func, shape, string } from 'prop-types';
 import { ArrowLeft as ArrowLeftIcon, X as CloseIcon } from 'react-feather';
+import burgerMenuIcon from '../../assets/burgerMenu.svg';
 
 import { useStyle } from '@magento/venia-ui/lib/classify';
 import AccountChip from '../AccountChip';
@@ -9,6 +10,15 @@ import Icon from '@magento/venia-ui/lib/components/Icon';
 import Trigger from '@magento/venia-ui/lib/components/Trigger';
 import defaultClasses from './navHeader.module.css';
 import { useNavigationHeader } from '@magento/peregrine/lib/talons/Navigation/useNavigationHeader';
+import SearchTrigger from '../Header/searchTrigger';
+import FavoriteTrigger from '../Header/favoriteTrigger';
+import CartTrigger from '../Header/cartTrigger';
+import { useHeader } from '@magento/peregrine/lib/talons/Header/useHeader';
+import { Link, Route } from 'react-router-dom';
+
+const SearchBar = React.lazy(() =>
+    import('@magento/venia-ui/lib/components/SearchBar')
+);
 
 const NavHeader = props => {
     const { isTopLevel, onBack, view } = props;
@@ -20,7 +30,14 @@ const NavHeader = props => {
         view
     });
 
-    const { handleBack, isTopLevelMenu } = talonProps;
+    const { handleBack } = talonProps;
+
+    const {
+        handleSearchTriggerClick,
+        searchTriggerRef,
+        isSearchOpen,
+        searchRef
+    } = useHeader();
 
     const classes = useStyle(defaultClasses, props.classes);
     const titles = {
@@ -60,17 +77,39 @@ const NavHeader = props => {
         const title = titles[view] || titles.MENU;
         titleElement = <span>{title}</span>;
     }
-
-    const backIcon = isTopLevelMenu ? CloseIcon : ArrowLeftIcon;
+    const searchBarFallback = (
+        <div className={classes.searchFallback} ref={searchRef}>
+            <div className={classes.input}>
+                <div className={classes.loader}>
+                    <div className={classes.loaderBefore} />
+                    <div className={classes.loaderAfter} />
+                </div>
+            </div>
+        </div>
+    );
+    const searchBar = isSearchOpen ? (
+        <Suspense fallback={searchBarFallback}>
+            <Route>
+                <SearchBar isOpen={isSearchOpen} ref={searchRef} />
+            </Route>
+        </Suspense>
+    ) : null;
 
     return (
         <Fragment>
             <Trigger key="backButton" action={handleBack}>
-                <Icon src={backIcon} />
+                <img src={burgerMenuIcon} alt="burgerMenu" />
             </Trigger>
+            <SearchTrigger
+                onClick={handleSearchTriggerClick}
+                ref={searchTriggerRef}
+            />
             <span key="title" className={classes.title}>
-                {titleElement}
+                EloTemp
             </span>
+            <FavoriteTrigger />
+            <CartTrigger />
+            {searchBar}
         </Fragment>
     );
 };

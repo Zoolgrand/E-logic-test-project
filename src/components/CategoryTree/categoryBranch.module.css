@@ -1,11 +1,24 @@
 .root {
     composes: root from './categoryLeaf.module.css';
+
 }
 
 .target {
-    composes: target from './categoryLeaf.module.css';  
+    composes: target from './categoryLeaf.module.css';
+}
+
+.rootBranch{
+    composes: text from './categoryLeaf.module.css';
 }
 
 .text {
     composes: text from './categoryLeaf.module.css';
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 14px;
+    letter-spacing: 0.8px;
+    color: rgba(57, 61, 70, 0.5);
+    padding-left: 10px;
 }

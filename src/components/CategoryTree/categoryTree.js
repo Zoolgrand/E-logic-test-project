@@ -1,5 +1,4 @@
 import React from 'react';
-import { func, shape, string } from 'prop-types';
 import { useCategoryTree } from '@magento/peregrine/lib/talons/CategoryTree';
 
 import { useStyle } from '@magento/venia-ui/lib/classify';
@@ -8,54 +7,53 @@ import Leaf from './categoryLeaf';
 import defaultClasses from './categoryTree.module.css';
 
 const Tree = props => {
-    const { categoryId, onNavigate, setCategoryId, updateCategories } = props;
+    const { categoryId, updateCategories, onNavigate } = props;
 
     const talonProps = useCategoryTree({
         categoryId,
         updateCategories
     });
 
-    const { data, childCategories, categoryUrlSuffix } = talonProps;
+    const { data, menuItems} = talonProps;
     const classes = useStyle(defaultClasses, props.classes);
 
-    // for each child category, render a direct link if it has no children
-    // otherwise render a branch
-    const branches = data
-        ? Array.from(childCategories, childCategory => {
-              const [id, { category, isLeaf }] = childCategory;
-              return isLeaf ? (
-                  <Leaf
-                      key={id}
-                      category={category}
-                      onNavigate={onNavigate}
-                      categoryUrlSuffix={categoryUrlSuffix}
-                  />
-              ) : (
-                  <Branch
-                      key={id}
-                      category={category}
-                      setCategoryId={setCategoryId}
-                  />
-              );
+    const content = data
+        ? menuItems.map(item => {
+              if (item.include_in_menu === 0) {
+                  return null;
+              }
+              if (item.children_count !== '0') {
+                  return (
+                      <Branch
+                          key={item.uid}
+                          children={item.children}
+                          name={item.name}
+                          isRoot= {true}
+                          onNavigate={onNavigate}
+                      />
+                  );
+              }
+              if (item.children_count === '0') {
+                  return (
+                      <Leaf
+                          key={item.uid}
+                          url_path={item.url_path}
+                          url_suffix={item.url_suffix}
+                          name={item.name}
+                          onNavigate={onNavigate}
+                          isRoot= {true}
+                      />
+                  );
+              }
           })
         : null;
 
     return (
         <div className={classes.root} data-cy="CategoryTree-root">
-            <ul className={classes.tree}>{branches}</ul>
+            {content}
         </div>
     );
 };
 
 export default Tree;
 
-Tree.propTypes = {
-    categoryId: string,
-    classes: shape({
-        root: string,
-        tree: string
-    }),
-    onNavigate: func.isRequired,
-    setCategoryId: func.isRequired,
-    updateCategories: func.isRequired
-};

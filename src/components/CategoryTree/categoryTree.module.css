@@ -1,29 +1,12 @@
 .root {
-
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: #191A1C;
 }
-
-
-.tree {
-
-}
-
-/* .tree li:nth-child(4){
-    color: red;
+/* .root li:nth-child(4){
+    background-color: red;
 } */
 
-.leaf {
-}
-
-.branch {
-font-family: 'Poppins';
-font-style: normal;
-font-weight: 500;
-font-size: 14px;
-line-height: 21px;
-color: #191A1C;
-}
-
-.inactive {
-    composes: fixed from global;
-    composes: invisible from global;
-}

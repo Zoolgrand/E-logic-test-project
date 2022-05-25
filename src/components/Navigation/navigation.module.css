@@ -36,17 +36,20 @@
 }
 
 .header {
-    composes: bg-subtle from global;
-    composes: content-center from global;
-    composes: grid from global;
-    composes: grid-flow-col from global;
-    composes: h-[3.5rem] from global;
-    composes: relative from global;
-    composes: shadow-thin from global;
-    composes: z-foreground from global;
-    grid-auto-columns: 3.5rem;
-    grid-auto-rows: 3.5rem;
-    grid-template-columns: 3.5rem 1fr 3.5rem;
+    /* composes: bg-subtle from global; */
+    /* composes: content-center from global; */
+    /* composes: grid from global; */
+    /* composes: grid-flow-col from global; */
+    /* composes: h-[3.5rem] from global; */
+    /* composes: relative from global; */
+    /* composes: shadow-thin from global; */
+    /* composes: z-foreground from global; */
+    /* grid-auto-columns: 3.5rem; */
+    /* grid-auto-rows: 3.5rem; */
+    /* grid-template-columns: 3.5rem 1fr 3.5rem; */
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 }
 
 .body {
