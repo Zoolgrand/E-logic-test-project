@@ -1,5 +1,5 @@
 import React from 'react';
-import { useCategoryTree } from '@magento/peregrine/lib/talons/CategoryTree';
+import { useCategoryTree } from '../../talons/CategoryTree/useCategoryTree';
 
 import { useStyle } from '@magento/venia-ui/lib/classify';
 import Branch from './categoryBranch';
@@ -14,10 +14,10 @@ const Tree = props => {
         updateCategories
     });
 
-    const { data, menuItems} = talonProps;
+    const { menuItems } = talonProps;
     const classes = useStyle(defaultClasses, props.classes);
 
-    const content = data
+    const content = menuItems
         ? menuItems.map(item => {
               if (item.include_in_menu === 0) {
                   return null;
@@ -28,7 +28,7 @@ const Tree = props => {
                           key={item.uid}
                           children={item.children}
                           name={item.name}
-                          isRoot= {true}
+                          isRoot={true}
                           onNavigate={onNavigate}
                       />
                   );
@@ -41,7 +41,7 @@ const Tree = props => {
                           url_suffix={item.url_suffix}
                           name={item.name}
                           onNavigate={onNavigate}
-                          isRoot= {true}
+                          isRoot={true}
                       />
                   );
               }
@@ -56,4 +56,3 @@ const Tree = props => {
 };
 
 export default Tree;
-

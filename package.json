@@ -28,7 +28,13 @@
     "@magento/venia-drivers": "src/drivers"
   },
   "dependencies": {
-    "@magento/pwa-buildpack": "~11.3.0"
+    "@magento/pwa-buildpack": "~11.3.0",
+    "@fortawesome/fontawesome-svg-core": "^6.1.1",
+    "@fortawesome/free-brands-svg-icons": "^6.1.1",
+    "@fortawesome/free-regular-svg-icons": "^6.1.1",
+    "@fortawesome/free-solid-svg-icons": "^6.1.1",
+    "@fortawesome/react-fontawesome": "^0.1.18",
+    "rc-slider": "^9.6.5"
   },
   "devDependencies": {
     "@adobe/apollo-link-mutation-queue": "~1.0.2",

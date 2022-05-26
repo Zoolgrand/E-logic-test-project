@@ -1,12 +1,9 @@
 import React, { Fragment, Suspense } from 'react';
 import { useIntl } from 'react-intl';
 import { bool, func, shape, string } from 'prop-types';
-import { ArrowLeft as ArrowLeftIcon, X as CloseIcon } from 'react-feather';
 import burgerMenuIcon from '../../assets/burgerMenu.svg';
-
 import { useStyle } from '@magento/venia-ui/lib/classify';
 import AccountChip from '../AccountChip';
-import Icon from '@magento/venia-ui/lib/components/Icon';
 import Trigger from '@magento/venia-ui/lib/components/Trigger';
 import defaultClasses from './navHeader.module.css';
 import { useNavigationHeader } from '@magento/peregrine/lib/talons/Navigation/useNavigationHeader';
@@ -14,10 +11,10 @@ import SearchTrigger from '../Header/searchTrigger';
 import FavoriteTrigger from '../Header/favoriteTrigger';
 import CartTrigger from '../Header/cartTrigger';
 import { useHeader } from '@magento/peregrine/lib/talons/Header/useHeader';
-import { Link, Route } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 
 const SearchBar = React.lazy(() =>
-    import('@magento/venia-ui/lib/components/SearchBar')
+    import('../SearchBar')
 );
 
 const NavHeader = props => {

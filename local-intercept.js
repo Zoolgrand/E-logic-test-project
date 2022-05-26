@@ -30,6 +30,9 @@
     const PasswordComponent = require('./core-overrides/components/Password/password.targetables.js')
     PasswordComponent(targets)
 
+    const AuthModalComponent = require('./core-overrides/components/AuthModal/authModal.targetables.js')
+    AuthModalComponent(targets)
+
     // targets.of('@magento/venia-ui').routes.tap(routes => {
     //     routes.push({
     //         exact: true,

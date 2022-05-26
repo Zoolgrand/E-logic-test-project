@@ -3,6 +3,7 @@ import { FormattedMessage, useIntl } from 'react-intl';
 import { func, shape, string } from 'prop-types';
 import { Form } from 'informed';
 import { useSignIn } from '@magento/peregrine/lib/talons/SignIn/useSignIn';
+import { useWindowSize } from '@magento/peregrine';
 
 import { useStyle } from '@magento/venia-ui/lib/classify';
 import { isRequired } from '@magento/venia-ui/lib/util/formValidators';
@@ -45,6 +46,9 @@ const SignIn = props => {
         recaptchaWidgetProps
     } = talonProps;
 
+    const windowSize = useWindowSize();
+    const isDesktop = windowSize.innerWidth >= 769;
+
     const forgotPasswordClasses = {
         root: classes.forgotPasswordButton
     };
@@ -58,14 +62,16 @@ const SignIn = props => {
                         defaultMessage={'Login Your Account'}
                     />
                 </span>
-                <button
-                    type="button"
-                    onClick={() => {
-                        setAccountMenuIsOpen(false);
-                    }}
-                >
-                    <img src={closeIcon} alt="X" />
-                </button>
+                {isDesktop && (
+                    <button
+                        type="button"
+                        onClick={() => {
+                            setAccountMenuIsOpen(false);
+                        }}
+                    >
+                        <img src={closeIcon} alt="X" />
+                    </button>
+                )}
             </div>
             <FormError errors={Array.from(errors.values())} />
             <Form

@@ -1,0 +1,33 @@
+.root {
+    composes: bg-white from global;
+    composes: gap-3 from global;
+    composes: grid from global;
+    composes: grid-flow-col from global;
+    composes: h-[4rem] from global;
+    composes: items-stretch from global;
+    box-shadow: 0 -1px rgb(var(--venia-global-color-border));
+    width: 100%;
+}
+
+.contents {
+    /* composes: grid from global; */
+    composes: grid-flow-col from global;
+    composes: items-center from global;
+    composes: justify-items-start from global;
+    composes: px-xs from global;
+    composes: py-0 from global;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start
+}
+
+.account {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    color: #393D46;
+    margin-left: 5px;
+    margin-top: 4px;
+}

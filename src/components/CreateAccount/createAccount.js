@@ -3,6 +3,7 @@ import { FormattedMessage, useIntl } from 'react-intl';
 import { Form } from 'informed';
 import { func, shape, string, bool } from 'prop-types';
 import { useCreateAccount } from '@magento/peregrine/lib/talons/CreateAccount/useCreateAccount';
+import { useWindowSize } from '@magento/peregrine';
 
 import { useStyle } from '@magento/venia-ui/lib/classify';
 import combine from '@magento/venia-ui/lib/util/combineValidators';
@@ -38,6 +39,9 @@ const CreateAccount = props => {
         initialValues,
         recaptchaWidgetProps
     } = talonProps;
+
+    const windowSize = useWindowSize();
+    const isDesktop = windowSize.innerWidth >= 769;
 
     const { formatMessage } = useIntl();
     const classes = useStyle(defaultClasses, props.classes);
@@ -85,14 +89,16 @@ const CreateAccount = props => {
                             defaultMessage={'Create a New Account'}
                         />
                     </h2>
-                    <button
-                        type="button"
-                        onClick={() => {
-                            setAccountMenuIsOpen(false);
-                        }}
-                    >
-                        <img src={closeIcon} alt="X" />
-                    </button>
+                    {isDesktop && (
+                        <button
+                            type="button"
+                            onClick={() => {
+                                setAccountMenuIsOpen(false);
+                            }}
+                        >
+                            <img src={closeIcon} alt="X" />
+                        </button>
+                    )}
                 </div>
                 <FormError errors={Array.from(errors.values())} />
                 <Field

@@ -1,6 +1,6 @@
 import React from 'react';
 import { shape, string } from 'prop-types';
-import { useAccountMenu } from '@magento/peregrine/lib/talons/Header/useAccountMenu';
+import { useAccountMenu } from '../../talons/Header/useAccountMenu';
 
 import { useStyle } from '@magento/venia-ui/lib/classify';
 import CreateAccount from '../CreateAccount';
@@ -23,7 +23,8 @@ const AccountMenu = React.forwardRef((props, ref) => {
         handleForgotPassword,
         handleCancel,
         handleCreateAccount,
-        updateUsername
+        updateUsername,
+        closeModalHandler
     } = talonProps;
 
     const classes = useStyle(defaultClasses, props.classes);
@@ -84,7 +85,7 @@ const AccountMenu = React.forwardRef((props, ref) => {
 
     return (
         <aside className={rootClass} data-cy="AccountMenu-root">
-            <div ref={ref} className={contentsClass}>
+            <div ref={ref} onClick={closeModalHandler} className={contentsClass}>
                 {accountMenuIsOpen ? dropdownContents : null}
             </div>
         </aside>

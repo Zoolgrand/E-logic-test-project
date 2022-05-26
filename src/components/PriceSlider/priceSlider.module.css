@@ -1,0 +1,63 @@
+.priceSlider {
+    width: 100%;
+    display: grid;
+    grid-gap: 20px;
+    grid-template-rows: 1fr 1fr;
+
+}
+
+.priceSlider button {
+
+    border: 1px solid rgb(32, 13, 69);
+    border-radius: 7px;
+    box-sizing: border-box;
+    height: 44px;
+    width: 44px;
+}
+
+.priceControll {
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: 5fr 1fr;
+}
+
+.priceInput {
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: 1fr 1fr;
+}
+
+.priceInput input {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 18px;
+    text-align: center;
+    color: rgba(57, 61, 70, 0.9);
+    box-sizing: border-box;
+    height: 30px;
+    padding-bottom: 13px;
+    padding-top: 13px;
+    width: 86px;
+}
+
+.priceRangeContainer {
+    align-items: center;
+    display: grid;
+    grid-gap: 15px;
+    grid-template-columns: 1fr 44px;
+}
+
+.rangeContainerCurrency {
+    display: flex;
+    font-family: var(--venia-global-fontFamily-Asap);
+    font-size: 15px;
+    font-weight: 500;
+    justify-self: center;
+    line-height: 17px;
+    padding-bottom: 0;
+    padding-inline-end: 0;
+    padding-inline-start: 0;
+
+}

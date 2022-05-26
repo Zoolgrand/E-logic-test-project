@@ -1,0 +1,23 @@
+.root {
+    height: 44px;
+    width: 44px;
+    border-radius: 50%;
+    border: 1px solid transparent;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.root_active {
+    composes: root;
+
+    border: 1px solid rgb(203, 104, 82);
+}
+
+.colorFilterOption {
+    height: 34px;
+    width: 34px;
+    border-radius: 50%;
+    cursor: pointer;
+}

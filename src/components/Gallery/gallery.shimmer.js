@@ -1,6 +1,6 @@
 import React from 'react';
 import { shape, string, array, object } from 'prop-types';
-import { useStyle } from '../../classify';
+import { useStyle } from '@magento/venia-ui/lib/classify';
 
 import GalleryItemShimmer from './item.shimmer';
 import defaultClasses from './gallery.module.css';

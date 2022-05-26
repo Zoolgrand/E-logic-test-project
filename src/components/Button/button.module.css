@@ -149,3 +149,9 @@
     composes: justify-center from global;
     composes: justify-items-center from global;
 }
+
+@media screen and (max-width : 768px) {
+   .root{
+       width: 200px;
+   }
+}

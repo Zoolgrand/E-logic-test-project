@@ -3,7 +3,7 @@ import { shape, string } from 'prop-types';
 import { useNavigation } from '@magento/peregrine/lib/talons/Navigation/useNavigation';
 
 import { useStyle } from '@magento/venia-ui/lib/classify';
-import AuthBar from '@magento/venia-ui/lib/components/AuthBar';
+import AuthBar from '../AuthBar';
 import CategoryTree from '../CategoryTree';
 import StoreSwitcher from '../Header/storeSwitcher';
 import LoadingIndicator from '@magento/venia-ui/lib/components/LoadingIndicator';

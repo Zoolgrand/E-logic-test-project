@@ -5,7 +5,7 @@ import arrowUp from '../../assets/arrowUp.svg';
 import { useStyle } from '@magento/venia-ui/lib/classify';
 import defaultClasses from './categoryBranch.module.css';
 import Leaf from './categoryLeaf';
-import { useCategoryBranch } from '@magento/peregrine/lib/talons/CategoryTree';
+import { useCategoryBranch } from '../../talons/CategoryTree/useCategoryBranch';
 
 const Branch = props => {
     const { name, children, isRoot, onNavigate } = props;
