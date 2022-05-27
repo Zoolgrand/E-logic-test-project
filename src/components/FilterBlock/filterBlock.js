@@ -13,6 +13,7 @@ import Icon from '@magento/venia-ui/lib/components/Icon';
 import FilterList from '@magento/venia-ui/lib/components/FilterModal/FilterList';
 import defaultClasses from './filterBlock.module.css';
 import ColorFilter from '../ColorFilter/colorFilter';
+import SizeFilter from '../SizeFilter/sizeFilter';
 
 const FilterBlock = props => {
     const {
@@ -66,35 +67,54 @@ const FilterBlock = props => {
               }
           );
 
+    const switchGroup = group => {
+        switch (group) {
+            case 'price':
+                return (
+                    <PriceSlider
+                        filterApi={filterApi}
+                        filterState={filterState}
+                        group={group}
+                        onApply={onApply}
+                    />
+                );
+            case 'color':
+                return (
+                    <ColorFilter
+                        filterApi={filterApi}
+                        filterState={filterState}
+                        group={group}
+                        onApply={onApply}
+                        items={items}
+                    />
+                );
+            case 'fashion_size':
+                return (
+                    <SizeFilter
+                        filterApi={filterApi}
+                        filterState={filterState}
+                        group={group}
+                        onApply={onApply}
+                        items={items}
+                    />
+                );
+            default:
+                return (
+                    <FilterList
+                        filterApi={filterApi}
+                        filterState={filterState}
+                        name={name}
+                        filterFrontendInput={filterFrontendInput}
+                        group={group}
+                        items={items}
+                        onApply={onApply}
+                    />
+                );
+        }
+    };
+
     const list = isExpanded ? (
-        <Form className={classes.list}>
-            {group === 'price' ? (
-                <PriceSlider
-                    filterApi={filterApi}
-                    filterState={filterState}
-                    group={group}
-                    onApply={onApply}
-                />
-            ) : group === 'color' ? (
-                <ColorFilter
-                    filterApi={filterApi}
-                    filterState={filterState}
-                    group={group}
-                    onApply={onApply}
-                    items={items}
-                />
-            ) : (
-                <FilterList
-                    filterApi={filterApi}
-                    filterState={filterState}
-                    name={name}
-                    filterFrontendInput={filterFrontendInput}
-                    group={group}
-                    items={items}
-                    onApply={onApply}
-                />
-            )}
-        </Form>
+        <Form className={classes.list}>{switchGroup(group)}</Form>
     ) : null;
 
     return (

@@ -1,0 +1,25 @@
+.sizeFilterOption {
+    height: 30px;
+    width: 37px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 18px;
+    text-align: center;
+    text-transform: uppercase;
+    color: rgba(57, 61, 70, 0.75);
+}
+
+.sizeFilterOption_active {
+    composes: sizeFilterOption;
+    background: #393D46;
+    color: #FFFFFF;
+    border: 2px solid #393D46; 
+    border: 1px solid wheat;
+    outline: 1px solid #393D46;
+}
