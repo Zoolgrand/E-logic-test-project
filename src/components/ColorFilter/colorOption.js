@@ -9,6 +9,7 @@ const ColorOption = props => {
 
     const classes = useStyle(defaultClasses, props.classes);
     const itemColor = color.split('_')[0];
+    const colorName = color.split('_')[2];
 
     const filterStateArray = filterState ? [...filterState] : [];
 
@@ -20,15 +21,20 @@ const ColorOption = props => {
         onApply({ group, item });
     };
 
-    const colorFilterOptionClass = isSelectedColor ? classes.root_active : classes.root;
+    const colorFilterOptionClass = isSelectedColor
+        ? classes.root_active
+        : classes.root;
 
     return (
-        <div className={colorFilterOptionClass}>
-            <div
-                onClick={changeColorFilterHandler}
-                className={classes.colorFilterOption}
-                style={{ backgroundColor: itemColor }}
-            />
+        <div className={classes.colorblock}>
+            <div className={colorFilterOptionClass}>
+                <div
+                    onClick={changeColorFilterHandler}
+                    className={classes.colorFilterOption}
+                    style={{ backgroundColor: itemColor }}
+                />
+            </div>
+            <div className={classes.colorDescription}>{colorName}</div>
         </div>
     );
 };

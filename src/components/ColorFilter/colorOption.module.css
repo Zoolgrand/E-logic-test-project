@@ -1,12 +1,18 @@
 .root {
-    height: 44px;
-    width: 44px;
+    height: 30px;
+    width: 30px;
     border-radius: 50%;
     border: 1px solid transparent;
     background-color: white;
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-right: 12px;
+}
+
+.colorblock {
+    display: flex;
+    align-items: center;
 }
 
 .root_active {
@@ -16,8 +22,17 @@
 }
 
 .colorFilterOption {
-    height: 34px;
-    width: 34px;
+    height: 20px;
+    width: 20px;
     border-radius: 50%;
     cursor: pointer;
+}
+
+.colorDescription{
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 18px;
+    color: rgba(57, 61, 70, 0.75);
 }
