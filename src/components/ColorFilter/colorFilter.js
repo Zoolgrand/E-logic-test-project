@@ -10,6 +10,7 @@ const ColorFilter = props => {
     const colorFilterOptions = items
         ? items.map(item => (
               <ColorOption
+                  key={item.title}
                   color={item.title}
                   filterApi={filterApi}
                   filterState={filterState}

@@ -6,11 +6,11 @@ import SizeFilterOption from './sizeFilterOption';
 const SizeFilter = props => {
     const { filterApi, filterState, group, onApply, items } = props;
     const classes = useStyle(defaultClasses, props.classes);
-    console.log(props);
 
     const syzeFilterOttions = items
         ? items.map(item => (
               <SizeFilterOption
+                  key={item.title}
                   filterApi={filterApi}
                   filterState={filterState}
                   group={group}

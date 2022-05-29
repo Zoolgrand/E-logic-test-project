@@ -111,6 +111,8 @@
     height: 44px;
     width: 44px;
     background: rgba(255, 255, 255, 0.8);
+    padding-left: 22px;
+    border-radius: 50%;
     backdrop-filter: blur(4px);
 }
 
@@ -125,4 +127,31 @@
     width: 44px;
     background: rgba(255, 255, 255, 0.8);
     backdrop-filter: blur(4px);
+    cursor: pointer;
+}
+
+.btnBlock {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+@media (max-width: 768px) {
+    .wishListWrap {
+        top: 15px;
+        right: 15px;
+    }
+
+    .compareButtonWrap {
+        position: unset;
+        border-radius: 50%;
+        height: 48px;
+        width: 48px;
+        border: 0.6px solid #4C4F57;
+        color: #4C4F57;
+    }
+
+    .price {
+        margin-bottom: 21px;
+    }
 }

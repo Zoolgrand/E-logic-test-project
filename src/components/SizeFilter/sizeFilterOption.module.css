@@ -19,7 +19,6 @@
     composes: sizeFilterOption;
     background: #393D46;
     color: #FFFFFF;
-    border: 2px solid #393D46; 
-    border: 1px solid wheat;
+    border: 1px solid white;
     outline: 1px solid #393D46;
 }

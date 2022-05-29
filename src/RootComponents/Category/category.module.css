@@ -1,5 +1,7 @@
 .root {
     composes: p-xs from global;
+    font-family: 'Poppins';
+    font-style: normal;
 }
 
 .title {
@@ -23,8 +25,22 @@
     composes: leading-snug from global;
     composes: pb-xs from global;
     composes: text-colorDefault from global;
-    composes: text-center from global;
     composes: text-xl from global;
+    font-weight: 300;
+    font-size: 38px;
+    line-height: 46px;
+    color: #393D46;
+    margin-top: 46px;
+    margin-bottom: 12px;
+}
+
+.titleDescription {
+    padding-left: 10px;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 18px;
+    color: #5F6C81;
+    margin-bottom: 161px;
 }
 
 .heading {
@@ -42,6 +58,8 @@
 
 .categoryContent {
     composes: lg_flex-grow from global;
+    padding-top: 15px;
+    padding-left: 20px;
 }
 
 .categoryInfo {
@@ -54,6 +72,10 @@
 
     composes: lg_m-0 from global;
     composes: lg_text-left from global;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 18px;
+    color: rgba(57, 61, 70, 0.7);
 }
 
 .headerButtons {
@@ -64,6 +86,8 @@
 
     composes: lg_justify-end from global;
     composes: lg_pb-0 from global;
+    width: 100%;
+    justify-content: space-between;
 }
 
 .contentWrapper {
@@ -77,6 +101,17 @@
 
     composes: lg_flex from global;
     composes: lg_self-start from global;
-    composes: lg_pt-16 from global;
+    /* composes: lg_pt-16 from global; */
     composes: lg_w-filterSidebarWidth from global;
+}
+
+@media (max-width: 768px) {
+    .categoryTitle {
+        display: flex;
+        justify-content: center;
+    }
+
+    .titleDescription {
+        display: none;
+    }
 }

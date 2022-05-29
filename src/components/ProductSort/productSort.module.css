@@ -1,0 +1,102 @@
+.root {
+    composes: relative from global;
+    composes: ml-2xs from global;
+}
+
+.menu {
+    composes: absolute from global;
+    composes: bg-clip-padding from global;
+    composes: bg-white from global;
+    composes: border from global;
+    composes: border-solid from global;
+    composes: border-subtle from global;
+    composes: list-none from global;
+    composes: mb-0 from global;
+    composes: min-w-[10rem] from global;
+    composes: mt-0.5 from global;
+    composes: mx-0 from global;
+    composes: right-0 from global;
+    composes: rounded from global;
+    composes: shadow-menu from global;
+    composes: text-colorDefault from global;
+    composes: text-left from global;
+    composes: top-[110%] from global;
+    composes: z-menu from global;
+}
+
+.menuItem {
+    composes: border-b from global;
+    composes: border-solid from global;
+    composes: border-subtle from global;
+
+    composes: hover_bg-subtle from global;
+
+    composes: last_border-b-0 from global;
+}
+
+.sortButton {
+    /* TODO @TW: review (C2). This is fragile to extend. */
+    composes: root_lowPriority from '../../components/Button/button.module.css';
+
+    composes: min-w-[6.26rem] from global;
+
+    composes: lg_border-2 from global;
+    composes: lg_border-gray-500 from global;
+    composes: lg_font-normal from global;
+    composes: lg_normal-case from global;
+    composes: lg_rounded-md from global;
+    border: none;
+    border-radius: 0px;
+}
+
+.desktopText {
+    composes: hidden from global;
+
+    composes: lg_inline-flex from global;
+}
+
+.sortText {
+    composes: leading-normal from global;
+    composes: text-colorDefault from global;
+}
+
+.desktopIconWrapper {
+    composes: root from '@magento/venia-ui/lib/components/Icon/icon.module.css';
+
+    transform: translateX(10px);
+}
+
+.desktopIcon {
+    composes: icon from '@magento/venia-ui/lib/components/Icon/icon.module.css';
+
+    composes: stroke-gray-500 from global;
+}
+
+.mobileText {
+    composes: lg_hidden from global;
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    text-align: center;
+    color: #393D46;
+}
+
+.mobileText img {
+    margin-left: 80px;
+}
+
+@media (min-width: 768px) {
+    .mobileText {
+        display: none;
+    }
+
+    .sortButton {
+        border-bottom: 1px solid #393D46;
+    }
+}

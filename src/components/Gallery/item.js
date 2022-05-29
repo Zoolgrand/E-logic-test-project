@@ -7,6 +7,7 @@ import Price from '@magento/venia-ui/lib/components/Price';
 import { UNCONSTRAINED_SIZE_KEY } from '@magento/peregrine/lib/talons/Image/useImage';
 import { useGalleryItem } from '@magento/peregrine/lib/talons/Gallery/useGalleryItem';
 import resourceUrl from '@magento/peregrine/lib/util/makeUrl';
+import { useWindowSize } from '@magento/peregrine';
 
 import { useStyle } from '@magento/venia-ui/lib/classify';
 import Image from '@magento/venia-ui/lib/components/Image';
@@ -16,7 +17,6 @@ import WishlistGalleryButton from '@magento/venia-ui/lib/components/Wishlist/Add
 
 import AddToCartbutton from './addToCartButton';
 // eslint-disable-next-line no-unused-vars
-import Rating from '@magento/venia-ui/lib/components/Rating';
 
 // The placeholder image is 4:5, so we should make sure to size our product
 // images appropriately.
@@ -39,6 +39,9 @@ const GalleryItem = props => {
     const { storeConfig } = props;
 
     const [isFocused, setIsFocused] = useState(false);
+
+    const windowSize = useWindowSize();
+    const isDesktop = windowSize.innerWidth >= 769;
 
     const getFocus = () => {
         setIsFocused(true);
@@ -136,10 +139,16 @@ const GalleryItem = props => {
                     />
                     {ratingAverage}
                 </Link>
-                {isFocused && (
+                {isDesktop ? (
+                    isFocused && (
+                        <div className={classes.wishListWrap}>
+                            {wishlistButton}
+                        </div>
+                    )
+                ) : (
                     <div className={classes.wishListWrap}>{wishlistButton}</div>
                 )}
-                {isFocused && (
+                {isDesktop && isFocused && (
                     <div className={classes.compareButtonWrap}>
                         {compareButton}
                     </div>
@@ -155,14 +164,31 @@ const GalleryItem = props => {
                 <span>{name}</span>
             </Link>
 
-            {isFocused ? (
-                <div className={classes.actionsContainer}> {addButton}</div>
+            {isDesktop ? (
+                isFocused ? (
+                    <div className={classes.actionsContainer}> {addButton}</div>
+                ) : (
+                    <div data-cy="GalleryItem-price" className={classes.price}>
+                        <Price
+                            value={priceSource.value}
+                            currencyCode={priceSource.currency}
+                        />
+                    </div>
+                )
             ) : (
-                <div data-cy="GalleryItem-price" className={classes.price}>
-                    <Price
-                        value={priceSource.value}
-                        currencyCode={priceSource.currency}
-                    />
+                <div>
+                    <div data-cy="GalleryItem-price" className={classes.price}>
+                        <Price
+                            value={priceSource.value}
+                            currencyCode={priceSource.currency}
+                        />
+                    </div>
+                    <div className={classes.btnBlock}>
+                        {addButton}
+                        <div className={classes.compareButtonWrap}>
+                            {compareButton}
+                        </div>
+                    </div>
                 </div>
             )}
         </div>

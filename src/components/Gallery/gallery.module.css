@@ -2,6 +2,7 @@
     composes: grid from global;
     composes: grid-cols-1 from global;
     composes: leading-none from global;
+    padding-top: 100px;
     grid-template-areas:
         'actions'
         'items';
@@ -15,7 +16,7 @@
     grid-template-columns: repeat(3, 1fr);
 }
 
-@media (max-width: 639px) {
+@media (max-width: 768px) {
     .items {
         grid-template-columns: repeat(2, 1fr);
     }

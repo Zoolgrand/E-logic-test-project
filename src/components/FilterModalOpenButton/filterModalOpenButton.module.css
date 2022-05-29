@@ -1,0 +1,18 @@
+.filterButton {
+    composes: root_lowPriority from '../Button/button.module.css';
+
+    composes: min-w-[6.25rem] from global;
+
+    composes: lg_hidden from global;
+
+    border: none;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    color: #393D46;
+}
+
+.filterButton::before {
+    content: url('../../assets/filterIcon.svg');
+    margin-right: 10px;
+}

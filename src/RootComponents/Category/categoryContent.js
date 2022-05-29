@@ -6,24 +6,25 @@ import { useIsInViewport } from '@magento/peregrine/lib/hooks/useIsInViewport';
 import { useCategoryContent } from '@magento/peregrine/lib/talons/RootComponents/Category';
 
 import { useStyle } from '@magento/venia-ui/lib/classify';
-import Breadcrumbs from '@magento/venia-ui/lib/components/Breadcrumbs';
+import Breadcrumbs from '../../components/Breadcrumbs';
 import FilterModalOpenButton, {
     FilterModalOpenButtonShimmer
-} from '@magento/venia-ui/lib/components/FilterModalOpenButton';
+} from '../../components/FilterModalOpenButton';
 import { FilterSidebarShimmer } from '@magento/venia-ui/lib/components/FilterSidebar';
 import Gallery, { GalleryShimmer } from '../../components/Gallery';
 import { StoreTitle } from '@magento/venia-ui/lib/components/Head';
 import Pagination from '@magento/venia-ui/lib/components/Pagination';
-import ProductSort, { ProductSortShimmer } from '@magento/venia-ui/lib/components/ProductSort';
-import RichContent from '@magento/venia-ui/lib/components/RichContent';
+import ProductSort, {
+    ProductSortShimmer
+} from '../../components/ProductSort';
 import Shimmer from '@magento/venia-ui/lib/components/Shimmer';
-import SortedByContainer, {
-    SortedByContainerShimmer
-} from '@magento/venia-ui/lib/components/SortedByContainer';
 import defaultClasses from './category.module.css';
 import NoProductsFound from './NoProductsFound';
 
-const FilterModal = React.lazy(() => import('@magento/venia-ui/lib/components/FilterModal'));
+
+const FilterModal = React.lazy(() =>
+    import('@magento/venia-ui/lib/components/FilterModal')
+);
 const FilterSidebar = React.lazy(() =>
     import('@magento/venia-ui/lib/components/FilterSidebar')
 );
@@ -37,7 +38,6 @@ const CategoryContent = props => {
         sortProps,
         pageSize
     } = props;
-    const [currentSort] = sortProps;
 
     const talonProps = useCategoryContent({
         categoryId,
@@ -48,7 +48,6 @@ const CategoryContent = props => {
     const {
         availableSortMethods,
         categoryName,
-        categoryDescription,
         filters,
         items,
         totalCount,
@@ -93,12 +92,6 @@ const CategoryContent = props => {
         <ProductSortShimmer />
     ) : null;
 
-    const maybeSortContainer = shouldShowSortButtons ? (
-        <SortedByContainer currentSort={currentSort} />
-    ) : shouldShowSortShimmer ? (
-        <SortedByContainerShimmer />
-    ) : null;
-
     const categoryResultsHeading =
         totalCount > 0 ? (
             <FormattedMessage
@@ -106,15 +99,11 @@ const CategoryContent = props => {
                 values={{
                     count: totalCount
                 }}
-                defaultMessage={'{count} Results'}
+                defaultMessage={'{count} products'}
             />
         ) : isLoading ? (
             <Shimmer width={5} />
         ) : null;
-
-    const categoryDescriptionElement = categoryDescription ? (
-        <RichContent html={categoryDescription} />
-    ) : null;
 
     const content = useMemo(() => {
         if (!totalPagesFromData && !isLoading) {
@@ -163,7 +152,10 @@ const CategoryContent = props => {
                             {categoryTitle}
                         </div>
                     </h1>
-                    {categoryDescriptionElement}
+                    <p className={classes.titleDescription}>
+                        Set your sights on our best-selling fabrics in new
+                        colors and styles.
+                    </p>
                 </div>
                 <div className={classes.contentWrapper}>
                     <div ref={sidebarRef} className={classes.sidebar}>
@@ -183,7 +175,6 @@ const CategoryContent = props => {
                                 {maybeFilterButtons}
                                 {maybeSortButton}
                             </div>
-                            {maybeSortContainer}
                         </div>
                         {content}
                         <Suspense fallback={null}>{filtersModal}</Suspense>
