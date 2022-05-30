@@ -2,6 +2,7 @@
     composes: p-xs from global;
     font-family: 'Poppins';
     font-style: normal;
+    padding-left: 85px;
 }
 
 .title {

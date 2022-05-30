@@ -33,6 +33,9 @@
     const AuthModalComponent = require('./core-overrides/components/AuthModal/authModal.targetables.js')
     AuthModalComponent(targets)
 
+    const CategoryIndex = require('./core-overrides/RootComponents/Category/index.targetables.js')
+    CategoryIndex(targets)
+
     // targets.of('@magento/venia-ui').routes.tap(routes => {
     //     routes.push({
     //         exact: true,

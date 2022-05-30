@@ -2,13 +2,14 @@
     composes: gap-sm from global;
     composes: grid from global;
     composes: justify-items-stretch from global;
-    composes: px-sm from global;
-    composes: py-xs from global;
     background: #FFFFFF;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    padding: 34px 40px 40px;
+    font-family: 'Poppins';
+    font-style: normal;
 }
 
 .forgotPassword {
@@ -20,7 +21,7 @@
 
 .form {
     composes: grid from global;
-    composes: gap-y-xs from global;
+    row-gap: 28px;
 }
 
 .modal {
@@ -52,6 +53,7 @@
     composes: justify-center from global;
     composes: mt-xs from global;
     composes: w-full from global;
+    gap: 15px;
 }
 
 .forgotPasswordButtonContainer {
@@ -69,8 +71,7 @@
     composes: root from '@magento/venia-ui/lib/components/LinkButton/linkButton.module.css';
 
     composes: p-0 from global;
-    font-family: 'Poppins';
-    font-style: normal;
+
     font-weight: 400;
     font-size: 14px;
     line-height: 17px;
@@ -95,12 +96,27 @@
 .rememberMe {
     display: flex;
     align-items: center;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 18px;
+    color: rgba(57, 61, 70, 0.9)
+}
+
+.rememberMe p {
+    font-size: 14px;
+    line-height: 17px;
+    text-align: right;
+    letter-spacing: 0.4px;
+    
 }
 
 .rememberMe input {
     margin-right: 8px;
     height: 14px;
     width: 14px;
+    border-radius: 0px;
+    background: #FFFFFF;
+    border: 1px solid #393D46;
 }
 
 .titleContainer {

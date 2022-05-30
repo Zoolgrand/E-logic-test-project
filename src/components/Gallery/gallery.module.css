@@ -2,7 +2,7 @@
     composes: grid from global;
     composes: grid-cols-1 from global;
     composes: leading-none from global;
-    padding-top: 100px;
+    padding-top: 48px;
     grid-template-areas:
         'actions'
         'items';

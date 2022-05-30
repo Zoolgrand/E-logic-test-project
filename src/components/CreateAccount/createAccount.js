@@ -69,7 +69,7 @@ const CreateAccount = props => {
         >
             <FormattedMessage
                 id={'createAccount.createAccountText'}
-                defaultMessage={'Create an Account'}
+                defaultMessage={'Sign up'}
             />
         </Button>
     );
@@ -85,7 +85,7 @@ const CreateAccount = props => {
                 <div className={classes.titleContainer}>
                     <h2 data-cy="CreateAccount-title" className={classes.title}>
                         <FormattedMessage
-                            id={'createAccount.createAccountText'}
+                            id={'createAccount.createAccountTitleText'}
                             defaultMessage={'Create a New Account'}
                         />
                     </h2>

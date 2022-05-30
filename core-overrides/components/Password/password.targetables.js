@@ -7,6 +7,14 @@ module.exports = targets => {
         '@magento/venia-ui/lib/components/Password/password.js'
     );
 
+    const rewriteTextInputImportInstruction = {
+        after: "TextInput from '",
+        remove: 12,
+        insert: 'src/components/TextInput'
+    };
+
+    PasswordComponent.spliceSource(rewriteTextInputImportInstruction);
+
     PasswordComponent.setJSXProps('<TextInput/>', {
         placeholder: '"Enter your password"', 
     });

@@ -34,7 +34,7 @@
 
 }
 
-.contents {
+.accountMenu {
     composes: absolute from global;
     composes: bg-white from global;
     composes: grid from global;
@@ -43,11 +43,25 @@
     composes: shadow-menu from global;
     composes: top-0 from global;
     composes: w-[27.5rem] from global;
+
     min-height: 10rem;
     transform: translate3d(0, -8px, 0);
     transition-duration: 192ms;
     transition-property: transform;
     transition-timing-function: var(--venia-global-anim-out);
+}
+
+.accountMenuOpen {
+    composes: accountMenu;
+
+    transform: translate3d(0, 4px, 0);
+    transition-duration: 224ms;
+    transition-timing-function: var(--venia-global-anim-in);
+}
+
+.contents {
+    composes: accountMenu;
+
     background: rgba(0, 0, 0, 0.5);
     width: 100vw;
     height: 105vh;
@@ -67,8 +81,8 @@
     composes: grid from global;
     composes: gap-xs from global;
     composes: justify-items-stretch from global;
-    composes: px-sm from global;
-    composes: py-xs from global;
+    padding: 34px 40px 0px;
+    gap: 26px;
 }
 
 .forgotPassword {
@@ -77,28 +91,4 @@
 
 .loading {
     composes: p-md from global;
-}
-
-.accountMenu {
-    composes: absolute from global;
-    composes: bg-white from global;
-    composes: grid from global;
-    composes: right-0 from global;
-    composes: rounded-sm from global;
-    composes: shadow-menu from global;
-    composes: top-0 from global;
-    composes: w-[27.5rem] from global;
-    min-height: 10rem;
-    transform: translate3d(0, -8px, 0);
-    transition-duration: 192ms;
-    transition-property: transform;
-    transition-timing-function: var(--venia-global-anim-out);
-}
-
-.accountMenuOpen {
-    composes: accountMenu;
-
-    transform: translate3d(0, 4px, 0);
-    transition-duration: 224ms;
-    transition-timing-function: var(--venia-global-anim-in);
 }

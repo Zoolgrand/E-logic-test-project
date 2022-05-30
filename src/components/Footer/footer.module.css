@@ -3,7 +3,6 @@
     composes: border-solid from global;
     composes: border-light from global;
     composes: leading-normal from global;
-    composes: max-w-site from global;
     composes: min-h-[15rem] from global;
     composes: mx-auto from global;
     composes: my-0 from global;
@@ -126,7 +125,7 @@
     width: 100%;
     margin-top: 26px;
     margin-bottom: 28px;
-    padding: 0px 85px;
+    max-width: 1270px;
 }
 
 .rights {
