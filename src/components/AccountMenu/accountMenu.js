@@ -33,6 +33,10 @@ const AccountMenu = React.forwardRef((props, ref) => {
         ? classes.contents_open
         : classes.contents;
 
+    const isAccountMenuViewClasses = accountMenuIsOpen
+        ? classes.accountMenuOpen
+        : classes.accountMenu;
+
     let dropdownContents = null;
 
     switch (view) {
@@ -85,9 +89,23 @@ const AccountMenu = React.forwardRef((props, ref) => {
 
     return (
         <aside className={rootClass} data-cy="AccountMenu-root">
-            <div ref={ref} onClick={closeModalHandler} className={contentsClass}>
-                {accountMenuIsOpen ? dropdownContents : null}
-            </div>
+            {view !== 'ACCOUNT' ? (
+                <div
+                    ref={ref}
+                    onClick={closeModalHandler}
+                    className={contentsClass}
+                >
+                    {accountMenuIsOpen ? dropdownContents : null}
+                </div>
+            ) : (
+                <div
+                    ref={ref}
+                    onClick={closeModalHandler}
+                    className={isAccountMenuViewClasses}
+                >
+                    {accountMenuIsOpen ? dropdownContents : null}
+                </div>
+            )}
         </aside>
     );
 });
