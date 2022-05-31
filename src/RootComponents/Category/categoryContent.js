@@ -3,7 +3,7 @@ import { FormattedMessage } from 'react-intl';
 import { array, number, shape, string } from 'prop-types';
 
 import { useIsInViewport } from '@magento/peregrine/lib/hooks/useIsInViewport';
-import { useCategoryContent } from '@magento/peregrine/lib/talons/RootComponents/Category';
+import { useCategoryContent } from '../../talons/RootComponents/Category';
 
 import { useStyle } from '@magento/venia-ui/lib/classify';
 import Breadcrumbs from '../../components/Breadcrumbs';
@@ -36,7 +36,8 @@ const CategoryContent = props => {
         isLoading,
         pageControl,
         sortProps,
-        pageSize
+        pageSize,
+        fetchMoreHandler
     } = props;
 
     const talonProps = useCategoryContent({
@@ -53,6 +54,7 @@ const CategoryContent = props => {
         totalCount,
         totalPagesFromData
     } = talonProps;
+    
 
     const sidebarRef = useRef(null);
     const classes = useStyle(defaultClasses, props.classes);
@@ -123,6 +125,7 @@ const CategoryContent = props => {
         return (
             <Fragment>
                 <section className={classes.gallery}>{gallery}</section>
+                <button type='button' className={classes.loadMoreBtn} onClick={fetchMoreHandler}>Load More</button>
                 <div className={classes.pagination}>{pagination}</div>
             </Fragment>
         );

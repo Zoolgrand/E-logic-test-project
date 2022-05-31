@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import { shape, string } from 'prop-types';
-import { useCategory } from '@magento/peregrine/lib/talons/RootComponents/Category';
+import { useCategory } from '../../talons/RootComponents/Category/useCategory';
 import { useStyle } from '@magento/venia-ui/lib/classify';
 
 import CategoryContent from './categoryContent';
@@ -26,7 +26,8 @@ const Category = props => {
         categoryData,
         pageControl,
         sortProps,
-        pageSize
+        pageSize,
+        fetchMoreHandler
     } = talonProps;
 
     const classes = useStyle(defaultClasses, props.classes);
@@ -52,6 +53,7 @@ const Category = props => {
                 pageControl={pageControl}
                 sortProps={sortProps}
                 pageSize={pageSize}
+                fetchMoreHandler={fetchMoreHandler}
             />
         </Fragment>
     );

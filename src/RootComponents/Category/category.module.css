@@ -61,6 +61,7 @@
     composes: lg_flex-grow from global;
     padding-top: 15px;
     padding-left: 20px;
+    position: relative;
 }
 
 .categoryInfo {
@@ -104,6 +105,20 @@
     composes: lg_self-start from global;
     /* composes: lg_pt-16 from global; */
     composes: lg_w-filterSidebarWidth from global;
+}
+
+.loadMoreBtn {
+    background-color: #393D46;
+    color: #FFFFFF;
+    height: 50px;
+    width: 100px;
+    font-family: 'Poppins';
+    font-style: normal;
+    position: absolute;
+    bottom: 90px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 10px;
 }
 
 @media (max-width: 768px) {
