@@ -5,7 +5,7 @@ import { useStyle } from '@magento/venia-ui/lib/classify';
 import GalleryItem from './item';
 import GalleryItemShimmer from './item.shimmer';
 import defaultClasses from './gallery.module.css';
-import { useGallery } from '@magento/peregrine/lib/talons/Gallery/useGallery';
+import { useGallery } from '../../talons/Gallery/useGallery';
 
 /**
  * Renders a Gallery of items. If items is an array of nulls Gallery will render
@@ -30,6 +30,7 @@ const Gallery = props => {
                         key={item.id}
                         item={item}
                         storeConfig={storeConfig}
+                        items={items}
                     />
                 );
             }),

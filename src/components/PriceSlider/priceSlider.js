@@ -3,10 +3,9 @@ import 'rc-slider/assets/index.css';
 import React from 'react';
 import defaultClasses from './priceSlider.module.css';
 import { useStyle } from '@magento/venia-ui/lib/classify';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowRotateRight } from '@fortawesome/free-solid-svg-icons';
 
-import { usePriceSlider } from './usePriceSlider';
+
+import { usePriceSlider } from '../../talons/PriceSlider/usePriceSlider';
 
 const createSliderWithTooltip = Slider.createSliderWithTooltip;
 const Range = createSliderWithTooltip(Slider.Range);

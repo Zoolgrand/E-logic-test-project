@@ -5,7 +5,7 @@ import { string, number, shape } from 'prop-types';
 import { Link } from 'react-router-dom';
 import Price from '@magento/venia-ui/lib/components/Price';
 import { UNCONSTRAINED_SIZE_KEY } from '@magento/peregrine/lib/talons/Image/useImage';
-import { useGalleryItem } from '@magento/peregrine/lib/talons/Gallery/useGalleryItem';
+import { useGalleryItem } from '../../talons/Gallery/useGalleryItem';
 import resourceUrl from '@magento/peregrine/lib/util/makeUrl';
 import { useWindowSize } from '@magento/peregrine';
 
@@ -14,6 +14,7 @@ import Image from '@magento/venia-ui/lib/components/Image';
 import GalleryItemShimmer from './item.shimmer';
 import defaultClasses from './item.module.css';
 import WishlistGalleryButton from '@magento/venia-ui/lib/components/Wishlist/AddToListButton';
+import AddToCartModal from '../AddToCartModal';
 
 import AddToCartbutton from './addToCartButton';
 // eslint-disable-next-line no-unused-vars
@@ -36,9 +37,11 @@ const GalleryItem = props => {
         isSupportedProductType
     } = useGalleryItem(props);
 
-    const { storeConfig } = props;
+    const { storeConfig, items } = props;
 
     const [isFocused, setIsFocused] = useState(false);
+
+    const [isShowModal, setIsShowModal] = useState(false);
 
     const windowSize = useWindowSize();
     const isDesktop = windowSize.innerWidth >= 769;
@@ -86,7 +89,11 @@ const GalleryItem = props => {
     );
 
     const addButton = isSupportedProductType ? (
-        <AddToCartbutton item={item} urlSuffix={productUrlSuffix} />
+        <AddToCartbutton
+            item={item}
+            setIsShowModal={setIsShowModal}
+            urlSuffix={productUrlSuffix}
+        />
     ) : (
         <div className={classes.unavailableContainer}>
             <Info />
@@ -111,87 +118,107 @@ const GalleryItem = props => {
     // ) : null;
 
     return (
-        <div
-            data-cy="GalleryItem-root"
-            className={classes.root}
-            aria-live="polite"
-            aria-busy="false"
-            onMouseEnter={getFocus}
-            onMouseLeave={lostFocus}
-        >
-            <div className={classes.imageWrap}>
-                <Link
-                    onClick={handleLinkClick}
-                    to={productLink}
-                    className={classes.images}
-                >
-                    <Image
-                        alt={name}
-                        classes={{
-                            image: classes.image,
-                            loaded: classes.imageLoaded,
-                            notLoaded: classes.imageNotLoaded,
-                            root: classes.imageContainer
-                        }}
-                        height={IMAGE_HEIGHT}
-                        resource={smallImageURL}
-                        widths={IMAGE_WIDTHS}
-                    />
-                    {ratingAverage}
-                </Link>
-                {isDesktop ? (
-                    isFocused && (
+        <>
+            <div
+                data-cy="GalleryItem-root"
+                className={classes.root}
+                aria-live="polite"
+                aria-busy="false"
+                onMouseEnter={getFocus}
+                onMouseLeave={lostFocus}
+            >
+                <div className={classes.imageWrap}>
+                    <Link
+                        onClick={handleLinkClick}
+                        to={productLink}
+                        className={classes.images}
+                    >
+                        <Image
+                            alt={name}
+                            classes={{
+                                image: classes.image,
+                                loaded: classes.imageLoaded,
+                                notLoaded: classes.imageNotLoaded,
+                                root: classes.imageContainer
+                            }}
+                            height={IMAGE_HEIGHT}
+                            resource={smallImageURL}
+                            widths={IMAGE_WIDTHS}
+                        />
+                        {ratingAverage}
+                    </Link>
+                    {isDesktop ? (
+                        isFocused && (
+                            <div className={classes.wishListWrap}>
+                                {wishlistButton}
+                            </div>
+                        )
+                    ) : (
                         <div className={classes.wishListWrap}>
                             {wishlistButton}
                         </div>
-                    )
-                ) : (
-                    <div className={classes.wishListWrap}>{wishlistButton}</div>
-                )}
-                {isDesktop && isFocused && (
-                    <div className={classes.compareButtonWrap}>
-                        {compareButton}
-                    </div>
-                )}
-            </div>
-
-            <Link
-                onClick={handleLinkClick}
-                to={productLink}
-                className={classes.name}
-                data-cy="GalleryItem-name"
-            >
-                <span>{name}</span>
-            </Link>
-
-            {isDesktop ? (
-                isFocused ? (
-                    <div className={classes.actionsContainer}> {addButton}</div>
-                ) : (
-                    <div data-cy="GalleryItem-price" className={classes.price}>
-                        <Price
-                            value={priceSource.value}
-                            currencyCode={priceSource.currency}
-                        />
-                    </div>
-                )
-            ) : (
-                <div>
-                    <div data-cy="GalleryItem-price" className={classes.price}>
-                        <Price
-                            value={priceSource.value}
-                            currencyCode={priceSource.currency}
-                        />
-                    </div>
-                    <div className={classes.btnBlock}>
-                        {addButton}
+                    )}
+                    {isDesktop && isFocused && (
                         <div className={classes.compareButtonWrap}>
                             {compareButton}
                         </div>
-                    </div>
+                    )}
                 </div>
+
+                <Link
+                    onClick={handleLinkClick}
+                    to={productLink}
+                    className={classes.name}
+                    data-cy="GalleryItem-name"
+                >
+                    <span>{name}</span>
+                </Link>
+
+                {isDesktop ? (
+                    isFocused ? (
+                        <div className={classes.actionsContainer}>
+                            {' '}
+                            {addButton}
+                        </div>
+                    ) : (
+                        <div
+                            data-cy="GalleryItem-price"
+                            className={classes.price}
+                        >
+                            <Price
+                                value={priceSource.value}
+                                currencyCode={priceSource.currency}
+                            />
+                        </div>
+                    )
+                ) : (
+                    <div>
+                        <div
+                            data-cy="GalleryItem-price"
+                            className={classes.price}
+                        >
+                            <Price
+                                value={priceSource.value}
+                                currencyCode={priceSource.currency}
+                            />
+                        </div>
+                        <div className={classes.btnBlock}>
+                            {addButton}
+                            <div className={classes.compareButtonWrap}>
+                                {compareButton}
+                            </div>
+                        </div>
+                    </div>
+                )}
+            </div>
+            {isShowModal && (
+                <AddToCartModal
+                    setIsShowModal={setIsShowModal}
+                    item={item}
+                    items={items}
+                />
             )}
-        </div>
+        </>
     );
 };
 

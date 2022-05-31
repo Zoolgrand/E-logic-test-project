@@ -1,7 +1,7 @@
 import React from 'react';
 import { FormattedMessage, useIntl } from 'react-intl';
 import { string, number, shape } from 'prop-types';
-import { useAddToCartButton } from '@magento/peregrine/lib/talons/Gallery/useAddToCartButton';
+import { useAddToCartButton } from '../../talons/Gallery/useAddToCartButton';
 import { ShoppingBag, XSquare } from 'react-feather';
 import Icon from '@magento/venia-ui/lib/components/Icon';
 import Button from '@magento/venia-ui/lib/components/Button';
@@ -9,10 +9,11 @@ import { useStyle } from '@magento/venia-ui/lib/classify';
 import defaultClasses from './addToCartButton.module.css';
 
 const AddToCartButton = props => {
-    const { item, urlSuffix } = props;
+    const { item, urlSuffix, setIsShowModal } = props;
     const talonProps = useAddToCartButton({
         item,
-        urlSuffix
+        urlSuffix,
+        setIsShowModal
     });
     const { handleAddToCart, isDisabled, isInStock } = talonProps;
     const { formatMessage } = useIntl();

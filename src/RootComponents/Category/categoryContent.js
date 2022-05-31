@@ -14,13 +14,10 @@ import { FilterSidebarShimmer } from '@magento/venia-ui/lib/components/FilterSid
 import Gallery, { GalleryShimmer } from '../../components/Gallery';
 import { StoreTitle } from '@magento/venia-ui/lib/components/Head';
 import Pagination from '@magento/venia-ui/lib/components/Pagination';
-import ProductSort, {
-    ProductSortShimmer
-} from '../../components/ProductSort';
+import ProductSort, { ProductSortShimmer } from '../../components/ProductSort';
 import Shimmer from '@magento/venia-ui/lib/components/Shimmer';
 import defaultClasses from './category.module.css';
 import NoProductsFound from './NoProductsFound';
-
 
 const FilterModal = React.lazy(() =>
     import('@magento/venia-ui/lib/components/FilterModal')
@@ -54,7 +51,6 @@ const CategoryContent = props => {
         totalCount,
         totalPagesFromData
     } = talonProps;
-    
 
     const sidebarRef = useRef(null);
     const classes = useStyle(defaultClasses, props.classes);
@@ -125,7 +121,13 @@ const CategoryContent = props => {
         return (
             <Fragment>
                 <section className={classes.gallery}>{gallery}</section>
-                <button type='button' className={classes.loadMoreBtn} onClick={fetchMoreHandler}>Load More</button>
+                <button
+                    type="button"
+                    className={classes.loadMoreBtn}
+                    onClick={fetchMoreHandler}
+                >
+                    Load More
+                </button>
                 <div className={classes.pagination}>{pagination}</div>
             </Fragment>
         );
