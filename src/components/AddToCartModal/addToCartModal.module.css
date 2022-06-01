@@ -13,8 +13,8 @@
 
 .content {
     position: relative;
-    height: 700px;
-    width: 700px;
+    height: 800px;
+    width: 800px;
     background-color: white;
     margin: auto;
     margin-top: 175px;
@@ -80,4 +80,6 @@
 
 .carousel {
     height: 300px;
+    width: 100%;
+    max-width: 100%;
 }

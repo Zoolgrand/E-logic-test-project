@@ -5,7 +5,7 @@ import { useHistory } from 'react-router-dom';
 
 import closeModalIcon from '../../assets/closeIcon.svg';
 import Button from '../Button';
-import Carousel from '@magento/pagebuilder/lib/ContentTypes/Products/Carousel/carousel';
+import Carousel from '../../contentTypes/Products/Carousel';
 
 const AddToCartModal = props => {
     const { item, items, setIsShowModal } = props;
@@ -73,15 +73,9 @@ const AddToCartModal = props => {
                     CUSTOMERS LIKE YOU ALSO BOUGHT...
                 </div>
                 <div className={classes.carousel}>
-                    {/* <Carousel
-                        settings={{
-                            infinite: true,
-                            slidesToShow: 3,
-                            slidesToScroll: 3
-                        }}
+                    <Carousel
                         items={items}
-                    /> */}
-                    CAROUSEL
+                    />
                 </div>
             </div>
         </div>
