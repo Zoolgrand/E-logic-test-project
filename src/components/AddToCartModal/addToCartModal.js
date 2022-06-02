@@ -6,9 +6,10 @@ import { useHistory } from 'react-router-dom';
 import closeModalIcon from '../../assets/closeIcon.svg';
 import Button from '../Button';
 import Carousel from '../../contentTypes/Products/Carousel';
+import toast from 'react-hot-toast';
 
 const AddToCartModal = props => {
-    const { item, items, setIsShowModal } = props;
+    const { item, items } = props;
 
     const history = useHistory();
 
@@ -22,9 +23,32 @@ const AddToCartModal = props => {
 
     const closeModalHandler = e => {
         if (e.currentTarget === e.target) {
-            setIsShowModal(false);
+            toast.dismiss();
         }
     };
+
+    const itemColorBlock = (
+        <div className={classes.itemColorBlock}>
+            <div className={classes.color}>Color: Light aqua</div>
+            <div className={classes.color}>Size: M</div>
+        </div>
+    );
+
+    const wiewBagButton = (
+        <Button
+            priority={'high'}
+            classes={{
+                root_highPriority: classes.checkoutButton
+            }}
+            onPress={clickHandler}
+            data-cy="FilterModalOpenButton-button"
+            type="button"
+            aria-live="polite"
+            aria-busy="false"
+        >
+            WIEW BAG & CHECKOUT
+        </Button>
+    );
 
     return (
         <div className={classes.root} onClick={closeModalHandler}>
@@ -46,26 +70,8 @@ const AddToCartModal = props => {
                         <div className={classes.itemName}>
                             ${item.price_range.maximum_price.final_price.value}
                         </div>
-                        <div className={classes.itemColorBlock}>
-                            <div className={classes.color}>
-                                Color: Light aqua
-                            </div>
-                            <div className={classes.color}>Size: M</div>
-                        </div>
-
-                        <Button
-                            priority={'high'}
-                            classes={{
-                                root_highPriority: classes.checkoutButton
-                            }}
-                            onPress={clickHandler}
-                            data-cy="FilterModalOpenButton-button"
-                            type="button"
-                            aria-live="polite"
-                            aria-busy="false"
-                        >
-                            WIEW BAG & CHECKOUT
-                        </Button>
+                        {itemColorBlock}
+                        {wiewBagButton}
                     </div>
                 </div>
 
@@ -73,12 +79,11 @@ const AddToCartModal = props => {
                     CUSTOMERS LIKE YOU ALSO BOUGHT...
                 </div>
                 <div className={classes.carousel}>
-                    <Carousel
-                        items={items}
-                    />
+                    <Carousel items={items} />
                 </div>
             </div>
         </div>
     );
 };
-export default AddToCartModal;
+
+export default React.memo(AddToCartModal);

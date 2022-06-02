@@ -27,7 +27,8 @@ const Category = props => {
         pageControl,
         sortProps,
         pageSize,
-        fetchMoreHandler
+        fetchMoreHandler,
+        counter
     } = talonProps;
 
     const classes = useStyle(defaultClasses, props.classes);
@@ -54,6 +55,7 @@ const Category = props => {
                 sortProps={sortProps}
                 pageSize={pageSize}
                 fetchMoreHandler={fetchMoreHandler}
+                counter={counter}
             />
         </Fragment>
     );

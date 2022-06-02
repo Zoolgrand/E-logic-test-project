@@ -1,6 +1,7 @@
 import { useCallback, useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { useHistory } from 'react-router-dom';
+import toast from 'react-hot-toast';
 
 import { useCartContext } from '@magento/peregrine/lib/context/cart';
 import operations from './addToCart.gql';
@@ -28,7 +29,7 @@ const UNSUPPORTED_PRODUCT_TYPES = [
 ];
 
 export const useAddToCartButton = props => {
-    const { item, urlSuffix, setIsShowModal } = props;
+    const { item, urlSuffix, items } = props;
 
     const [isLoading, setIsLoading] = useState(false);
 
@@ -46,11 +47,16 @@ export const useAddToCartButton = props => {
 
     const [addToCart] = useMutation(operations.ADD_ITEM);
 
+    const toastMessageItem = JSON.stringify(item);
+    const toastMessageItems = JSON.stringify(items);
+
+    const toastMessage = toastMessageItem + 'divider' + toastMessageItems;
+
     const handleAddToCart = useCallback(async () => {
         try {
             if (productType === 'SimpleProduct') {
                 setIsLoading(true);
-                setIsShowModal(true);
+                toast(toastMessage);
                 await addToCart({
                     variables: {
                         cartId,

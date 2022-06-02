@@ -252,6 +252,7 @@ export const useCategory = props => {
         pageControl,
         sortProps,
         pageSize,
-        fetchMoreHandler
+        fetchMoreHandler,
+        counter
     };
 };

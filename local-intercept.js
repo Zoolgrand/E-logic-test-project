@@ -17,24 +17,27 @@
  * or modify functionality from its dependencies.
  */
 
- module.exports = targets => {
+module.exports = targets => {
     const MainComponent = require('./core-overrides/components/Main/main.targetables.js');
     MainComponent(targets);
-    
-    const useMegaMenu = require('./core-overrides/talons/MegaMenu/useMegaMenu.targetables.js')
-    useMegaMenu(targets)
 
-    const AppComponent = require('./core-overrides/components/App/app.targetables.js')
-    AppComponent(targets)
+    const useMegaMenu = require('./core-overrides/talons/MegaMenu/useMegaMenu.targetables.js');
+    useMegaMenu(targets);
 
-    const PasswordComponent = require('./core-overrides/components/Password/password.targetables.js')
-    PasswordComponent(targets)
+    const AppComponent = require('./core-overrides/components/App/app.targetables.js');
+    AppComponent(targets);
 
-    const AuthModalComponent = require('./core-overrides/components/AuthModal/authModal.targetables.js')
-    AuthModalComponent(targets)
+    const PasswordComponent = require('./core-overrides/components/Password/password.targetables.js');
+    PasswordComponent(targets);
 
-    const CategoryIndex = require('./core-overrides/RootComponents/Category/index.targetables.js')
-    CategoryIndex(targets)
+    const AuthModalComponent = require('./core-overrides/components/AuthModal/authModal.targetables.js');
+    AuthModalComponent(targets);
+
+    const CategoryIndex = require('./core-overrides/RootComponents/Category/index.targetables.js');
+    CategoryIndex(targets);
+
+    const FilterSidebarComponent = require('./core-overrides/components/FilterSidebar/filterSidebar.targetables.js');
+    FilterSidebarComponent(targets);
 
     // targets.of('@magento/venia-ui').routes.tap(routes => {
     //     routes.push({

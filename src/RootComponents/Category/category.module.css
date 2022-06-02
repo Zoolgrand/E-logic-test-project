@@ -121,6 +121,11 @@
     border-radius: 10px;
 }
 
+.disabledBtn{
+    composes:loadMoreBtn;
+    background-color: gray;
+}
+
 @media (max-width: 768px) {
     .categoryTitle {
         display: flex;

@@ -34,7 +34,8 @@ const CategoryContent = props => {
         pageControl,
         sortProps,
         pageSize,
-        fetchMoreHandler
+        fetchMoreHandler,
+        counter
     } = props;
 
     const talonProps = useCategoryContent({
@@ -57,6 +58,10 @@ const CategoryContent = props => {
     const shouldRenderSidebarContent = useIsInViewport({
         elementRef: sidebarRef
     });
+    const isLastPage = counter > totalPagesFromData;
+    const loadMoreClasses = isLastPage
+        ? classes.disabledBtn
+        : classes.loadMoreBtn;
 
     const shouldShowFilterButtons = filters && filters.length;
     const shouldShowFilterShimmer = filters === null;
@@ -123,8 +128,9 @@ const CategoryContent = props => {
                 <section className={classes.gallery}>{gallery}</section>
                 <button
                     type="button"
-                    className={classes.loadMoreBtn}
+                    className={loadMoreClasses}
                     onClick={fetchMoreHandler}
+                    disabled={isLastPage}
                 >
                     Load More
                 </button>

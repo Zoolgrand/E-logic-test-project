@@ -1,6 +1,7 @@
 import React, { Fragment, Suspense } from 'react';
 import { shape, string } from 'prop-types';
 import { Link, Route } from 'react-router-dom';
+import { Toaster } from 'react-hot-toast';
 
 import AccountTrigger from './accountTrigger';
 import CartTrigger from './cartTrigger';
@@ -18,6 +19,7 @@ import PageLoadingIndicator from '@magento/venia-ui/lib/components/PageLoadingIn
 import CompareTrigger from './compareTrigger';
 import FavoriteTrigger from './favoriteTrigger';
 import { useWindowSize } from '@magento/peregrine';
+import Notifications from '../Notification/notification';
 
 const SearchBar = React.lazy(() =>
     import('@magento/venia-ui/lib/components/SearchBar')
@@ -96,6 +98,14 @@ const Header = props => {
                     {triggerBlock}
                 </div>
                 {searchBar}
+                <Toaster
+                    toastOptions={{
+                        style: {
+                            display: 'none'
+                        }
+                    }}
+                />
+                <Notifications />
                 <PageLoadingIndicator absolute />
             </header>
         </Fragment>

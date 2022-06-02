@@ -4,16 +4,16 @@ import { string, number, shape } from 'prop-types';
 import { useAddToCartButton } from '../../talons/Gallery/useAddToCartButton';
 import { ShoppingBag, XSquare } from 'react-feather';
 import Icon from '@magento/venia-ui/lib/components/Icon';
-import Button from '@magento/venia-ui/lib/components/Button';
+import Button from '../Button';
 import { useStyle } from '@magento/venia-ui/lib/classify';
 import defaultClasses from './addToCartButton.module.css';
 
 const AddToCartButton = props => {
-    const { item, urlSuffix, setIsShowModal } = props;
+    const { item, urlSuffix, items } = props;
     const talonProps = useAddToCartButton({
         item,
         urlSuffix,
-        setIsShowModal
+        items
     });
     const { handleAddToCart, isDisabled, isInStock } = talonProps;
     const { formatMessage } = useIntl();

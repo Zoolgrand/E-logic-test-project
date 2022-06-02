@@ -13,6 +13,7 @@
     composes: z-header from global;
 
     composes: lg_px-8 from global;
+    margin-bottom: 47px;
 }
 
 .switchers {

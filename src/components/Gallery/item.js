@@ -14,7 +14,7 @@ import Image from '@magento/venia-ui/lib/components/Image';
 import GalleryItemShimmer from './item.shimmer';
 import defaultClasses from './item.module.css';
 import WishlistGalleryButton from '@magento/venia-ui/lib/components/Wishlist/AddToListButton';
-import AddToCartModal from '../AddToCartModal';
+import CompareIcon from '../../assets/Vector8.svg';
 
 import AddToCartbutton from './addToCartButton';
 // eslint-disable-next-line no-unused-vars
@@ -36,12 +36,11 @@ const GalleryItem = props => {
         wishlistButtonProps,
         isSupportedProductType
     } = useGalleryItem(props);
+  
 
     const { storeConfig, items } = props;
 
     const [isFocused, setIsFocused] = useState(false);
-
-    const [isShowModal, setIsShowModal] = useState(false);
 
     const windowSize = useWindowSize();
     const isDesktop = windowSize.innerWidth >= 769;
@@ -71,27 +70,12 @@ const GalleryItem = props => {
         <WishlistGalleryButton {...wishlistButtonProps} />
     ) : null;
 
-    const compareButton = (
-        <svg
-            width="20"
-            height="17"
-            viewBox="0 0 20 17"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-        >
-            <path
-                d="M16.556 1.34786H15.7391H14.9222H10.4782V-0.565186H9.52171V1.34786H5.07771H4.26084H3.44397L0.462014 8.79729L0.434753 8.87477V8.95655V9.43481C0.434753 11.0518 1.97236 12.7826 4.26084 12.7826C6.54932 12.7826 8.08693 11.0518 8.08693 9.43481V8.95655V8.87477L5.41536 2.30438H9.52171V15.6957H5.43975L4.26084 16.6522H15.7391L14.5602 15.6957H10.4782V2.30438H14.5846L11.9403 8.79729L11.913 8.87477V8.95655V9.43481C11.913 11.0518 13.4506 12.7826 15.7391 12.7826C18.0276 12.7826 19.5652 11.0518 19.5652 9.43481V8.95655V8.87477L16.556 1.34786ZM4.26084 11.8261C2.80645 11.8261 1.73084 10.894 1.45871 9.91307H7.06345C6.79084 10.894 5.71523 11.8261 4.26084 11.8261ZM7.10171 8.95655H1.41997L4.12071 2.30438H4.26084H4.40097L7.10171 8.95655ZM15.7391 11.8261C14.2847 11.8261 13.2091 10.894 12.937 9.91307H18.5417C18.2691 10.894 17.1935 11.8261 15.7391 11.8261ZM12.8982 8.95655L15.599 2.30438H15.7391H15.8792L18.58 8.95655H12.8982Z"
-                fill="#4C4F57"
-                stroke="#4C4F57"
-                strokeWidth="0.6"
-            />
-        </svg>
-    );
+    const compareButton = <button type='button'><img src={CompareIcon} /></button>;
 
     const addButton = isSupportedProductType ? (
         <AddToCartbutton
             item={item}
-            setIsShowModal={setIsShowModal}
+            items={items}
             urlSuffix={productUrlSuffix}
         />
     ) : (
@@ -211,13 +195,6 @@ const GalleryItem = props => {
                     </div>
                 )}
             </div>
-            {isShowModal && (
-                <AddToCartModal
-                    setIsShowModal={setIsShowModal}
-                    item={item}
-                    items={items}
-                />
-            )}
         </>
     );
 };
