@@ -98,13 +98,7 @@ const Header = props => {
                     {triggerBlock}
                 </div>
                 {searchBar}
-                <Toaster
-                    toastOptions={{
-                        style: {
-                            display: 'none'
-                        }
-                    }}
-                />
+                <Toaster />
                 <Notifications />
                 <PageLoadingIndicator absolute />
             </header>

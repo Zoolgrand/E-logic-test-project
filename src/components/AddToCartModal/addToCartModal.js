@@ -9,7 +9,10 @@ import Carousel from '../../contentTypes/Products/Carousel';
 import toast from 'react-hot-toast';
 
 const AddToCartModal = props => {
-    const { item, items } = props;
+    const { message } = props;
+
+    const item = JSON.parse(message.split('divider')[0]);
+    const items = JSON.parse(message.split('divider')[1]);
 
     const history = useHistory();
 
@@ -19,6 +22,7 @@ const AddToCartModal = props => {
 
     const clickHandler = () => {
         history.push('/cart');
+        toast.dismiss();
     };
 
     const closeModalHandler = e => {

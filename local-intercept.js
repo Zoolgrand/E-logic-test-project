@@ -39,6 +39,9 @@ module.exports = targets => {
     const FilterSidebarComponent = require('./core-overrides/components/FilterSidebar/filterSidebar.targetables.js');
     FilterSidebarComponent(targets);
 
+    const FilterDefaultComponent = require('./core-overrides/components/FilterModal/FilterList/filterDefault.targetables');
+    FilterDefaultComponent(targets);
+
     // targets.of('@magento/venia-ui').routes.tap(routes => {
     //     routes.push({
     //         exact: true,

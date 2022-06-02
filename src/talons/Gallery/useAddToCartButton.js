@@ -56,7 +56,10 @@ export const useAddToCartButton = props => {
         try {
             if (productType === 'SimpleProduct') {
                 setIsLoading(true);
-                toast(toastMessage);
+                toast(toastMessage, {
+                    duration: 60000,
+                    style: { visibility: 'hidden' }
+                });
                 await addToCart({
                     variables: {
                         cartId,

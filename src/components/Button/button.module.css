@@ -100,6 +100,7 @@
     composes: hover_text-white from global; */
 
     background: #393D46;
+    border: none;
     height: 48px;
     width: 400px;
     border: none;
@@ -151,7 +152,7 @@
 }
 
 @media screen and (max-width : 768px) {
-   .root{
-       width: 200px;
-   }
+    .root {
+        width: 200px;
+    }
 }
