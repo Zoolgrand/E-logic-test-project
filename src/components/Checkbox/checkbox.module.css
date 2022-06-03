@@ -56,7 +56,6 @@
 /* TODO @TW: cannot compose */
 .input:disabled~.label {
     cursor: default;
-
 }
 
 .input:checked:enabled {
@@ -65,7 +64,7 @@
 
 .input:checked:enabled+.icon {
     color: white;
-    transform: translate(7px);
+    transform: translate(7px, 1px);
 
 }
 

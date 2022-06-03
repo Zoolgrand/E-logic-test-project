@@ -40,7 +40,7 @@ const CurrentFilter = props => {
                 ariaLabel={ariaLabel}
                 data-cy="CurrentFilter-trigger"
             >
-                <Icon size={20} src={Remove} />
+                <Icon size={18} src={Remove} />
             </Trigger>
         </span>
     );
