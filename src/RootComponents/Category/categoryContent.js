@@ -23,7 +23,7 @@ const FilterModal = React.lazy(() =>
     import('@magento/venia-ui/lib/components/FilterModal')
 );
 const FilterSidebar = React.lazy(() =>
-    import('@magento/venia-ui/lib/components/FilterSidebar')
+    import('../../components/FilterSidebar')
 );
 
 const CategoryContent = props => {
