@@ -3,12 +3,10 @@ import AddToCartModal from '../AddToCartModal';
 import { useToaster } from 'react-hot-toast';
 
 const Notifications = () => {
-    const { toasts, handlers } = useToaster();
-    const { startPause, endPause } = handlers;
-    console.log(toasts);
+    const { toasts } = useToaster();
 
     return (
-        <div onMouseEnter={startPause} onMouseLeave={endPause}>
+        <div>
             {toasts
                 .filter(toast => toast.visible)
                 .map(toast => (

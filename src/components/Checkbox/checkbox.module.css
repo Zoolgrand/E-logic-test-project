@@ -23,12 +23,10 @@
     composes: rounded from global;
     composes: w-[1.5rem] from global;
     grid-area: input;
-    /* border: 1px solid #393D46; */
+    border: 1px solid #393D46;
     height: 14px;
     width: 14px;
     border-radius: 0px;
-
-
 
     /* TODO @TW: review, replaces input:disabled. Check if working. */
     composes: disabled_cursor-not-allowed from global;
@@ -39,11 +37,6 @@
     composes: pointer-events-none from global;
     composes: w-[1.5rem] from global;
     grid-area: input;
-    
-}
-
-.icon svg {
-    /* stroke: rgb(var(--stroke)); */
 }
 
 .label {
@@ -63,21 +56,22 @@
 /* TODO @TW: cannot compose */
 .input:disabled~.label {
     cursor: default;
+
+}
+
+.input:checked:enabled {
+    background: #393D46;
 }
 
 .input:checked:enabled+.icon {
     color: white;
-    background: #393D46;
-    /* border: 1px solid #393D46; */
+    transform: translate(7px);
 
 }
 
 /* TODO @TW: cannot compose, needs "checked" variant enabled. Cannot combine variants. */
 .input:active:enabled,
 .input:focus:enabled {
-    /* composes: active_shadow-radioActive from global; */
-    /* composes: focus_shadow-radioFocus from global; */
-    box-shadow: -3px 3px rgb(var(--venia-brand-color-1-100));
     outline: none;
 }
 

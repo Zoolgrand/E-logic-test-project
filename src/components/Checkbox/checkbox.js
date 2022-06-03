@@ -5,16 +5,23 @@ import useFieldState from '@magento/peregrine/lib/hooks/hook-wrappers/useInforme
 
 import { useStyle } from '@magento/venia-ui/lib/classify';
 import { Message } from '@magento/venia-ui/lib/components/Field';
-import { CheckSquare, Square } from 'react-feather';
+
 import defaultClasses from './checkbox.module.css';
-import checkIcon from '../../assets/checkIcon.svg'
+
+import { faCheck } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 /* TODO: change lint config to use `label-has-associated-control` */
 /* eslint-disable jsx-a11y/label-has-for */
 
-// const checkedIcon = <img src={checkIcon}></img>;
-const checkedIcon = <CheckSquare />;
-const uncheckedIcon = <Square />;
+const checkedIcon = (
+    <FontAwesomeIcon
+        style={{ color: 'white' }}
+        height={7}
+        width={10}
+        icon={faCheck}
+    />
+);
 
 const Checkbox = props => {
     const {
@@ -30,7 +37,7 @@ const Checkbox = props => {
     const fieldApi = useFieldApi(field);
     const fieldState = useFieldState(field);
     const classes = useStyle(defaultClasses, propClasses);
-    const icon = fieldState.value ? checkedIcon : uncheckedIcon;
+    const icon = fieldState.value ? checkedIcon : null;
 
     useEffect(() => {
         if (fieldValue != null && fieldValue !== fieldState.value) {
