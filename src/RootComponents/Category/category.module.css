@@ -89,7 +89,7 @@
     composes: lg_justify-end from global;
     composes: lg_pb-0 from global;
     width: 100%;
-    justify-content: space-between;
+    /* justify-content: space-between; */
 }
 
 .contentWrapper {
@@ -115,10 +115,14 @@
     font-family: 'Poppins';
     font-style: normal;
     position: absolute;
-    bottom: 90px;
+    bottom: 70px;
     left: 50%;
     transform: translateX(-50%);
     border-radius: 10px;
+}
+
+.gallery {
+    margin-bottom: 80px;
 }
 
 .disabledBtn {
@@ -138,5 +142,9 @@
 
     .loadMoreBtn {
         transform: translate(-40px, 15px);
+    }
+
+    .headerButtons {
+        justify-content: space-between;
     }
 }

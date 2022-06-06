@@ -93,32 +93,6 @@
     color: #393D46;
 }
 
-.rememberMe {
-    display: flex;
-    align-items: center;
-    font-weight: 400;
-    font-size: 15px;
-    line-height: 18px;
-    color: rgba(57, 61, 70, 0.9)
-}
-
-.rememberMe p {
-    font-size: 14px;
-    line-height: 17px;
-    text-align: right;
-    letter-spacing: 0.4px;
-    
-}
-
-.rememberMe input {
-    margin-right: 8px;
-    height: 14px;
-    width: 14px;
-    border-radius: 0px;
-    background: #FFFFFF;
-    border: 1px solid #393D46;
-}
-
 .titleContainer {
     width: 100%;
     display: flex;

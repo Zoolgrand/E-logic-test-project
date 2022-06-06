@@ -4,7 +4,6 @@ import React from 'react';
 import defaultClasses from './priceSlider.module.css';
 import { useStyle } from '@magento/venia-ui/lib/classify';
 
-
 import { usePriceSlider } from '../../talons/PriceSlider/usePriceSlider';
 
 const createSliderWithTooltip = Slider.createSliderWithTooltip;
@@ -33,16 +32,20 @@ const PriceSlider = props => {
         <div className={classes.priceSlider}>
             <div className={classes.priceControll}>
                 <div className={classes.priceInput}>
-                    <input
-                        type="number"
-                        onChange={changeMinPriceHabdler}
-                        value={price[0]}
-                    />
-                    <input
-                        type="number"
-                        onChange={changeMaxPriceHandler}
-                        value={price[1]}
-                    />
+                    <span className={classes.inputSpan}>
+                        <input
+                            type="number"
+                            onChange={changeMinPriceHabdler}
+                            value={price[0]}
+                        />
+                    </span>
+                    <span className={classes.inputSpan}>
+                        <input
+                            type="number"
+                            onChange={changeMaxPriceHandler}
+                            value={price[1]}
+                        />
+                    </span>
                 </div>
             </div>
 
@@ -62,12 +65,10 @@ const PriceSlider = props => {
                         border: '2px solid white'
                     }}
                     railStyle={{
-                        backgroundColor: '#393D46',
+                        backgroundColor: '#E5E8EF',
                         height: '3px'
                     }}
-                    trackStyle={[
-                        { backgroundColor: '#393D46', height: '3px' }
-                    ]}
+                    trackStyle={[{ backgroundColor: '#393D46', height: '3px' }]}
                 />
             </div>
         </div>

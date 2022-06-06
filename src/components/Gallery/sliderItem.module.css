@@ -10,7 +10,6 @@
 .images {
     composes: grid from global;
     grid-template-areas: 'main';
-    position: relative;
 }
 
 .imageContainer {
@@ -103,10 +102,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
     height: 44px;
     width: 44px;
     background: rgba(255, 255, 255, 0.8);
-    border-radius: 50%;
     backdrop-filter: blur(4px);
     padding-left: 27px;
 }
@@ -115,14 +114,16 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 48px;
-    width: 48px;
+    height: 44px;
+    width: 44px;
+
     background: rgba(255, 255, 255, 0.8);
     backdrop-filter: blur(4px);
     cursor: pointer;
-    border: 1px solid #9C9EA3;
-    border-radius: 60px;
     margin-left: 10px;
+    position: absolute;
+    top: 10px;
+    left: 10px;
 }
 
 .btnBlock {
@@ -131,22 +132,7 @@
     position: relative;
 }
 
-
 @media (max-width: 768px) {
-    .wishListWrap {
-        top: 15px;
-        right: 15px;
-    }
-
-    .compareButtonWrap {
-        position: unset;
-        border-radius: 50%;
-        height: 38px;
-        width: 38px;
-        border: 0.6px solid #4C4F57;
-        color: #4C4F57;
-    }
-
     .price {
         margin-bottom: 21px;
     }

@@ -17,8 +17,9 @@ const SCROLL_OFFSET = 150;
  * @param {Object} props.filters - filters to display
  */
 const FilterSidebar = props => {
-    const { filters, filterCountToOpen } = props;
+    const { filters } = props;
     const talonProps = useFilterSidebar({ filters });
+    const filterCountToOpen = 4;
     const {
         filterApi,
         filterItems,

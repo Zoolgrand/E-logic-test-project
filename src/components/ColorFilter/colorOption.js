@@ -24,17 +24,19 @@ const ColorOption = props => {
     const colorFilterOptionClass = isSelectedColor
         ? classes.root_active
         : classes.root;
+    const colorFilterOptionDescriptionClass = isSelectedColor
+        ? classes.colorDescription_active
+        : classes.colorDescription;
 
     return (
-        <div className={classes.colorblock}>
+        <div onClick={changeColorFilterHandler} className={classes.colorblock}>
             <div className={colorFilterOptionClass}>
                 <div
-                    onClick={changeColorFilterHandler}
                     className={classes.colorFilterOption}
                     style={{ backgroundColor: itemColor }}
                 />
             </div>
-            <div className={classes.colorDescription}>{colorName}</div>
+            <div className={colorFilterOptionDescriptionClass}>{colorName}</div>
         </div>
     );
 };

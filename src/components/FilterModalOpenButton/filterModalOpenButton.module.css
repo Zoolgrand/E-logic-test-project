@@ -10,6 +10,7 @@
     font-size: 14px;
     line-height: 17px;
     color: #393D46;
+    padding-left: 0px;
 }
 
 .filterButton::before {

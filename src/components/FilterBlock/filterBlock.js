@@ -1,7 +1,6 @@
 import React from 'react';
 import { arrayOf, shape, string, func, bool } from 'prop-types';
 import { useIntl } from 'react-intl';
-import { ChevronDown as ArrowDown, ChevronUp as ArrowUp } from 'react-feather';
 import { Form } from 'informed';
 
 import { useFilterBlock } from '@magento/peregrine/lib/talons/FilterModal';
@@ -9,7 +8,6 @@ import setValidator from '@magento/peregrine/lib/validators/set';
 
 import { useStyle } from '@magento/venia-ui/lib/classify';
 import PriceSlider from '../PriceSlider';
-import Icon from '@magento/venia-ui/lib/components/Icon';
 import FilterList from '@magento/venia-ui/lib/components/FilterModal/FilterList';
 import defaultClasses from './filterBlock.module.css';
 import ColorFilter from '../ColorFilter/colorFilter';
@@ -33,8 +31,8 @@ const FilterBlock = props => {
         items,
         initialOpen
     });
-    const { handleClick, isExpanded } = talonProps;
-    const iconSrc = isExpanded ? ArrowUp : ArrowDown;
+    const { isExpanded } = talonProps;
+
     const classes = useStyle(defaultClasses, props.classes);
 
     const itemAriaLabel = formatMessage(
@@ -46,26 +44,6 @@ const FilterBlock = props => {
             itemName: name
         }
     );
-
-    const toggleItemOptionsAriaLabel = isExpanded
-        ? formatMessage(
-              {
-                  id: 'filterModal.item.hideOptions',
-                  defaultMessage: 'Hide "{itemName}" filter item options.'
-              },
-              {
-                  itemName: name
-              }
-          )
-        : formatMessage(
-              {
-                  id: 'filterModal.item.showOptions',
-                  defaultMessage: 'Show "{itemName}" filter item options.'
-              },
-              {
-                  itemName: name
-              }
-          );
 
     const switchGroup = group => {
         switch (group) {
@@ -123,19 +101,10 @@ const FilterBlock = props => {
             aria-label={itemAriaLabel}
             data-cy="FilterBlock-root"
         >
-            <button
-                className={classes.trigger}
-                onClick={handleClick}
-                data-cy="FilterBlock-triggerButton"
-                type="button"
-                aria-expanded={isExpanded}
-                aria-label={toggleItemOptionsAriaLabel}
-            >
-                <span className={classes.header}>
-                    <span className={classes.name}>{name}</span>
-                    <Icon src={iconSrc} />
-                </span>
-            </button>
+            <span className={classes.header}>
+                <span className={classes.name}>{name}</span>
+            </span>
+
             {list}
         </li>
     );

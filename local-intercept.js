@@ -42,6 +42,9 @@ module.exports = targets => {
     const FilterDefaultComponent = require('./core-overrides/components/FilterModal/FilterList/filterDefault.targetables');
     FilterDefaultComponent(targets);
 
+    const CarouselComponent = require('./core-overrides/contentTypes/Products/Carousel/carousel.targetables');
+    CarouselComponent(targets);
+
     // targets.of('@magento/venia-ui').routes.tap(routes => {
     //     routes.push({
     //         exact: true,

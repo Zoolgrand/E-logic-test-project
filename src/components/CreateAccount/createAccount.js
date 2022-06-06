@@ -13,7 +13,7 @@ import {
     validatePassword
 } from '@magento/venia-ui/lib/util/formValidators';
 import Button from '../Button';
-import Checkbox from '@magento/venia-ui/lib/components/Checkbox';
+import Checkbox from '../Checkbox';
 import Field from '@magento/venia-ui/lib/components/Field';
 import TextInput from '../TextInput';
 import defaultClasses from './createAccount.module.css';
@@ -61,15 +61,15 @@ const CreateAccount = props => {
 
     const submitButton = (
         <Button
-            className={classes.submitButton}
+            className={classes.submitBtn}
             disabled={isDisabled}
             type="submit"
             priority="high"
             data-cy="CreateAccount-submitButton"
         >
             <FormattedMessage
-                id={'createAccount.createAccountText'}
-                defaultMessage={'Sign up'}
+                id={'createAccount.createAccountButtonText'}
+                defaultMessage={'SIGN UP'}
             />
         </Button>
     );

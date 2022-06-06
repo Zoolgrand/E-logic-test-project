@@ -7,13 +7,14 @@ import { useWindowSize } from '@magento/peregrine';
 
 import { useStyle } from '@magento/venia-ui/lib/classify';
 import { isRequired } from '@magento/venia-ui/lib/util/formValidators';
-import Button from '../Button';
+import Button from '../Button/button';
 import Field from '@magento/venia-ui/lib/components/Field';
 import TextInput from '../TextInput';
 import defaultClasses from './signIn.module.css';
 import { GET_CART_DETAILS_QUERY } from './signIn.gql';
 import LinkButton from '@magento/venia-ui/lib/components/LinkButton';
 import Password from '@magento/venia-ui/lib/components/Password';
+import Checkbox from '../Checkbox';
 import FormError from '@magento/venia-ui/lib/components/FormError/formError';
 import GoogleRecaptcha from '@magento/venia-ui/lib/components/GoogleReCaptcha';
 import closeIcon from '../../assets/closeIcon.svg';
@@ -110,10 +111,14 @@ const SignIn = props => {
                 />
 
                 <div className={classes.forgotPasswordButtonContainer}>
-                    <div className={classes.rememberMe}>
-                        <input type="checkbox" />
-                        <p>Remember me</p>
-                    </div>
+                    <Checkbox
+                        field="rememberMe"
+                        id="rememberMe"
+                        label={formatMessage({
+                            id: 'signin.rememberMe',
+                            defaultMessage: 'Remember me'
+                        })}
+                    />
 
                     <LinkButton
                         classes={forgotPasswordClasses}
@@ -139,7 +144,7 @@ const SignIn = props => {
                     >
                         <FormattedMessage
                             id={'signIn.signInText'}
-                            defaultMessage={'Sign In'}
+                            defaultMessage={'SIGN IN'}
                         />
                     </Button>
                     <Button

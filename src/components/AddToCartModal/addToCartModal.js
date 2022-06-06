@@ -9,7 +9,6 @@ import Carousel from '../../contentTypes/Products/Carousel';
 import toast from 'react-hot-toast';
 
 const AddToCartModal = props => {
-    
     const { message } = props;
 
     const item = JSON.parse(message.split('divider')[0]);
@@ -84,7 +83,7 @@ const AddToCartModal = props => {
                     CUSTOMERS LIKE YOU ALSO BOUGHT...
                 </div>
                 <div className={classes.carousel}>
-                    <Carousel items={items} />
+                    <Carousel type="Add to cart" items={items} />
                 </div>
             </div>
         </div>

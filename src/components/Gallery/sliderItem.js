@@ -7,12 +7,11 @@ import Price from '@magento/venia-ui/lib/components/Price';
 import { UNCONSTRAINED_SIZE_KEY } from '@magento/peregrine/lib/talons/Image/useImage';
 import { useGalleryItem } from '../../talons/Gallery/useGalleryItem';
 import resourceUrl from '@magento/peregrine/lib/util/makeUrl';
-import { useWindowSize } from '@magento/peregrine';
 
 import { useStyle } from '@magento/venia-ui/lib/classify';
 import Image from '@magento/venia-ui/lib/components/Image';
 import GalleryItemShimmer from './item.shimmer';
-import defaultClasses from './item.module.css';
+import defaultClasses from './sliderItem.module.css';
 import WishlistGalleryButton from '@magento/venia-ui/lib/components/Wishlist/AddToListButton';
 import CompareIcon from '../../assets/Vector8.svg';
 
@@ -40,9 +39,6 @@ const GalleryItem = props => {
     const { storeConfig, items } = props;
 
     const [isFocused, setIsFocused] = useState(false);
-
-    const windowSize = useWindowSize();
-    const isDesktop = windowSize.innerWidth >= 769;
 
     const getFocus = () => {
         setIsFocused(true);
@@ -80,6 +76,7 @@ const GalleryItem = props => {
             item={item}
             items={items}
             urlSuffix={productUrlSuffix}
+            sliderItem={true}
         />
     ) : (
         <div className={classes.unavailableContainer}>
@@ -134,16 +131,15 @@ const GalleryItem = props => {
                         />
                         {ratingAverage}
                     </Link>
-                    {isDesktop ? (
-                        isFocused && (
+                    {isFocused && (
+                        <>
                             <div className={classes.wishListWrap}>
                                 {wishlistButton}
                             </div>
-                        )
-                    ) : (
-                        <div className={classes.wishListWrap}>
-                            {wishlistButton}
-                        </div>
+                            <div className={classes.compareButtonWrap}>
+                                {compareButton}
+                            </div>
+                        </>
                     )}
                 </div>
 
@@ -156,7 +152,9 @@ const GalleryItem = props => {
                     <span>{name}</span>
                 </Link>
 
-                {isDesktop ? (
+                {isFocused ? (
+                    addButton
+                ) : (
                     <>
                         <div
                             data-cy="GalleryItem-price"
@@ -167,33 +165,7 @@ const GalleryItem = props => {
                                 currencyCode={priceSource.currency}
                             />
                         </div>
-                        <div className={classes.actionsContainer}>
-                            {addButton}
-                            {isFocused && (
-                                <div className={classes.compareButtonWrap}>
-                                    {compareButton}
-                                </div>
-                            )}
-                        </div>
                     </>
-                ) : (
-                    <div>
-                        <div
-                            data-cy="GalleryItem-price"
-                            className={classes.price}
-                        >
-                            <Price
-                                value={priceSource.value}
-                                currencyCode={priceSource.currency}
-                            />
-                        </div>
-                        <div className={classes.btnBlock}>
-                            {addButton}
-                            <div className={classes.compareButtonWrap}>
-                                {compareButton}
-                            </div>
-                        </div>
-                    </div>
                 )}
             </div>
         </>

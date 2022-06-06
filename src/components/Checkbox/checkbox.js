@@ -59,8 +59,8 @@ const Checkbox = props => {
                     field={field}
                     id={id}
                 />
-                <span className={classes.icon}>{icon}</span>
                 <span className={classes.label}>{label}</span>
+                <span className={classes.icon}>{icon}</span>
             </label>
             <Message fieldState={fieldState}>{message}</Message>
         </Fragment>

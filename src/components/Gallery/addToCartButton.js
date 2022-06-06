@@ -6,10 +6,12 @@ import { ShoppingBag, XSquare } from 'react-feather';
 import Icon from '@magento/venia-ui/lib/components/Icon';
 import Button from '../Button';
 import { useStyle } from '@magento/venia-ui/lib/classify';
+import { useWindowSize } from '@magento/peregrine';
 import defaultClasses from './addToCartButton.module.css';
+import cartIcon from '../../assets/Vector11.svg';
 
 const AddToCartButton = props => {
-    const { item, urlSuffix, items } = props;
+    const { item, urlSuffix, items, sliderItem } = props;
     const talonProps = useAddToCartButton({
         item,
         urlSuffix,
@@ -19,6 +21,12 @@ const AddToCartButton = props => {
     const { formatMessage } = useIntl();
 
     const classes = useStyle(defaultClasses, props.classes);
+
+    const windowSize = useWindowSize();
+    const isDesktop = windowSize.innerWidth >= 769;
+    const buttonClass = sliderItem
+        ? classes.sliderBtn
+        : classes.addToCartButton;
 
     const AddToCartIcon = (
         <Icon
@@ -43,19 +51,23 @@ const AddToCartButton = props => {
                 id: 'addToCartButton.addItemToCartAriaLabel',
                 defaultMessage: 'Add to Cart'
             })}
-            className={classes.addToCartButton}
+            className={buttonClass}
             disabled={isDisabled}
             onPress={handleAddToCart}
             priority="high"
             type="button"
         >
             {AddToCartIcon}
-            <span className={classes.text}>
-                <FormattedMessage
-                    id="addToCartButton.addItemToCart"
-                    defaultMessage="Add to Cart"
-                />
-            </span>
+            {isDesktop || sliderItem ? (
+                <span className={classes.text}>
+                    <FormattedMessage
+                        id="addToCartButton.addItemToCart"
+                        defaultMessage="Add to Cart"
+                    />
+                </span>
+            ) : (
+                <img src={cartIcon} />
+            )}
         </Button>
     );
 

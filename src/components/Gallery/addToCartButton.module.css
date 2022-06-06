@@ -1,21 +1,20 @@
 .root {
-    composes: root_highPriority from '@magento/venia-ui/lib/components/Button/button.module.css';
+    /* composes: root_highPriority from '../Button/button.module.css'; */
 
-    composes: min-w-[6.125rem] from global;
-    composes: -ml-2xs from global;
-    composes: px-2xs from global;
+    /* composes: min-w-[6.125rem] from global; */
+    /* composes: -ml-2xs from global; */
+    /* composes: px-2xs from global;
     composes: py-0 from global;
-    composes: self-center from global;
-    min-height: 2rem;
+    composes: self-center from global; */
+    /* min-height: 2rem; */
 
-    composes: sm_min-w-[8rem] from global;
+    /* composes: sm_min-w-[8rem] from global; */
     /* composes: md_min-w-0 from global; */
 }
 
 .icon {
     composes: inline from global;
     composes: stroke-white from global;
-
     composes: xs_hidden from global;
 }
 
@@ -25,33 +24,43 @@
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 400;
-    font-size: 17px;
-    line-height: 20px;
+    font-size: 14px;
+    line-height: 17px;
     text-align: center;
+    text-decoration: none;
     color: #191A1C;
-
-
 }
 
 .addToCartButton {
     composes: root;
     position: relative;
-    height: 21px;
-    width: 166px;
+    height: 46px;
+    width: 155px;
     border: none;
     border-radius: 0%;
     background-color: transparent;
     position: relative;
+    border: 1px solid #9C9EA3;
+    border-radius: 60px;
 }
 
-.addToCartButton ::before {
-    content: url("data:image/svg+xml,%3Csvg width='16' height='20' viewBox='0 0 16 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M14.9805 6.81815H11.8182V4.54542C11.8182 2.47224 10.255 0.909058 8.18182 0.909058C6.10864 0.909058 4.54546 2.47224 4.54546 4.54542V6.81815H1.38136L0.947274 17.6727C0.932728 18.0413 1.07046 18.4054 1.32637 18.6718C1.58182 18.9381 1.94091 19.0909 2.31 19.0909H14.0909C14.8427 19.0909 15.4545 18.4791 15.4541 17.7077L14.9805 6.81815ZM5.45455 4.54542C5.45455 2.99088 6.62682 1.81815 8.18182 1.81815C9.73682 1.81815 10.9091 2.99088 10.9091 4.54542V6.81815H5.45455V4.54542ZM14.0909 18.1818H2.31C2.18682 18.1818 2.06727 18.1309 1.98227 18.0422C1.89682 17.9531 1.85046 17.8318 1.85546 17.7091L2.255 7.72724H4.54546V9.54542H5.45455V7.72724H10.9091V9.54542H11.8182V7.72724H14.1105L14.5455 17.7272C14.5455 17.9777 14.3418 18.1818 14.0909 18.1818Z' fill='%23393D46'/%3E%3C/svg%3E%0A");
+.sliderBtn {
+
+    height: 21px;
+    width: 125px;
+    align-items: center;
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding-left: 27px;
+}
+
+.sliderBtn::before {
+    content: url('../../assets/Vector11.svg');
     position: absolute;
-    left: 0.95px;
-    top: 0.91px;
-    bottom: 1.91px;
+    left: 0px;
+    top: 1px;
     position: absolute;
-    top: 5px;
 }
 
 .addToCartButton:hover {
@@ -64,11 +73,16 @@
     }
 
     .addToCartButton {
-        width: 155px;
-        height: 48px;
+        width: 58px;
+        height: 36px;
         border: 1px solid #9C9EA3;
         border-radius: 60px;
-        margin-right: 10px;
+        padding: 0px;
+        min-width: 58px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding-right: 4px;
     }
 
     .text {

@@ -2,9 +2,9 @@
     /* composes: gap-xs from global; */
     composes: grid from global;
     composes: justify-items-stretch from global;
-    composes: px-sm from global;
-    composes: py-xs from global;
-
+    /* composes: px-sm from global; */
+    /* composes: py-xs from global; */
+    row-gap: 28px;
 }
 
 .message {
@@ -37,7 +37,7 @@
     composes: root_lowPriority from '../Button/button.module.css';
 }
 
-.submitButton {
+.submitBtn {
     composes: root_highPriority from '../Button/button.module.css';
 
     composes: col-start-auto from global;
@@ -48,7 +48,7 @@
 .subscribe {
     composes: -ml-1.5 from global;
     padding-left: 5px;
-} 
+}
 
 .title {
     font-family: 'Poppins';
@@ -79,10 +79,11 @@
 }
 
 @media screen and (max-width : 768px) {
-    .root {
+    .formWrap {
         position: absolute;
         top: 0px;
         left: 0px;
-        transform: translate(-50%, 0px);
+        transform: translate(0px, 0px);
+        padding: 34px 40px 40px;
     }
 }

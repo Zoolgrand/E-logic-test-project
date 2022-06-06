@@ -1,7 +1,7 @@
 .root {
     --stroke: var(--venia-global-color-gray-600);
 
-    composes: gap-3 from global;
+    /* composes: gap-3 from global; */
     composes: grid from global;
     composes: grid-flow-col from global;
     composes: items-center from global;
@@ -19,24 +19,27 @@
     composes: border-solid from global;
     composes: border-transparent from global;
     composes: cursor-pointer from global;
-    composes: h-[1.5rem] from global;
     composes: rounded from global;
-    composes: w-[1.5rem] from global;
     grid-area: input;
     border: 1px solid #393D46;
     height: 14px;
     width: 14px;
     border-radius: 0px;
+    margin-left: 8px;
+    margin-right: 8px;
 
     /* TODO @TW: review, replaces input:disabled. Check if working. */
     composes: disabled_cursor-not-allowed from global;
 }
 
 .icon {
-    composes: h-[1.5rem] from global;
     composes: pointer-events-none from global;
-    composes: w-[1.5rem] from global;
     grid-area: input;
+    transform: translate(2px, -4px);
+    min-height: 14px;
+    max-height: 14px;
+    min-width: 14px;
+    max-width: 14px;
 }
 
 .label {
@@ -62,10 +65,8 @@
     background: #393D46;
 }
 
-.input:checked:enabled+.icon {
-    color: white;
-    transform: translate(7px, 1px);
-
+.input:checked:enabled+.label {
+    color: #191A1C;
 }
 
 /* TODO @TW: cannot compose, needs "checked" variant enabled. Cannot combine variants. */
