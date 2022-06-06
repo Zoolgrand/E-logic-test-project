@@ -12,7 +12,7 @@
     font-size: 38px;
     line-height: 46px;
     margin-bottom: 12px;
-    color: #393D46;
+    color: #393d46;
 }
 
 .titleCentred {
@@ -25,7 +25,7 @@
     font-weight: 400;
     font-size: 15px;
     line-height: 18px;
-    color: #5F6C81;
+    color: #5f6c81;
 }
 
 .descriptionCentred {
@@ -40,7 +40,7 @@
     line-height: 24px;
     letter-spacing: 0.2px;
     max-width: 390px;
-    color: #393D46;
+    color: #393d46;
 }
 
 .blogDate {
@@ -61,7 +61,7 @@
     font-weight: 400;
     font-size: 60px;
     line-height: 60px;
-    color: #393D46;
+    color: #393d46;
 }
 
 .keepConnectedDescription {
@@ -71,5 +71,5 @@
     line-height: 20px;
     margin-left: 100px;
     margin-bottom: 45px;
-    color: #5F6C81;
+    color: #5f6c81;
 }

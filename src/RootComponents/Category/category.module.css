@@ -30,7 +30,7 @@
     font-weight: 300;
     font-size: 38px;
     line-height: 46px;
-    color: #393D46;
+    color: #393d46;
     margin-top: 46px;
     margin-bottom: 12px;
 }
@@ -40,7 +40,7 @@
     font-weight: 400;
     font-size: 15px;
     line-height: 18px;
-    color: #5F6C81;
+    color: #5f6c81;
     margin-bottom: 161px;
 }
 
@@ -108,8 +108,8 @@
 }
 
 .loadMoreBtn {
-    background-color: #393D46;
-    color: #FFFFFF;
+    background-color: #393d46;
+    color: #ffffff;
     height: 50px;
     width: 100px;
     font-family: 'Poppins';

@@ -54,7 +54,6 @@ export const useCategoryContent = props => {
         }
     });
 
-
     useEffect(() => {
         if (categoryId) {
             getFilters({

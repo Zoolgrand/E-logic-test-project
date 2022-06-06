@@ -10,7 +10,6 @@
     composes: root;
 
     composes: shadow-headerTrigger from global;
-    
 }
 
 .trigger {

@@ -6,10 +6,10 @@
     font-weight: 500;
     font-size: 14px;
     line-height: 21px;
-    color: #4C4F57;
+    color: #4c4f57;
 }
-.megaMenuItem:nth-child(4){
-    color: #F4442E;
+.megaMenuItem:nth-child(4) {
+    color: #f4442e;
 }
 
 .megaMenuLink {
@@ -26,7 +26,7 @@
 .megaMenuItem_active {
     composes: megaMenuItem;
     composes: flex from global;
-    color: #191A1C;
+    color: #191a1c;
 }
 
 .arrowDown {

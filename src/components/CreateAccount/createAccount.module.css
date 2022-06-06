@@ -56,11 +56,11 @@
     font-weight: 300;
     font-size: 23px;
     line-height: 28px;
-    color: #393D46;
+    color: #393d46;
 }
 
 .formWrap {
-    background-color: #FFFFFF;
+    background-color: #ffffff;
     position: absolute;
     left: 50%;
     top: 50%;
@@ -78,7 +78,7 @@
     margin-bottom: 36px;
 }
 
-@media screen and (max-width : 768px) {
+@media screen and (max-width: 768px) {
     .formWrap {
         position: absolute;
         top: 0px;

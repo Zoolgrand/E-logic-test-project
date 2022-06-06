@@ -46,12 +46,11 @@ export const useCategoryTree = props => {
         }
     }, [categoryUrlData]);
 
+    const [menuItems, setMenuItems] = useState([]);
 
-    const [menuItems, setMenuItems]= useState([])
-
-    useEffect(()=>{
-        setMenuItems(data && data.categories.items[0].children)
-    },[data])
+    useEffect(() => {
+        setMenuItems(data && data.categories.items[0].children);
+    }, [data]);
 
     // fetch categories
     useEffect(() => {

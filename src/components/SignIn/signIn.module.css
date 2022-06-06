@@ -2,7 +2,7 @@
     composes: gap-sm from global;
     composes: grid from global;
     composes: justify-items-stretch from global;
-    background: #FFFFFF;
+    background: #ffffff;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -78,7 +78,7 @@
     text-align: right;
     letter-spacing: 0.4px;
     text-decoration: none;
-    color: #191A1C;
+    color: #191a1c;
 }
 
 .title {
@@ -90,7 +90,7 @@
     font-weight: 300;
     font-size: 23px;
     line-height: 28px;
-    color: #393D46;
+    color: #393d46;
 }
 
 .titleContainer {
@@ -100,7 +100,7 @@
     justify-content: space-between;
 }
 
-@media screen and (max-width : 768px) {
+@media screen and (max-width: 768px) {
     .root {
         position: absolute;
         top: 0px;

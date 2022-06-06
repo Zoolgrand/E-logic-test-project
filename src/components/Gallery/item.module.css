@@ -63,7 +63,7 @@
     font-size: 15px;
     line-height: 18px;
     letter-spacing: 0.6px;
-    color: #393D46;
+    color: #393d46;
     margin-bottom: 8px;
 }
 
@@ -74,7 +74,7 @@
     font-size: 17px;
     line-height: 20px;
     text-align: center;
-    color: #191A1C;
+    color: #191a1c;
     margin-bottom: 11px;
 }
 
@@ -120,7 +120,7 @@
     background: rgba(255, 255, 255, 0.8);
     backdrop-filter: blur(4px);
     cursor: pointer;
-    border: 1px solid #9C9EA3;
+    border: 1px solid #9c9ea3;
     border-radius: 60px;
     margin-left: 10px;
 }
@@ -130,7 +130,6 @@
     align-items: center;
     position: relative;
 }
-
 
 @media (max-width: 768px) {
     .wishListWrap {
@@ -143,8 +142,8 @@
         border-radius: 50%;
         height: 38px;
         width: 38px;
-        border: 0.6px solid #4C4F57;
-        color: #4C4F57;
+        border: 0.6px solid #4c4f57;
+        color: #4c4f57;
     }
 
     .price {

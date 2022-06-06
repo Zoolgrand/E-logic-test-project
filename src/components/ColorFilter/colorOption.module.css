@@ -19,7 +19,7 @@
 
 .root_active {
     composes: root;
-    border: 1px solid #191A1C;
+    border: 1px solid #191a1c;
 }
 
 .colorFilterOption {
@@ -40,5 +40,5 @@
 
 .colorDescription_active {
     composes: colorDescription;
-    color: #191A1C;
+    color: #191a1c;
 }

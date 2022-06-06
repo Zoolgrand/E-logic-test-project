@@ -10,7 +10,7 @@
     composes: text-sm from global;
     composes: text-subtle from global;
     composes: w-full from global;
-    background-color: #393D46;
+    background-color: #393d46;
     width: 100vw;
     display: flex;
     flex-direction: column;
@@ -43,7 +43,7 @@
     font-weight: 400;
     font-size: 15px;
     line-height: 18px;
-    color: #FFFFFF;
+    color: #ffffff;
 }
 
 .linkItem:first-child {
@@ -61,7 +61,7 @@
     composes: grid from global;
     composes: grid-flow-col from global;
     composes: justify-start from global;
-    color: #FFFFFF;
+    color: #ffffff;
     gap: 36px;
     opacity: 0.6;
 }
@@ -134,10 +134,10 @@
     font-weight: 300;
     font-size: 14px;
     line-height: 21px;
-    color: #FFFFFF;
+    color: #ffffff;
 }
 
-@media screen and (max-width : 768px) {
+@media screen and (max-width: 768px) {
     .links {
         flex-direction: column;
         padding-left: 32px;

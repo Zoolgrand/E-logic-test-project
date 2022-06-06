@@ -18,7 +18,7 @@
     composes: py-0 from global;
     display: flex;
     align-items: center;
-    justify-content: flex-start
+    justify-content: flex-start;
 }
 
 .account {
@@ -27,7 +27,7 @@
     font-weight: 400;
     font-size: 14px;
     line-height: 17px;
-    color: #393D46;
+    color: #393d46;
     margin-left: 5px;
     margin-top: 4px;
 }

@@ -105,7 +105,11 @@ const Image = props => {
                     loading="lazy"
                 />
             </picture>
-            {caption ? <figcaption className={classes.caption} >{caption}</figcaption> : ''}
+            {caption ? (
+                <figcaption className={classes.caption}>{caption}</figcaption>
+            ) : (
+                ''
+            )}
         </>
     );
 

@@ -20,7 +20,7 @@
 
     composes: sm_max-w-full from global;
 }
-.trigger::after{
+.trigger::after {
     content: url('../../assets/Vector\ 7.svg');
     position: absolute;
     top: 10%;

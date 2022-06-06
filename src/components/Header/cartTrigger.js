@@ -1,6 +1,6 @@
 import React, { Fragment, Suspense } from 'react';
 import { shape, string } from 'prop-types';
-import ShoppingCartIcon  from '../../assets/Vector11.svg';
+import ShoppingCartIcon from '../../assets/Vector11.svg';
 import { useIntl } from 'react-intl';
 
 import { useCartTrigger } from '@magento/peregrine/lib/talons/Header/useCartTrigger';
@@ -9,7 +9,9 @@ import { useStyle } from '@magento/venia-ui/lib/classify';
 import defaultClasses from './cartTrigger.module.css';
 import { GET_ITEM_COUNT_QUERY } from './cartTrigger.gql';
 
-const MiniCart = React.lazy(() => import('@magento/venia-ui/lib/components/MiniCart'));
+const MiniCart = React.lazy(() =>
+    import('@magento/venia-ui/lib/components/MiniCart')
+);
 
 const CartTrigger = props => {
     const {

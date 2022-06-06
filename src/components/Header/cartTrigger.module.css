@@ -10,7 +10,7 @@
     composes: text-sm from global;
     composes: text-white from global;
     composes: top-1.5 from global;
-    background-color: #F4442E;
+    background-color: #f4442e;
 }
 
 .trigger {

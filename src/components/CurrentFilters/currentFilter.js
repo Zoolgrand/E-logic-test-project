@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react';
 import { useIntl } from 'react-intl';
 import { shape, string, func } from 'prop-types';
-import closeFilterIcon from '../../assets/closeFilterIcon.svg'
+import closeFilterIcon from '../../assets/closeFilterIcon.svg';
 
 import { useStyle } from '@magento/venia-ui/lib/classify';
 
@@ -32,7 +32,7 @@ const CurrentFilter = props => {
 
     return (
         <span className={classes.root} data-cy="CurrentFilter-root">
-             <span className={classes.text}>
+            <span className={classes.text}>
                 {item.label ? item.label : item.title}
             </span>
             <Trigger
@@ -42,7 +42,6 @@ const CurrentFilter = props => {
             >
                 <img src={closeFilterIcon} />
             </Trigger>
-           
         </span>
     );
 };

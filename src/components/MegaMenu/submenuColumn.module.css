@@ -10,7 +10,7 @@
     font-size: 13px;
     line-height: 16px;
     letter-spacing: 0.8px;
-    color: #393D46;
+    color: #393d46;
 }
 
 .link {
@@ -29,7 +29,7 @@
 
 .linkActive {
     composes: underline from global;
-    color: #191A1C;
+    color: #191a1c;
 }
 
 .submenuChild {

@@ -49,7 +49,7 @@ const AuthBar = props => {
         >
             <span className={classes.contents}>
                 <AccountChip fallbackText={fallBackText} />
-               <p className={classes.account}>Account</p>
+                <p className={classes.account}>Account</p>
             </span>
         </button>
     );

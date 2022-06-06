@@ -24,7 +24,12 @@ const TextInput = props => {
     return (
         <Fragment>
             <FieldIcons after={after} before={before}>
-                <InformedText {...rest} className={inputClass} placeholder={placeholder} field={field} />
+                <InformedText
+                    {...rest}
+                    className={inputClass}
+                    placeholder={placeholder}
+                    field={field}
+                />
             </FieldIcons>
             <Message fieldState={fieldState}>{message}</Message>
         </Fragment>

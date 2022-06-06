@@ -13,9 +13,7 @@ import CartTrigger from '../Header/cartTrigger';
 import { useHeader } from '@magento/peregrine/lib/talons/Header/useHeader';
 import { Route } from 'react-router-dom';
 
-const SearchBar = React.lazy(() =>
-    import('../SearchBar')
-);
+const SearchBar = React.lazy(() => import('../SearchBar'));
 
 const NavHeader = props => {
     const { isTopLevel, onBack, view } = props;

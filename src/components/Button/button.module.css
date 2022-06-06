@@ -77,11 +77,11 @@
 
     composes: hover_border-brand-darkest from global;
     composes: hover_text-brand-darkest from global; */
-    border: 1px solid #9C9EA3;
+    border: 1px solid #9c9ea3;
     font-weight: 500;
     font-size: 14px;
     line-height: 17px;
-    color: #393D46;
+    color: #393d46;
 }
 
 .root_highPriority {
@@ -99,14 +99,14 @@
     composes: hover_border-brand-darkest from global;
     composes: hover_text-white from global; */
 
-    background: #393D46;
+    background: #393d46;
     border: none;
     height: 48px;
     width: 400px;
     font-weight: 600;
     font-size: 13px;
     line-height: 16px;
-    color: #FFFFFF;
+    color: #ffffff;
 }
 
 .root_lowPriorityNegative,
@@ -149,7 +149,7 @@
     composes: justify-items-center from global;
 }
 
-@media screen and (max-width : 768px) {
+@media screen and (max-width: 768px) {
     .root {
         width: 200px;
     }

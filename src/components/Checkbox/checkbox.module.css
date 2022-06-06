@@ -21,7 +21,7 @@
     composes: cursor-pointer from global;
     composes: rounded from global;
     grid-area: input;
-    border: 1px solid #393D46;
+    border: 1px solid #393d46;
     height: 14px;
     width: 14px;
     border-radius: 0px;
@@ -52,21 +52,21 @@
     font-weight: 400;
     font-size: 15px;
     line-height: 18px;
-    color: rgba(57, 61, 70, 0.9)
+    color: rgba(57, 61, 70, 0.9);
 }
 
 /* When the input is disabled, update the cursor on the sibling label element. */
 /* TODO @TW: cannot compose */
-.input:disabled~.label {
+.input:disabled ~ .label {
     cursor: default;
 }
 
 .input:checked:enabled {
-    background: #393D46;
+    background: #393d46;
 }
 
-.input:checked:enabled+.label {
-    color: #191A1C;
+.input:checked:enabled + .label {
+    color: #191a1c;
 }
 
 /* TODO @TW: cannot compose, needs "checked" variant enabled. Cannot combine variants. */

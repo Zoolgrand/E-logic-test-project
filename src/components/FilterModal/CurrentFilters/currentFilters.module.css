@@ -15,5 +15,4 @@
     composes: pl-0 from global;
     composes: pr-xs from global;
     composes: pt-xs from global;
-   
 }

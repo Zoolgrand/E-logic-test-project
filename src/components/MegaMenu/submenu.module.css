@@ -35,18 +35,15 @@
 }
 
 .submenuItems {
-
-   display: grid;
-   grid-template-columns: repeat(4, 1fr);
-   padding-left: 40px;
-   gap: 50px;
-   
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    padding-left: 40px;
+    gap: 50px;
 }
-.submenuItemsThree{
-    composes:submenuItems;
+.submenuItemsThree {
+    composes: submenuItems;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     padding-left: 40px;
     gap: 50px;
 }
-

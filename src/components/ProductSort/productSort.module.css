@@ -84,7 +84,7 @@
     font-size: 14px;
     line-height: 17px;
     text-align: center;
-    color: #393D46;
+    color: #393d46;
 }
 
 .mobileText img {
@@ -97,6 +97,6 @@
     }
 
     .sortButton {
-        border-bottom: 1px solid #393D46;
+        border-bottom: 1px solid #393d46;
     }
 }

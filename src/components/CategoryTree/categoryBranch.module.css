@@ -1,6 +1,5 @@
 .root {
     composes: root from './categoryLeaf.module.css';
-
 }
 
 .target {
@@ -27,5 +26,5 @@
     font-weight: 500;
     font-size: 14px;
     line-height: 21px;
-    color: #191A1C;
+    color: #191a1c;
 }

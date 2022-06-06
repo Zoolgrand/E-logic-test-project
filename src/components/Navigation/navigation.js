@@ -10,7 +10,9 @@ import LoadingIndicator from '@magento/venia-ui/lib/components/LoadingIndicator'
 import NavHeader from './navHeader';
 import defaultClasses from './navigation.module.css';
 
-const AuthModal = React.lazy(() => import('@magento/venia-ui/lib/components/AuthModal'));
+const AuthModal = React.lazy(() =>
+    import('@magento/venia-ui/lib/components/AuthModal')
+);
 
 const Navigation = props => {
     const {
@@ -68,13 +70,12 @@ const Navigation = props => {
                 />
             </div>
             <div className={classes.footer}>
-               
                 <AuthBar
                     disabled={hasModal}
                     showMyAccount={showMyAccount}
                     showSignIn={showSignIn}
                 />
-                 <div className={classes.switchers}>
+                <div className={classes.switchers}>
                     <StoreSwitcher />
                 </div>
             </div>

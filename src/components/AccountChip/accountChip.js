@@ -2,7 +2,7 @@ import React from 'react';
 import { useIntl } from 'react-intl';
 import { bool, shape, string } from 'prop-types';
 import { Loader } from 'react-feather';
-import AccountIcon from '../../assets/user.svg'
+import AccountIcon from '../../assets/user.svg';
 
 import { useAccountChip } from '@magento/peregrine/lib/talons/AccountChip/useAccountChip';
 import { useStyle } from '@magento/venia-ui/lib/classify';

@@ -40,7 +40,6 @@ const Text = props => {
         paddingLeft,
         cssClasses = []
     } = props;
-  
 
     const dynamicStyles = {
         textAlign,
@@ -57,7 +56,7 @@ const Text = props => {
         paddingBottom,
         paddingLeft
     };
-    const cssClassesNew = cssClasses.map(el => classes[el])
+    const cssClassesNew = cssClasses.map(el => classes[el]);
     const history = useHistory();
 
     const clickHandler = event => {

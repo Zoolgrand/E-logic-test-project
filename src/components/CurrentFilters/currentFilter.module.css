@@ -11,14 +11,14 @@
     composes: py-2.5 from global;
     composes: rounded-md from global;
     font-family: 'Poppins';
-font-style: normal;
-font-weight: 400;
-font-size: 14px;
-line-height: 17px;
-height: 34px;
-background: #F6F7FB;
-border-radius: 50px;
-color: rgba(57, 61, 70, 0.85);
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    height: 34px;
+    background: #f6f7fb;
+    border-radius: 50px;
+    color: rgba(57, 61, 70, 0.85);
 }
 
 /* TODO @TW: cannot compose */
