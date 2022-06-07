@@ -49,7 +49,6 @@
 .actionsContainer {
     display: flex;
     align-items: center;
-    padding-left: 7px;
     min-height: 48px;
 }
 
