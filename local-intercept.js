@@ -48,13 +48,13 @@ module.exports = targets => {
     const QuantityComponent = require('./core-overrides/components/CartPage/ProductListing/quantity.targetables');
     QuantityComponent(targets);
 
-    // targets.of('@magento/venia-ui').routes.tap(routes => {
-    //     routes.push({
-    //         exact: true,
-    //         name: 'Account Dashboard',
-    //         path: require.resolve('./src/components/AccountDashboard'),
-    //         pattern: '/account'
-    //     });
-    //     return routes;
-    // });
+    targets.of('@magento/venia-ui').routes.tap(routes => {
+        routes.push({
+            exact: true,
+            name: 'Compare Page',
+            path: require.resolve('./src/components/ComparePage'),
+            pattern: '/compare'
+        });
+        return routes;
+    });
 };
