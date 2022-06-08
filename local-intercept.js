@@ -45,6 +45,9 @@ module.exports = targets => {
     const CarouselComponent = require('./core-overrides/contentTypes/Products/Carousel/carousel.targetables');
     CarouselComponent(targets);
 
+    const QuantityComponent = require('./core-overrides/components/CartPage/ProductListing/quantity.targetables');
+    QuantityComponent(targets);
+
     // targets.of('@magento/venia-ui').routes.tap(routes => {
     //     routes.push({
     //         exact: true,

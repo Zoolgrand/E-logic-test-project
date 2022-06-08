@@ -9,9 +9,7 @@ import { useStyle } from '@magento/venia-ui/lib/classify';
 import defaultClasses from './cartTrigger.module.css';
 import { GET_ITEM_COUNT_QUERY } from './cartTrigger.gql';
 
-const MiniCart = React.lazy(() =>
-    import('@magento/venia-ui/lib/components/MiniCart')
-);
+const MiniCart = React.lazy(() => import('../MiniCart'));
 
 const CartTrigger = props => {
     const {

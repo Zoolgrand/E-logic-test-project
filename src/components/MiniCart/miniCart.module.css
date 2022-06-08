@@ -1,0 +1,264 @@
+.root {
+    composes: absolute from global;
+    composes: h-0 from global;
+    composes: left-[-100vw] from global;
+    composes: max-w-[100vw] from global;
+    composes: opacity-0 from global;
+    composes: overflow-visible from global;
+    composes: top-full from global;
+    composes: z-menu from global;
+    transition: opacity 192ms var(--venia-global-anim-out),
+        visibility 192ms var(--venia-global-anim-out),
+        /* Adding delay to move container off the screen after previous transitions happened */
+        left 0s 192ms;
+    width: calc(100vw - 2rem);
+    /* TODO @TW: review */
+    transform: translate3d(-50%, 0, 0);
+
+    /* TODO @TW: review (B6) */
+    /* composes: invisible from global; */
+    visibility: hidden;
+    font-family: 'Poppins';
+    font-style: normal;
+}
+
+.root_open {
+    composes: root;
+
+    composes: left-1/2 from global;
+    composes: opacity-100 from global;
+    transition: opacity 224ms var(--venia-global-anim-in),
+        visibility 224ms var(--venia-global-anim-in), left 0s;
+
+    /* TODO @TW: review (B6) */
+    /* composes: visible from global; */
+    visibility: visible;
+}
+
+/* These heights may change based on PWA-605 and should be based on 1.5 and 2.5 visible items. */
+.contents {
+    composes: absolute from global;
+    composes: bg-white from global;
+    /* composes: grid from global; */
+    /* composes: max-h-[35rem] from global; */
+    composes: overflow-hidden from global;
+    composes: right-0 from global;
+    composes: rounded-sm from global;
+    composes: top-0 from global;
+    composes: w-[22.5rem] from global;
+    box-shadow: 0 1px 6px rgb(var(--venia-global-color-gray-900) / 0.2);
+    min-height: 20rem;
+    transform: translate3d(0, -8px, 0);
+    transition-duration: 192ms;
+    transition-property: transform;
+    transition-timing-function: var(--venia-global-anim-out);
+    postion: fixed;
+    height: 100vh;
+    width: 430px;
+    display: flex;
+    flex-direction: column;
+}
+
+.contents_open {
+    composes: contents;
+
+    transform: translate3d(0, 4px, 0);
+    transition-duration: 224ms;
+    transition-timing-function: var(--venia-global-anim-in);
+}
+
+.header {
+    composes: border-b-2 from global;
+    composes: border-solid from global;
+    composes: border-light from global;
+    composes: font-semibold from global;
+    composes: gap-y-xs from global;
+    composes: grid from global;
+    composes: grid-cols-autoLast from global;
+    composes: items-center from global;
+    composes: leading-tight from global;
+    composes: mx-xs from global;
+    composes: my-0 from global;
+    composes: pb-2xs from global;
+    composes: pt-xs from global;
+    composes: px-2xs from global;
+    composes: text-sm from global;
+}
+
+.stockStatusMessageContainer {
+    composes: col-end-span2 from global;
+}
+
+/* TODO @TW: cannot compose */
+.stockStatusMessageContainer:empty {
+    display: none;
+}
+
+.body {
+    composes: overflow-y-auto from global;
+    padding-left: 30px;
+    min-height: 10rem;
+    border-bottom: 1px solid #E5E8EF;
+    ;
+}
+
+.quantity {
+    composes: opacity-100 from global;
+    transition-delay: 64ms;
+    transition-duration: 384ms;
+    transition-property: opacity;
+    transition-timing-function: var(--venia-global-anim-standard);
+}
+
+.quantity_loading {
+    composes: quantity;
+
+    composes: opacity-50 from global;
+}
+
+.price {
+    composes: opacity-100 from global;
+    transition-delay: 64ms;
+    transition-duration: 384ms;
+    transition-property: opacity;
+    transition-timing-function: var(--venia-global-anim-standard);
+}
+
+.price_loading {
+    composes: quantity;
+
+    composes: opacity-50 from global;
+}
+
+.footer {
+    composes: border-t-2 from global;
+    composes: border-solid from global;
+    composes: border-light from global;
+    composes: grid from global;
+    composes: items-center from global;
+    composes: justify-items-center from global;
+    composes: leading-normal from global;
+    composes: my-0 from global;
+    composes: overflow-hidden from global;
+    composes: text-sm from global;
+    min-height: 3rem;
+    position: absolute;
+    bottom: 0px;
+    padding: 0px 30px 14px;
+
+}
+
+.checkoutButton {
+    composes: root_highPriority from '../Button/button.module.css';
+    width: 370px;
+    height: 48px;
+    grid-column: 1 / span 1;
+}
+
+.editCartButton {
+    composes: text-sm from global;
+    composes: underline from global;
+}
+
+.emptyCart {
+    composes: gap-md from global;
+    composes: grid from global;
+    composes: p-md from global;
+}
+
+.emptyMessage {
+    composes: font-bold from global;
+    composes: m-auto from global;
+}
+
+.miniCartWrap {
+    position: fixed;
+    height: 100vh;
+    width: 98vw;
+    background: rgba(0, 0, 0, 0.5);
+    transform: translateY(-86px);
+}
+
+.headerWrap {
+
+    height: 80px;
+    position: relative;
+    border-bottom: 1px solid #E5E8EF;
+    ;
+}
+
+.headerContent {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 26px 30px;
+}
+
+.quantity {
+    height: 22px;
+    width: 22px;
+    border-radius: 50%;
+    color: white;
+    background: #F4442E;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 10px;
+    font-weight: 600;
+    font-size: 13px;
+    line-height: 20px;
+}
+
+.cartText {
+    margin-left: 10px;
+}
+
+.closeBtn {
+    position: absolute;
+    right: 31px;
+    top: 34px;
+    cursor: pointer;
+}
+
+.footerDescription {
+    margin-top: 46px;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 16px;
+    color: rgba(57, 61, 70, 0.8);
+}
+
+.footerDescription p {
+    margin-bottom: 15px;
+}
+
+.footerDescription p:last-child {
+    margin-bottom: 0px;
+}
+
+.total {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    font-weight: 500;
+    font-size: 23px;
+    line-height: 28px;
+    margin-bottom: 24px;
+    color: #191A1C;
+}
+
+.subTotal {
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 18px;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    color: #393D46;
+    margin-bottom: 24px;
+
+}
+
+.subtotalTitle {
+    font-weight: 400;
+}

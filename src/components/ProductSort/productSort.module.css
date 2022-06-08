@@ -98,5 +98,6 @@
 
     .sortButton {
         border-bottom: 1px solid #393d46;
+        padding-left: 0px;
     }
 }

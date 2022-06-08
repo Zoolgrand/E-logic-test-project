@@ -46,3 +46,10 @@
 
     composes: lg_hidden from global;
 }
+
+@media (max-width: 768px) {
+    .trigger {
+        width: 30px;
+        margin-left: 80px;
+    }
+}

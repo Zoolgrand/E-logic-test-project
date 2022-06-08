@@ -1,0 +1,71 @@
+.root {
+    --stroke: var(--venia-global-color-gray-600);
+    composes: grid from global;
+    composes: items-center from global;
+    composes: justify-items-center from global;
+    composes: text-center from global;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.wrap {
+    composes: flex from global;
+    composes: items-center from global;
+    composes: justify-center from global;
+}
+
+/* TODO @TW: cannot compose */
+.label:not(:focus):not(:active) {
+    position: absolute;
+    overflow: hidden;
+    width: 1px;
+    height: 1px;
+    clip: rect(0 0 0 0);
+    clip-path: inset(100%);
+    white-space: nowrap;
+}
+
+.button {
+    cursor: pointer;
+}
+
+.button:hover {
+    --stroke: rgb(var(--venia-global-color-gray-900));
+    border-color: rgb(var(--stroke));
+}
+
+/* TODO @TW: cannot compose */
+.button:disabled,
+.button:disabled:hover {
+    --stroke: rgb(var(--venia-global-color-gray-400));
+    border-color: rgb(var(--venia-global-color-gray-400));
+}
+
+.button_decrement {
+    composes: button;
+    margin-right: 18px;
+}
+
+.button_increment {
+    composes: button;
+    margin-left: 20px;
+}
+
+.icon {
+    composes: items-center from global;
+    composes: inline-flex from global;
+    composes: justify-center from global;
+    touch-action: manipulation;
+}
+
+.input {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 16px;
+    text-align: center;
+    color: #191A1C;
+    padding: 0px;
+    width: 34px;
+    height: 34px;
+}

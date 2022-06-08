@@ -1,0 +1,103 @@
+.root {
+    /* composes: gap-x-xs from global;
+    composes: gap-y-2xs from global;
+    composes: grid from global;
+    composes: opacity-100 from global;
+    composes: text-sm from global;
+    grid-template-columns: auto 1fr auto;
+    grid-template-rows: auto auto auto auto auto 1fr;
+    transition-delay: 64ms;
+    transition-duration: 384ms;
+    transition-property: opacity;
+    transition-timing-function: var(--venia-global-anim-standard); */
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 26px;
+    /* align-items: center; */
+}
+
+.root_disabled {
+    composes: root;
+
+    composes: opacity-50 from global;
+}
+
+.thumbnailContainer {
+    grid-column: 1 / span 1;
+    grid-row: 1 / span 6;
+}
+
+.thumbnail {
+    composes: border from global;
+    composes: border-solid from global;
+    composes: border-subtle from global;
+}
+
+.name {
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 18px;
+    color: #393D46;
+}
+
+.options {
+    composes: gap-2xs from global;
+    composes: grid from global;
+    grid-column: 2 / span 1;
+    grid-row: 2 / span 2;
+}
+
+.quantity {
+    grid-column: 2 / span 1;
+    grid-row: 4 / span 1;
+}
+
+.price {
+
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 18px;
+    text-align: center;
+}
+
+.stockStatus {
+    composes: font-semibold from global;
+    composes: text-error from global;
+    grid-column: 2;
+    grid-row: 6;
+}
+
+.deleteButton {
+    grid-column: 3 / span 1;
+    grid-row: 1 / span 1;
+}
+
+.itemContent {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.productInfo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 270px;
+    padding-left: 15px;
+}
+
+.actionContent {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 15px;
+    margin: 0px;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 26px;
+}
