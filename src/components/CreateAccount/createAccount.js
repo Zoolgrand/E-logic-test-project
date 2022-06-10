@@ -2,7 +2,7 @@ import React from 'react';
 import { FormattedMessage, useIntl } from 'react-intl';
 import { Form } from 'informed';
 import { func, shape, string, bool } from 'prop-types';
-import { useCreateAccount } from '@magento/peregrine/lib/talons/CreateAccount/useCreateAccount';
+import { useCreateAccount } from '../../talons/CreateAccount/useCreateAccount';
 import { useWindowSize } from '@magento/peregrine';
 
 import { useStyle } from '@magento/venia-ui/lib/classify';

@@ -1,0 +1,178 @@
+.root {
+    padding: 20px 50px 40px;
+    font-family: 'Poppins';
+    font-style: normal;
+}
+
+.heading {
+    font-size: var(--venia-global-fontSize-600);
+    margin: 0 0 20px;
+}
+
+.container {
+    padding: 20px 10px;
+    box-shadow: 0 0 1px #8c8686;
+    min-height: 300px;
+    -moz-box-shadow: 0 0 1px #8c8686;
+    -webkit-box-shadow: 0 0 1px #8c8686;
+    -o-box-shadow: 0 0 1px #8c8686;
+    -ms-box-shadow: 0 0 1px #8c8686;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+}
+
+.wrapper {
+    display: grid;
+    overflow-x: scroll;
+}
+
+.productDetails {
+    display: grid;
+    grid-gap: 10px;
+    height: 350px;
+    padding: 10px;
+}
+
+.table {
+    border-collapse: collapse;
+    width: auto;
+    table-layout: fixed;
+}
+
+tbody > tr:nth-child(1) td {
+    padding: 0;
+}
+
+.td {
+    border: 1px solid var(--sulalat-global-color-account-border-grey);
+    padding: 20px;
+    width: 10%;
+}
+
+.products {
+    display: grid;
+    grid-auto-columns: 1fr;
+    grid-auto-flow: column;
+}
+
+.remove {
+    border-bottom: 1px solid var(--sulalat-global-color-account-border-grey);
+}
+
+.remove button {
+    padding: 10px;
+}
+
+.remove button svg {
+    stroke: #9c9ea3;
+}
+
+.remove button:hover svg {
+    stroke: #393d46;
+}
+
+.image img {
+    height: 140px;
+}
+
+.name {
+    color: currentColor;
+    text-decoration: none;
+    display: -webkit-box;
+    min-height: 32px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}
+
+.priceContainer {
+    position: relative;
+}
+
+.lowPriceWrapper {
+    display: grid;
+    grid-gap: 5px;
+}
+
+.price {
+    font-size: var(--venia-global-fontSize-100);
+    font-weight: var(--venia-global-fontWeight-semibold);
+    min-height: 1rem;
+}
+
+.lowPrice {
+    font-size: var(--venia-global-fontSize-75);
+}
+
+.excludingTax {
+    display: grid;
+    grid-gap: 5px;
+}
+
+.reviewLinks {
+    gap: 10px;
+    left: 15px;
+    position: absolute;
+    top: 0;
+}
+
+main[lang='en-US'] .reviewLinks {
+    left: auto;
+    right: 15px;
+}
+
+.reviewLinks a {
+    color: var(--sulalat-global-color-gray-dashboard);
+    display: flex;
+    font: 500 12px/1.35 Arvo, Cairo, Helvetica, Arial, sans-serif;
+}
+
+.review:hover {
+    color: var(--sulalat-global-color-blue-light);
+}
+
+.printPage {
+    font: 400 13px/1.35 Arvo, Cairo, Helvetica, Arial, sans-serif;
+}
+
+.printPage :hover {
+    color: var(--sulalat-global-color-blue-light);
+    text-decoration: underline;
+}
+
+@media (max-width: 767px) {
+    .root {
+        padding: 40px 15px;
+    }
+}
+
+@media print {
+    :global(header),
+    :global(footer),
+    :global(button) {
+        display: none !important;
+    }
+
+    :global .header-module-sticky-1zD,
+    :global .main-module-footerCart-Uni,
+    :global .newsletter-module-root-33v,
+    :global .comparePage-module-heading-3q6,
+    :global .header-module-searchBoxSticky-2xb,
+    :global .header-module-searchBox-3gj,
+    :global .header-module-cmsBlock-EWU {
+        display: none !important;
+    }
+
+    .container {
+        -moz-box-shadow: none;
+        -webkit-box-shadow: none;
+        -o-box-shadow: none;
+        -ms-box-shadow: none;
+    }
+
+    .root {
+        padding: 20px 0;
+    }
+}

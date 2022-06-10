@@ -1,0 +1,16 @@
+.compareButtonWrap {
+    background-color: #9c9ea3;
+    height: 48px;
+    width: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+}
+
+@media (max-width: 768px) {
+    .compareButtonWrap {
+        height: 38px;
+        width: 38px;
+    }
+}

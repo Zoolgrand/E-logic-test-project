@@ -18,5 +18,18 @@ export const useGalleryItem = (props = {}) => {
               }
             : null;
 
-    return { ...props, wishlistButtonProps, isSupportedProductType };
+    const compareButtonProps = {
+        buttonText: '',
+        item: {
+            id: item.id,
+            name: item.name
+        }
+    };
+
+    return {
+        ...props,
+        wishlistButtonProps,
+        isSupportedProductType,
+        compareButtonProps
+    };
 };

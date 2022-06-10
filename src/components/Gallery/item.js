@@ -14,7 +14,7 @@ import Image from '@magento/venia-ui/lib/components/Image';
 import GalleryItemShimmer from './item.shimmer';
 import defaultClasses from './item.module.css';
 import WishlistGalleryButton from '@magento/venia-ui/lib/components/Wishlist/AddToListButton';
-import CompareIcon from '../../assets/Vector8.svg';
+import AddToCompareButton from '../AddToCompareButton/addToCompareButton';
 
 import AddToCartbutton from './addToCartButton';
 // eslint-disable-next-line no-unused-vars
@@ -34,7 +34,8 @@ const GalleryItem = props => {
         handleLinkClick,
         item,
         wishlistButtonProps,
-        isSupportedProductType
+        isSupportedProductType,
+        compareButtonProps
     } = useGalleryItem(props);
 
     const { storeConfig, items } = props;
@@ -68,12 +69,6 @@ const GalleryItem = props => {
     const wishlistButton = wishlistButtonProps ? (
         <WishlistGalleryButton {...wishlistButtonProps} />
     ) : null;
-
-    const compareButton = (
-        <button type="button">
-            <img src={CompareIcon} />
-        </button>
-    );
 
     const addButton = isSupportedProductType ? (
         <AddToCartbutton
@@ -171,7 +166,9 @@ const GalleryItem = props => {
                             {addButton}
                             {isFocused && (
                                 <div className={classes.compareButtonWrap}>
-                                    {compareButton}
+                                    <AddToCompareButton
+                                        {...compareButtonProps}
+                                    />
                                 </div>
                             )}
                         </div>
@@ -190,7 +187,7 @@ const GalleryItem = props => {
                         <div className={classes.btnBlock}>
                             {addButton}
                             <div className={classes.compareButtonWrap}>
-                                {compareButton}
+                                <AddToCompareButton {...compareButtonProps} />
                             </div>
                         </div>
                     </div>

@@ -1,8 +1,9 @@
 import React from 'react';
 import { useStyle } from '@magento/venia-ui/lib/classify';
-import defaultClasses from './navTrigger.module.css';
 import compareIcon from '../../assets/Vector8.svg';
 import { useHistory } from 'react-router-dom';
+import defaultClasses from './compareTrigger.module.css';
+import { useComparePage } from '../../talons/ComparePage/useComparePage';
 
 const CompareTrigger = props => {
     const history = useHistory();
@@ -10,10 +11,20 @@ const CompareTrigger = props => {
     const compareTriggerClickHandler = () => {
         history.push('./compare');
     };
+
+    const { compareCount } = useComparePage();
+
+    const counterClasses =
+        compareCount > 0 ? classes.counter : classes.counter_hidden;
+
     return (
-        <button onClick={compareTriggerClickHandler}>
-            <img src={compareIcon} alt="compare" />
-        </button>
+        <div className={classes.compareContainer}>
+            <button onClick={compareTriggerClickHandler}>
+                <img src={compareIcon} alt="compare" />
+            </button>
+
+            <div className={counterClasses}>{compareCount}</div>
+        </div>
     );
 };
 
