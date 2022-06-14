@@ -18,8 +18,11 @@ const CompareTrigger = props => {
         compareCount > 0 ? classes.counter : classes.counter_hidden;
 
     return (
-        <div className={classes.compareContainer}>
-            <button onClick={compareTriggerClickHandler}>
+        <div
+            onClick={compareTriggerClickHandler}
+            className={classes.compareContainer}
+        >
+            <button>
                 <img src={compareIcon} alt="compare" />
             </button>
 

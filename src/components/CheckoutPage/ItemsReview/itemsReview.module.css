@@ -1,0 +1,22 @@
+.items_review_container {
+    min-height: 2rem;
+    width: 390px;
+}
+
+.items_container {
+    composes: grid from global;
+}
+
+.total_quantity {
+}
+
+.total_quantity_amount {
+    composes: font-semibold from global;
+}
+
+.divider {
+    margin-top: 30px;
+    height: 1px;
+    width: 100%;
+    background-color: #e5e8ef;
+}

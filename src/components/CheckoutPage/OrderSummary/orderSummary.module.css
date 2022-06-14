@@ -1,0 +1,39 @@
+.root {
+    composes: mt-xs from global;
+    padding: 0px;
+
+    composes: lg_rounded-md from global;
+    composes: lg_mt-0 from global;
+    composes: lg_p-md from global;
+    max-width: 390px;
+    font-family: 'Poppins';
+    font-style: normal;
+}
+
+.title {
+    composes: sr-only from global;
+}
+
+.lineItemLabel {
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 120%;
+    text-align: center;
+    text-align: inherit;
+    color: #393d46;
+}
+
+.lineItems {
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 18px;
+    text-align: right;
+    color: #393d46;
+}
+
+.totalLabel {
+    font-weight: 500;
+    font-size: 23px;
+    line-height: 28px;
+    color: #191a1c;
+}

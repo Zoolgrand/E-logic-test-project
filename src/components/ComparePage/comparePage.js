@@ -21,7 +21,7 @@ const ComparePage = props => {
     const {
         compareAttribute,
         shouldRenderVisibilityToggle,
-        handleRemoveItem,
+        handleRemoveItem
     } = talonProps;
 
     const attributes = shouldRenderVisibilityToggle

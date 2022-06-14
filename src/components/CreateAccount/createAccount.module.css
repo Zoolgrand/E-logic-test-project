@@ -67,6 +67,13 @@
     transform: translate(-50%, -50%);
 }
 
+.checkoutFormWrap {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 .titleContainer {
     width: 100%;
     display: flex;

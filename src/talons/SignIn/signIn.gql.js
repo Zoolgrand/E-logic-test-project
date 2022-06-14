@@ -48,8 +48,8 @@ export const MERGE_CARTS = gql`
 `;
 
 export const ASSIGN_COMPARE_LIST_TO_CUSTOMER = gql`
-    mutation assignCompareListToCustomer ($uid: ID!) {
-        assignCompareListToCustomer (uid: $uid) {
+    mutation assignCompareListToCustomer($uid: ID!) {
+        assignCompareListToCustomer(uid: $uid) {
             result
             compare_list {
                 uid
@@ -67,7 +67,7 @@ export const ASSIGN_COMPARE_LIST_TO_CUSTOMER = gql`
 `;
 
 export const CREATE_COMPARE_LIST = gql`
-    mutation createCompareList ($input: CreateCompareListInput) {
+    mutation createCompareList($input: CreateCompareListInput) {
         createCompareList(input: $input) {
             uid
             item_count

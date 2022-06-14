@@ -7,11 +7,11 @@ module.exports = targets => {
         '@magento/venia-ui/lib/components/CartPage/ProductListing/quantity.js'
     );
 
-    const rewriteQuantitySteppermportInstruction = {
+    const rewriteQuantityStepperImportInstruction = {
         after: "QuantityStepper from '",
         remove: 21,
         insert: 'src/components/QuantityStepper'
     };
     
-    QuantityComponent.spliceSource(rewriteQuantitySteppermportInstruction);
+    QuantityComponent.spliceSource(rewriteQuantityStepperImportInstruction);
 };

@@ -23,7 +23,7 @@ import GoogleRecaptcha from '@magento/venia-ui/lib/components/GoogleReCaptcha';
 import closeIcon from '../../assets/closeIcon.svg';
 
 const CreateAccount = props => {
-    const { setAccountMenuIsOpen } = props;
+    const { setAccountMenuIsOpen, isCheckoutCreateAccount } = props;
 
     const talonProps = useCreateAccount({
         initialValues: props.initialValues,
@@ -45,6 +45,10 @@ const CreateAccount = props => {
 
     const { formatMessage } = useIntl();
     const classes = useStyle(defaultClasses, props.classes);
+
+    const createAccountclass = isCheckoutCreateAccount
+        ? classes.checkoutFormWrap
+        : classes.formWrap;
 
     const cancelButton = props.isCancelButtonHidden ? null : (
         <button
@@ -75,7 +79,7 @@ const CreateAccount = props => {
     );
 
     return (
-        <div className={classes.formWrap}>
+        <div className={createAccountclass}>
             <Form
                 data-cy="CreateAccount-form"
                 className={classes.root}
@@ -89,7 +93,7 @@ const CreateAccount = props => {
                             defaultMessage={'Create a New Account'}
                         />
                     </h2>
-                    {isDesktop && (
+                    {isDesktop && !isCheckoutCreateAccount && (
                         <button
                             type="button"
                             onClick={() => {

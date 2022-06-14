@@ -26,7 +26,8 @@ const SignIn = props => {
         showCreateAccount,
         showForgotPassword,
         initialValues,
-        setAccountMenuIsOpen
+        setAccountMenuIsOpen,
+        isCheckoutSignIn
     } = props;
 
     const { formatMessage } = useIntl();
@@ -54,7 +55,7 @@ const SignIn = props => {
         root: classes.forgotPasswordButton
     };
 
-    return (
+    const defaultSignIn = (
         <div data-cy="SignIn-root" className={classes.root}>
             <div className={classes.titleContainer}>
                 <span data-cy="SignIn-title" className={classes.title}>
@@ -162,6 +163,108 @@ const SignIn = props => {
             </Form>
         </div>
     );
+
+    const checkoutSignIn = (
+        <div data-cy="SignIn-root" className={classes.guestRoot}>
+            <FormError errors={Array.from(errors.values())} />
+            <Form
+                getApi={setFormApi}
+                className={classes.form}
+                onSubmit={handleSubmit}
+                data-cy="SignIn-form"
+                initialValues={initialValues && initialValues}
+            >
+                <div>
+                    <div className={classes.guestSignInInputs}>
+                        <div>
+                            <div className={classes.guestSignInEmail}>
+                                <p className={classes.emailTitle}>Email</p>
+                            </div>
+                            <TextInput
+                                data-cy="SignIn-email"
+                                autoComplete="email"
+                                field="email"
+                                validate={isRequired}
+                                data-cy="email"
+                                placeholder="Enter your email"
+                            />
+                        </div>
+
+                        <Password
+                            data-cy="SignIn-password"
+                            fieldName="password"
+                            label={formatMessage({
+                                id: 'signIn.passwordText',
+                                defaultMessage: 'Password'
+                            })}
+                            validate={isRequired}
+                            autoComplete="current-password"
+                            isToggleButtonHidden={false}
+                            data-cy="password"
+                        />
+                    </div>
+                </div>
+
+                <div className={classes.guestForgotPasswordButtonContainer}>
+                    <Checkbox
+                        field="rememberMe"
+                        id="rememberMe"
+                        label={formatMessage({
+                            id: 'signin.rememberMe',
+                            defaultMessage: 'Remember me'
+                        })}
+                    />
+
+                    <LinkButton
+                        classes={forgotPasswordClasses}
+                        type="button"
+                        onClick={handleForgotPassword}
+                        data-cy="SignIn-forgotPasswordButton"
+                    >
+                        <FormattedMessage
+                            id={'signIn.forgotPasswordText'}
+                            defaultMessage={'Forgot Password?'}
+                        />
+                    </LinkButton>
+                </div>
+
+                <GoogleRecaptcha {...recaptchaWidgetProps} />
+
+                <div className={classes.buttonsContainer}>
+                    <Button
+                        priority="high"
+                        type="submit"
+                        data-cy="SignInButton-root_highPriority"
+                        disabled={isBusy}
+                        classes={{
+                            root_highPriority: classes.signInBtn
+                        }}
+                    >
+                        <FormattedMessage
+                            id={'signIn.signInText'}
+                            defaultMessage={'SIGN IN'}
+                        />
+                    </Button>
+                    <Button
+                        priority="normal"
+                        type="button"
+                        onClick={handleCreateAccount}
+                        classes={{
+                            root_normalPriority: classes.createAccBnt
+                        }}
+                        data-cy="CreateAccount-initiateButton"
+                    >
+                        <FormattedMessage
+                            id={'signIn.createAccountText'}
+                            defaultMessage={'Create an Account'}
+                        />
+                    </Button>
+                </div>
+            </Form>
+        </div>
+    );
+    const signInToRender = isCheckoutSignIn ? checkoutSignIn : defaultSignIn;
+    return <>{signInToRender}</>;
 };
 
 export default SignIn;

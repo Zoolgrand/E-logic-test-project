@@ -60,5 +60,5 @@
     /* composes: border-b-2 from global; */
     /* composes: border-solid from global; */
     /* composes: border-subtle from global; */
-    border-bottom: 2px solid rgb(var(--venia-global-color-border));
+    /* border-bottom: 2px solid rgb(var(--venia-global-color-border)); */
 }

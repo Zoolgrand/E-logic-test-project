@@ -1,0 +1,107 @@
+.root {
+    composes: w-full from global;
+    display: flex;
+    flex-direction: column;
+    gap: 27px;
+}
+
+.field {
+    composes: col-end-span2 from global;
+}
+
+.nameBlock,
+.phoneBlock,
+.cityBlock {
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+}
+
+.country select,
+.postcode input,
+.region select {
+    height: 48px;
+    background: #fdfefe;
+    border: 1px solid #d2d4da;
+    border-radius: 0px;
+    width: 335px;
+}
+.postcode input:focus {
+    box-shadow: none;
+    border: 2px solid black;
+    border-radius: 3px;
+}
+
+.email,
+.country,
+.street0,
+.street1,
+.city,
+.region,
+.postcode,
+.telephone {
+    composes: field;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 18px;
+    color: #191a1c;
+}
+
+.firstname,
+.lastname {
+    composes: col-end-span1 from global;
+}
+
+.firstname input,
+.country,
+.city input,
+.region,
+.postcode,
+.telephone input,
+.lastname input {
+    width: 335px;
+}
+
+.street0 input,
+.street1 input {
+    width: 710px;
+}
+
+.addressBlock {
+    display: flex;
+}
+
+.buttons {
+    composes: field;
+
+    composes: gap-xs from global;
+    composes: grid from global;
+    composes: grid-flow-col from global;
+    composes: justify-self-center from global;
+    composes: p-xs from global;
+}
+
+.submitBtn {
+    width: 710px;
+    height: 48px;
+    color: white;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 13px;
+    line-height: 16px;
+    background: #393d46;
+    border-radius: 60px;
+}
+
+@media (max-width: 959px) {
+    .firstname {
+        grid-column: 1 / span 2;
+    }
+
+    .lastname {
+        grid-column: 1 / span 2;
+    }
+}

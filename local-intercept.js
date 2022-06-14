@@ -48,6 +48,9 @@ module.exports = targets => {
     const QuantityComponent = require('./core-overrides/components/CartPage/ProductListing/quantity.targetables');
     QuantityComponent(targets);
 
+    const CheckoutPageComponent = require('./core-overrides/components/CheckoutPage/index.targetables');
+    CheckoutPageComponent(targets);
+
     targets.of('@magento/venia-ui').routes.tap(routes => {
         routes.push({
             exact: true,

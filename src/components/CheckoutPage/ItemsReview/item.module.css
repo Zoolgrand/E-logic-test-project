@@ -1,0 +1,103 @@
+.root {
+    composes: overflow-hidden from global;
+
+    transition-delay: 64ms;
+    transition-duration: 384ms;
+    transition-property: opacity, visbility;
+    transition-timing-function: var(--venia-global-anim-standard);
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    font-family: 'Poppins';
+    font-style: normal;
+    width: 390px;
+}
+
+.productInfo {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 0px 15px;
+    width: 185px;
+}
+
+.root_visible {
+    composes: root;
+
+    composes: h-auto from global;
+    composes: mt-sm from global;
+    composes: opacity-100 from global;
+    composes: visible from global;
+}
+
+.root_hidden {
+    composes: root;
+
+    composes: h-0 from global;
+    composes: invisible from global;
+    composes: mt-0 from global;
+    composes: opacity-0 from global;
+}
+
+.price {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.finalPrice {
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 18px;
+    text-align: center;
+    color: #191a1c;
+}
+
+.initialPrice {
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 20px;
+    text-align: right;
+    text-decoration-line: line-through;
+    color: rgba(57, 61, 70, 0.8);
+}
+
+.discountPercentage {
+    font-weight: 600;
+    font-size: 13px;
+    line-height: 20px;
+    text-align: right;
+    color: #f4442e;
+}
+
+.thumbnail {
+    grid-column: 1 / span 1;
+    grid-row: 1 / span 3;
+    height: 91px;
+}
+
+.thumbnail img {
+    min-width: 85px;
+    min-height: 90px;
+}
+
+.name {
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 18px;
+    color: #393d46;
+}
+
+.quantity {
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 17px;
+    color: rgba(57, 61, 70, 0.6);
+}
+
+.options {
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 17px;
+    color: rgba(57, 61, 70, 0.6);
+}

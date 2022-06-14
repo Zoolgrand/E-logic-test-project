@@ -1,5 +1,5 @@
 .input {
-    composes: input from '@magento/venia-ui/lib/components/Field/field.module.css';
+    /* composes: input from '@magento/venia-ui/lib/components/Field/field.module.css'; */
 
     composes: disabled_text-subtle from global;
 
@@ -12,7 +12,9 @@
     padding-top: 16px;
     color: rgba(76, 79, 87, 0.7);
     border-radius: 0px;
-    border: none;
+    border: 1px solid #d2d4da;
+    height: 48px;
+    width: 400px;
 }
 
 .input_error {

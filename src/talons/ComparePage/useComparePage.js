@@ -35,8 +35,7 @@ export const useComparePage = (props = {}) => {
         variables: {
             uid: uid
         },
-        skip: !compareId,
-        
+        skip: !compareId
     });
 
     const {
@@ -50,15 +49,18 @@ export const useComparePage = (props = {}) => {
     });
 
     const derivedCompareLists = useMemo(() => {
-        if(data && data.compareList) {
-          return data.compareList
+        if (data && data.compareList) {
+            return data.compareList;
         }
-        if(customerData?.customer.compare_list?.uid) {
-            storage.setItem('customer_compare_id', customerData.customer.compare_list.uid);
+        if (customerData?.customer.compare_list?.uid) {
+            storage.setItem(
+                'customer_compare_id',
+                customerData.customer.compare_list.uid
+            );
             // setProductsId(customerData.customer.compare_list.items.map(item => item.product.id));
-            return customerData.customer.compare_list
+            return customerData.customer.compare_list;
         }
-       return [];
+        return [];
     }, [customerData, data]);
 
     const errors = useMemo(() => {
@@ -70,7 +72,7 @@ export const useComparePage = (props = {}) => {
         {
             loading: removeItemLoading,
             called: removeItemCalled,
-            error: removeItemError,
+            error: removeItemError
         }
     ] = useMutation(removeProductsFromCompareList);
 
@@ -85,17 +87,17 @@ export const useComparePage = (props = {}) => {
                         }
                     },
                     refetchQueries: [
-                        compareId ?
-                        {
-                            query: getCompareQuery,
-                            variables: { uid: uid}
-                        } : {
-                                query: getCustomerCompareQuery
-                            }
+                        compareId
+                            ? {
+                                  query: getCompareQuery,
+                                  variables: { uid: uid }
+                              }
+                            : {
+                                  query: getCustomerCompareQuery
+                              }
                     ],
                     awaitRefetchQueries: true
                 });
-
             } catch (e) {
                 // Error is logged by apollo link - no need to double log.
             }
@@ -118,7 +120,7 @@ export const useComparePage = (props = {}) => {
                     },
                     'compareList'
                 ],
-                awaitRefetchQueries: true,
+                awaitRefetchQueries: true
             });
         } catch (e) {
             // Error is logged by apollo link - no need to double log.
@@ -129,9 +131,16 @@ export const useComparePage = (props = {}) => {
 
     useEffect(() => {
         if (customerData?.customer.compare_list?.uid) {
-            setProductsId(customerData?.customer?.compare_list?.items.map(item => item.product.id));
+            setProductsId(
+                customerData?.customer?.compare_list?.items.map(
+                    item => item.product.id
+                )
+            );
         }
-    }, [customerData?.customer?.compare_list?.items, customerData?.customer.compare_list?.uid]);
+    }, [
+        customerData?.customer?.compare_list?.items,
+        customerData?.customer.compare_list?.uid
+    ]);
 
     useEffect(() => {
         if (!isSignedIn) {

@@ -67,6 +67,11 @@
     width: 100%;
 }
 
+.guestForgotPasswordButtonContainer {
+    composes: forgotPasswordButtonContainer;
+    margin-left: -8px;
+}
+
 .forgotPasswordButton {
     composes: root from '@magento/venia-ui/lib/components/LinkButton/linkButton.module.css';
 
@@ -98,6 +103,50 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+}
+
+.guestSignInEmail {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    height: 36px;
+}
+
+.guestSignInInputs {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 35px;
+    justify-content: center;
+}
+
+.emailTitle {
+    padding: 10px 2px;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 18px;
+    color: #191a1c;
+}
+
+.signInBtn {
+    border-radius: 60px;
+    height: 48px;
+    background-color: #393d46;
+    width: 715px;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 16px;
+    border: none;
+    color: white;
+    text-align: center;
+}
+
+.createAccBnt {
+    composes: signInBtn;
+    background-color: white;
+    color: #393d46;
+    border: 1px solid #9c9ea3;
+    border-radius: 60px;
 }
 
 @media screen and (max-width: 768px) {
