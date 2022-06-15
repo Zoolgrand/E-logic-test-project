@@ -29,6 +29,13 @@
     line-height: 18px;
     text-align: right;
     color: #393d46;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-right: 60px;
+}
+.lineItems:last-child{
+    margin-top: 24px;
 }
 
 .totalLabel {

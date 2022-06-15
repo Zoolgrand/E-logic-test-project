@@ -26,6 +26,7 @@
     composes: lg_border-subtle from global;
     composes: lg_p-md from global;
     width: 790px;
+    border: none;
 }
 
 .signInRoot {

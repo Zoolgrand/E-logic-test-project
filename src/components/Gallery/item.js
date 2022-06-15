@@ -141,6 +141,9 @@ const GalleryItem = props => {
                         </div>
                     )}
                 </div>
+                {price_range.maximum_price.discount.percent_off > 0 && (
+                    <div className={classes.discount}>-{Math.round(price_range.maximum_price.discount.percent_off)}% off</div>
+                )}
 
                 <Link
                     onClick={handleLinkClick}
@@ -158,9 +161,21 @@ const GalleryItem = props => {
                             className={classes.price}
                         >
                             <Price
-                                value={priceSource.value}
+                                value={
+                                    price_range.maximum_price.final_price.value
+                                }
                                 currencyCode={priceSource.currency}
                             />
+                            {price_range.maximum_price.discount.percent_off >
+                                0 && (
+                                <div className={classes.regularPrice}>
+                                    $
+                                    {
+                                        price_range.maximum_price.regular_price
+                                            .value
+                                    }
+                                </div>
+                            )}
                         </div>
                         <div className={classes.actionsContainer}>
                             {addButton}
@@ -180,9 +195,21 @@ const GalleryItem = props => {
                             className={classes.price}
                         >
                             <Price
-                                value={priceSource.value}
+                                value={
+                                    price_range.maximum_price.final_price.value
+                                }
                                 currencyCode={priceSource.currency}
                             />
+                            {price_range.maximum_price.discount.percent_off >
+                                0 && (
+                                <div className={classes.regularPrice}>
+                                    $
+                                    {
+                                        price_range.maximum_price.regular_price
+                                            .value
+                                    }
+                                </div>
+                            )}
                         </div>
                         <div className={classes.btnBlock}>
                             {addButton}

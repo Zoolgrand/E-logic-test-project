@@ -17,7 +17,7 @@ const Item = props => {
         isHidden,
         configurableThumbnailSource
     } = props;
-    console.log(product.price_range.maximum_price);
+
     const classes = useStyle(defaultClasses, propClasses);
     const className = isHidden ? classes.root_hidden : classes.root_visible;
     const configured_variant = configuredVariant(configurable_options, product);

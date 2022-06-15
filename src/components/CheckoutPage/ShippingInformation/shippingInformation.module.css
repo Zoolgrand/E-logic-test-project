@@ -20,6 +20,7 @@
     composes: border-subtle from global;
     composes: p-0 from global;
     composes: rounded-none from global;
+    border: none;
 }
 
 .root_updated {

@@ -1,5 +1,5 @@
 import { gql } from '@apollo/client';
-import { MiniCartFragment } from '@magento/peregrine/lib/talons/MiniCart/miniCartFragments.gql';
+import { MiniCartFragment } from '../../talons/MiniCart/miniCartFragments.gql';
 import { CartPageFragment } from '@magento/peregrine/lib/talons/CartPage/cartPageFragments.gql.js';
 
 /**

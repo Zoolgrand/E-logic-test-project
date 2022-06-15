@@ -56,7 +56,7 @@
     font-weight: 600;
     font-size: 15px;
     line-height: 18px;
-    text-align: center;
+    text-align: end;
 }
 
 .stockStatus {
@@ -79,7 +79,6 @@
 
 .productInfo {
     display: flex;
-    align-items: center;
     justify-content: space-between;
     width: 270px;
     padding-left: 15px;
@@ -99,4 +98,20 @@
     flex-direction: row;
     align-items: center;
     gap: 26px;
+}
+
+.regularPrice {
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 20px;
+    text-decoration-line: line-through;
+    color: rgba(57, 61, 70, 0.8)
+}
+
+.discount {
+    font-weight: 600;
+    font-size: 13px;
+    line-height: 20px;
+    color: #F4442E;
+
 }

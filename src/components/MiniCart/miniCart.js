@@ -7,12 +7,12 @@ import {
 import { bool, shape, string } from 'prop-types';
 
 import { useScrollLock, Price, useToasts } from '@magento/peregrine';
-import { useMiniCart } from '@magento/peregrine/lib/talons/MiniCart/useMiniCart';
+import { useMiniCart } from '../../talons/MiniCart/useMiniCart';
 import { useStyle } from '@magento/venia-ui/lib/classify';
 
 import Button from '../Button';
 import Icon from '@magento/venia-ui/lib/components/Icon';
-import StockStatusMessage from '@magento/venia-ui/lib/components/StockStatusMessage';
+
 import ProductList from './ProductList';
 import defaultClasses from './miniCart.module.css';
 import operations from './miniCart.gql';

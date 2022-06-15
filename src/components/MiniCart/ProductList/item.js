@@ -74,6 +74,9 @@ const Item = props => {
     const rootClass = isDeleting ? classes.root_disabled : classes.root;
     const configured_variant = configuredVariant(configurable_options, product);
 
+    const shouldShowDiscountinfo =
+        product.price_range.maximum_price.discount.percent_off > 0;
+
     const [{ cartId }] = useCartContext();
 
     const [updateItemQuantity] = useMutation(UPDATE_QUANTITY_MUTATION);
@@ -133,8 +136,30 @@ const Item = props => {
                     >
                         <Price
                             currencyCode={prices.price.currency}
-                            value={prices.price.value * quantity}
+                            value={
+                                product.price_range.maximum_price.final_price
+                                    .value * quantity
+                            }
                         />
+                        {shouldShowDiscountinfo && (
+                            <p className={classes.regularPrice}>
+                                $
+                                {
+                                    product.price_range.maximum_price
+                                        .regular_price.value *quantity
+                                }
+                            </p>
+                        )}
+                        {shouldShowDiscountinfo && (
+                            <p className={classes.discount}>
+                                -
+                                {Math.round(
+                                    product.price_range.maximum_price.discount
+                                        .percent_off
+                                )}
+                                %
+                            </p>
+                        )}
                     </span>
                 </div>
 
