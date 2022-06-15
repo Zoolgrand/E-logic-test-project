@@ -340,31 +340,33 @@ const CheckoutPage = props => {
         );
         checkoutContent = (
             <div className={checkoutContentClass}>
-                {signInContainerElement}
-                <div className={classes.shipping_information_container}>
-                    <ScrollAnchor ref={shippingInformationRef}>
-                        <ShippingInformation
-                            onSave={setShippingInformationDone}
-                            onSuccess={scrollShippingInformationIntoView}
-                            toggleActiveContent={toggleAddressBookContent}
-                            toggleSignInContent={toggleSignInContent}
-                            setGuestSignInUsername={setGuestSignInUsername}
-                        />
-                    </ScrollAnchor>
+                <div>
+                    {signInContainerElement}
+                    <div className={classes.shipping_information_container}>
+                        <ScrollAnchor ref={shippingInformationRef}>
+                            <ShippingInformation
+                                onSave={setShippingInformationDone}
+                                onSuccess={scrollShippingInformationIntoView}
+                                toggleActiveContent={toggleAddressBookContent}
+                                toggleSignInContent={toggleSignInContent}
+                                setGuestSignInUsername={setGuestSignInUsername}
+                            />
+                        </ScrollAnchor>
+                    </div>
+                    <div className={classes.shipping_method_container}>
+                        <ScrollAnchor ref={shippingMethodRef}>
+                            {shippingMethodSection}
+                        </ScrollAnchor>
+                    </div>
+                    <div className={classes.payment_information_container}>
+                        {paymentInformationSection}
+                    </div>
+                    {priceAdjustmentsSection}
+                    {reviewOrderButton}
+                    {placeOrderButton}
+                    <GoogleReCaptcha {...recaptchaWidgetProps} />
                 </div>
-                <div className={classes.shipping_method_container}>
-                    <ScrollAnchor ref={shippingMethodRef}>
-                        {shippingMethodSection}
-                    </ScrollAnchor>
-                </div>
-                <div className={classes.payment_information_container}>
-                    {paymentInformationSection}
-                </div>
-                {priceAdjustmentsSection}
-                {reviewOrderButton}
                 {orderSummary}
-                {placeOrderButton}
-                <GoogleReCaptcha {...recaptchaWidgetProps} />
             </div>
         );
     }

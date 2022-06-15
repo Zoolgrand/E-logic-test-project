@@ -15,11 +15,12 @@
 /* prettier-ignore */
 .checkoutContent {
     /* composes: gap-xs from global; */
-    composes: grid from global;
-    composes: grid-cols-1 from global;
+    /* composes: grid from global; */
+    /* composes: grid-cols-1 from global; */
     row-gap: 20px;
     column-gap: 90px;
     padding-left: 39px;
+    display: flex;
 
     /* composes: lg_gap-md from global; */
     /* TODO @TW: review (B7) */
