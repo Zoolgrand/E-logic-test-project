@@ -5,7 +5,6 @@
     composes: max-w-site from global;
     composes: mx-auto from global;
     composes: my-0 from global;
-    composes: px-xs from global;
     composes: py-2xs from global;
     composes: relative from global;
 

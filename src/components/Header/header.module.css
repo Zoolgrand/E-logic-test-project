@@ -14,6 +14,8 @@
 
     composes: lg_px-8 from global;
     margin-bottom: 47px;
+    font-family: 'Poppins';
+    font-style: normal;
 }
 
 .switchers {
@@ -38,6 +40,7 @@
 /* Large screen styles */
 .switchersContainer {
     composes: sm_block from global;
+
 }
 
 .open {
@@ -65,6 +68,8 @@
     composes: lg_h-20 from global;
     composes: lg_gap-x-8 from global;
     composes: lg_grid-cols-12 from global;
+    height: 100px;
+    padding-right: 28px;
 }
 
 .logo {
@@ -103,7 +108,7 @@
 
     composes: lg_col-end-13 from global;
     composes: lg_col-start-10 from global;
-    composes: lg_gap-x-4 from global;
+    gap: 40px;
 }
 
 .searchFallback {
@@ -169,11 +174,12 @@
     font-size: 18px;
     line-height: 22px;
     letter-spacing: 0.18em;
-    margin-left: 60px;
+    margin-left: 28px;
     color: rgba(76, 79, 87, 0.9);
 }
 
 @keyframes pulse {
+
     0%,
     80%,
     100% {

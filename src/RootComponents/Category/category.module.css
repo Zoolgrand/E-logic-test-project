@@ -112,17 +112,14 @@
     color: #ffffff;
     height: 50px;
     width: 100px;
-    font-family: 'Poppins';
-    font-style: normal;
-    position: absolute;
-    bottom: 70px;
-    left: 50%;
+    margin-left: 50%;
+    margin-bottom: 10px;
     transform: translateX(-50%);
     border-radius: 10px;
 }
 
 .gallery {
-    margin-bottom: 80px;
+    margin-bottom: 30px;
 }
 
 .disabledBtn {
@@ -138,10 +135,6 @@
 
     .titleDescription {
         display: none;
-    }
-
-    .loadMoreBtn {
-        transform: translate(-40px, 15px);
     }
 
     .headerButtons {

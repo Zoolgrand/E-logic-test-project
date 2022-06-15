@@ -19,11 +19,12 @@
     composes: grid-cols-1 from global;
     row-gap: 20px;
     column-gap: 90px;
+    padding-left: 39px;
 
     /* composes: lg_gap-md from global; */
     /* TODO @TW: review (B7) */
     /* composes: lg_grid-cols-[2fr, 1fr] from global; */
-   
+
 }
 
 .checkoutContent_hidden {

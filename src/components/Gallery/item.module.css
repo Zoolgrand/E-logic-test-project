@@ -18,6 +18,10 @@
     grid-area: main;
 }
 
+.imgContainer {
+    position: relative;
+}
+
 .image {
     composes: block from global;
     composes: h-full from global;

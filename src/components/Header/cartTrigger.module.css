@@ -1,16 +1,17 @@
 .counter {
-    composes: absolute from global;
-    composes: font-semibold from global;
-    composes: leading-tight from global;
-    composes: left-sm from global;
-    composes: min-w-[1.25rem] from global;
-    composes: px-1 from global;
-    composes: py-0 from global;
-    composes: rounded-full from global;
-    composes: text-sm from global;
-    composes: text-white from global;
-    composes: top-1.5 from global;
+
+    position: absolute;
+    height: 22px;
+    width: 22px;
+    border-radius: 50%;
     background-color: #f4442e;
+    top: 0px;
+    right: 0px;
+    transform: translate(13px, 5px);
+    font-weight: 600;
+    font-size: 13px;
+    line-height: 20px;
+    color: #FFFFFF;
 }
 
 .trigger {
@@ -20,7 +21,6 @@
     composes: flex from global;
     composes: h-[3rem] from global;
     composes: justify-center from global;
-    composes: min-w-[3rem] from global;
     composes: relative from global;
     composes: z-foreground from global;
 }
@@ -51,5 +51,9 @@
     .trigger {
         width: 30px;
         margin-left: 80px;
+    }
+
+    .counter {
+        transform: translate(6px, 5px);
     }
 }

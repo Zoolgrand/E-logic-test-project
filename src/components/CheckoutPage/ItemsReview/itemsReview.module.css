@@ -7,8 +7,7 @@
     composes: grid from global;
 }
 
-.total_quantity {
-}
+.total_quantity {}
 
 .total_quantity_amount {
     composes: font-semibold from global;
@@ -19,4 +18,32 @@
     height: 1px;
     width: 100%;
     background-color: #e5e8ef;
+}
+
+.itemReviewHeading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 334px;
+    margin-bottom: 12px;
+}
+
+.editContainer {
+    display: flex;
+    cursor: pointer;
+}
+
+.itemReviewHeading p {
+    font-weight: 300;
+    font-size: 23px;
+    line-height: 28px;
+    color: #393D46;
+}
+
+.editContainer p {
+    margin-left: 12px;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 18px;
+    color: rgba(57, 61, 70, 0.9)
 }

@@ -110,25 +110,37 @@ const GalleryItem = props => {
                 onMouseLeave={lostFocus}
             >
                 <div className={classes.imageWrap}>
-                    <Link
-                        onClick={handleLinkClick}
-                        to={productLink}
-                        className={classes.images}
-                    >
-                        <Image
-                            alt={name}
-                            classes={{
-                                image: classes.image,
-                                loaded: classes.imageLoaded,
-                                notLoaded: classes.imageNotLoaded,
-                                root: classes.imageContainer
-                            }}
-                            height={IMAGE_HEIGHT}
-                            resource={smallImageURL}
-                            widths={IMAGE_WIDTHS}
-                        />
-                        {ratingAverage}
-                    </Link>
+                    <div className={classes.imgContainer}>
+                        <Link
+                            onClick={handleLinkClick}
+                            to={productLink}
+                            className={classes.images}
+                        >
+                            <Image
+                                alt={name}
+                                classes={{
+                                    image: classes.image,
+                                    loaded: classes.imageLoaded,
+                                    notLoaded: classes.imageNotLoaded,
+                                    root: classes.imageContainer
+                                }}
+                                height={IMAGE_HEIGHT}
+                                resource={smallImageURL}
+                                widths={IMAGE_WIDTHS}
+                            />
+                            {ratingAverage}
+                        </Link>
+                        {price_range.maximum_price.discount.percent_off > 0 && (
+                            <div className={classes.discount}>
+                                -
+                                {Math.round(
+                                    price_range.maximum_price.discount
+                                        .percent_off
+                                )}
+                                % off
+                            </div>
+                        )}
+                    </div>
                     {isDesktop ? (
                         isFocused && (
                             <div className={classes.wishListWrap}>
@@ -141,9 +153,6 @@ const GalleryItem = props => {
                         </div>
                     )}
                 </div>
-                {price_range.maximum_price.discount.percent_off > 0 && (
-                    <div className={classes.discount}>-{Math.round(price_range.maximum_price.discount.percent_off)}% off</div>
-                )}
 
                 <Link
                     onClick={handleLinkClick}
