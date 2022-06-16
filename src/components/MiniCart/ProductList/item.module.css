@@ -28,9 +28,9 @@
 }
 
 .thumbnail {
-    composes: border from global;
+    /* composes: border from global;
     composes: border-solid from global;
-    composes: border-subtle from global;
+    composes: border-subtle from global; */
 }
 
 .name {

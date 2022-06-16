@@ -98,7 +98,6 @@
     composes: overflow-y-auto from global;
     padding-left: 30px;
     min-height: 10rem;
-    border-bottom: 1px solid #e5e8ef;
 }
 
 .quantity {

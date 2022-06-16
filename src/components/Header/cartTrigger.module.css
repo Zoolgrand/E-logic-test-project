@@ -12,6 +12,9 @@
     font-size: 13px;
     line-height: 20px;
     color: #FFFFFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .trigger {

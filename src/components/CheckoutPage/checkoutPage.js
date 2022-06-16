@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import { shape, string } from 'prop-types';
 import { FormattedMessage, useIntl } from 'react-intl';
 import { AlertCircle as AlertCircleIcon } from 'react-feather';
@@ -81,6 +81,7 @@ const CheckoutPage = props => {
     } = talonProps;
 
     const [, { addToast }] = useToasts();
+    const [activeSignInTab, setActiveSignInTab] = useState(true)
 
     useEffect(() => {
         if (hasError) {
@@ -322,26 +323,22 @@ const CheckoutPage = props => {
                 ? classes.checkoutContent
                 : classes.checkoutContent_hidden;
 
-        const stockStatusMessageElement = (
-            <Fragment>
-                <FormattedMessage
-                    id={'checkoutPage.stockStatusMessage'}
-                    defaultMessage={
-                        'An item in your cart is currently out-of-stock and must be removed in order to Checkout. Please return to your cart to remove the item.'
-                    }
-                />
-                <Link className={classes.cartLink} to={'/cart'}>
-                    <FormattedMessage
-                        id={'checkoutPage.returnToCart'}
-                        defaultMessage={'Return to Cart'}
-                    />
-                </Link>
-            </Fragment>
-        );
         checkoutContent = (
             <div className={checkoutContentClass}>
                 <div>
-                    {signInContainerElement}
+                    {checkoutStep === 1 && <div className={classes.tabs}>
+                        <div onClick={()=>{setActiveSignInTab(true)}} className={classes.tab}>
+                            <p className={activeSignInTab? classes.activeTab:classes.disabledTab}>Sign in</p>
+                            <div className={activeSignInTab? classes.divider:classes.divider_hidden} />
+                        </div>
+
+                        <div onClick={()=>{setActiveSignInTab(false)}} className={classes.tab}>
+                            <p className={!activeSignInTab? classes.activeTab:classes.disabledTab} >Guest checkout</p>
+                            <div className={!activeSignInTab? classes.divider:classes.divider_hidden} />
+                        </div>
+                    </div>}
+                    {activeSignInTab &&checkoutStep === 1 && signInContainerElement}
+                    
                     <div className={classes.shipping_information_container}>
                         <ScrollAnchor ref={shippingInformationRef}>
                             <ShippingInformation
@@ -350,6 +347,7 @@ const CheckoutPage = props => {
                                 toggleActiveContent={toggleAddressBookContent}
                                 toggleSignInContent={toggleSignInContent}
                                 setGuestSignInUsername={setGuestSignInUsername}
+                                activeSignInTab={activeSignInTab}
                             />
                         </ScrollAnchor>
                     </div>

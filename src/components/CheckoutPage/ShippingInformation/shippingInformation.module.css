@@ -3,11 +3,14 @@
     composes: border-2 from global;
     composes: border-solid from global;
     composes: border-subtle from global;
-    composes: p-md from global;
     composes: rounded-md from global;
     width: 790px;
     font-family: 'Poppins';
     font-style: normal;
+    background: #F6F7FB;
+    box-sizing: border-box;
+    padding: 37px 40px 40px;
+    border: none;
 }
 
 .root_editMode {
@@ -20,7 +23,15 @@
     composes: border-subtle from global;
     composes: p-0 from global;
     composes: rounded-none from global;
+
     border: none;
+    margin-top: 20px;
+    padding: 37px 40px 40px;
+}
+
+.rootGuestTab{
+    composes:root_editMode;
+    margin-top: 0px;
 }
 
 .root_updated {
@@ -42,7 +53,6 @@
 .editButton {
     composes: -m-xs from global;
     composes: p-xs from global;
-    composes: text-brand-dark from global;
 }
 
 .editWrapper {

@@ -13,7 +13,6 @@
 .editButton {
     composes: p-xs from global;
     composes: -m-xs from global;
-    composes: text-brand-dark from global;
 }
 
 .editButtonText {

@@ -28,7 +28,8 @@ const GuestForm = props => {
         onSuccess,
         shippingData,
         toggleSignInContent,
-        setGuestSignInUsername
+        setGuestSignInUsername,
+        activeSignInTab
     } = props;
 
     const talonProps = useGuestForm({
@@ -47,7 +48,8 @@ const GuestForm = props => {
         isSaving,
         isUpdate,
         showSignInToast,
-        handleToastAction
+        handleToastAction,
+        handleValidateEmail
     } = talonProps;
 
     const formApiRef = useRef();
@@ -124,11 +126,44 @@ const GuestForm = props => {
                 onSubmit={handleSubmit}
                 getApi={getFormApi}
             >
-                <div className={classes.country}>
-                    <Country
-                        validate={isRequired}
-                        data-cy="GuestForm-country"
-                    />
+                <div className={classes.emailBlock}>
+                    <div className={classes.country}>
+                        <Country
+                            validate={isRequired}
+                            data-cy="GuestForm-country"
+                        />
+                    </div>
+
+                    {!activeSignInTab && (
+                        <div className={classes.email}>
+                            <Field
+                                id="email"
+                                label={formatMessage({
+                                    id: 'global.email',
+                                    defaultMessage: 'Email'
+                                })}
+                            >
+                                <TextInput
+                                    autoComplete="off"
+                                    field="email"
+                                    id="email"
+                                    data-cy="GuestForm-email"
+                                    validate={isRequired}
+                                    onBlur={() =>
+                                        handleValidateEmail(
+                                            formApiRef.current.getValue('email')
+                                        )
+                                    }
+                                    onPaste={e => {
+                                        const text = e.clipboardData.getData(
+                                            'text/plain'
+                                        );
+                                        handleValidateEmail(text);
+                                    }}
+                                />
+                            </Field>
+                        </div>
+                    )}
                 </div>
 
                 <div className={classes.nameBlock}>

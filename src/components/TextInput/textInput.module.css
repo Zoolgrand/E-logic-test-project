@@ -2,12 +2,13 @@
     /* composes: input from '@magento/venia-ui/lib/components/Field/field.module.css'; */
 
     composes: disabled_text-subtle from global;
-
+    box-sizing: border-box;
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 400;
     font-size: 15px;
     line-height: 18px;
+    padding-bottom: 14px;
     padding-left: 15px;
     padding-top: 16px;
     color: rgba(76, 79, 87, 0.7);
@@ -15,6 +16,13 @@
     border: 1px solid #d2d4da;
     height: 48px;
     width: 400px;
+}
+
+.input::placeholder {
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 18px;
+    color: #4C4F57;
 }
 
 .input_error {

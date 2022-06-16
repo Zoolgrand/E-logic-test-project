@@ -54,11 +54,17 @@ const Item = props => {
 
             <div className={classes.price}>
                 <p className={classes.finalPrice}>
-                    ${product.price_range.maximum_price.final_price.value *quantity}
+                    $
+                    {product.price_range.maximum_price.final_price.value *
+                        quantity}
+                    .00
                 </p>
                 {product.price_range.maximum_price.discount.percent_off > 0 && (
                     <p className={classes.initialPrice}>
-                        ${product.price_range.maximum_price.regular_price.value *quantity}
+                        $
+                        {product.price_range.maximum_price.regular_price.value *
+                            quantity}
+                        .00
                     </p>
                 )}
                 {product.price_range.maximum_price.discount.percent_off > 0 && (

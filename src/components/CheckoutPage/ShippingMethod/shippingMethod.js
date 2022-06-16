@@ -101,15 +101,16 @@ const ShippingMethod = props => {
                     <div className={classes.formButtons}>
                         <Button
                             data-cy="ShippingMethod-submitButton"
-                            priority="normal"
+                            priority="high"
                             type="submit"
                             disabled={pageIsUpdating || isLoading}
+                            classes={{
+                                root_highPriority: classes.continueToPayment
+                            }}
                         >
                             <FormattedMessage
                                 id={'shippingMethod.continueToNextStep'}
-                                defaultMessage={
-                                    'Continue to Payment Information'
-                                }
+                                defaultMessage={'Continue to Payment'}
                             />
                         </Button>
                     </div>
@@ -125,7 +126,7 @@ const ShippingMethod = props => {
                 >
                     <FormattedMessage
                         id={'shippingMethod.heading'}
-                        defaultMessage={'Shipping Method'}
+                        defaultMessage={'Delivery Method'}
                     />
                 </h3>
                 <FormError errors={Array.from(errors.values())} />

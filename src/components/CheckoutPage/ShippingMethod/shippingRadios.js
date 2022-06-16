@@ -35,6 +35,9 @@ const ShippingRadios = props => {
                 currency={method.amount.currency}
                 name={method.method_title}
                 price={method.amount.value}
+                classes={{
+                    price: classes.price
+                }}
             />
         );
         const value = method.serializedValue;

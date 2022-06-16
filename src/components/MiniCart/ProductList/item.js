@@ -144,10 +144,9 @@ const Item = props => {
                         {shouldShowDiscountinfo && (
                             <p className={classes.regularPrice}>
                                 $
-                                {
-                                    product.price_range.maximum_price
-                                        .regular_price.value *quantity
-                                }
+                                {product.price_range.maximum_price.regular_price
+                                    .value * quantity}
+                                .00
                             </p>
                         )}
                         {shouldShowDiscountinfo && (

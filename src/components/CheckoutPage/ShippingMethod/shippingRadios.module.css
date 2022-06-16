@@ -1,14 +1,16 @@
 .radioRoot {
-    composes: gap-2xs from global;
     composes: grid from global;
 }
 
 .radioLabel {
-    composes: gap-2xs from global;
     composes: grid from global;
     composes: grid-cols-[100%] from global;
     composes: justify-start from global;
-
+    gap: 3px;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 18px;
+    color: #191A1C;
     composes: sm_grid-cols-autoAuto from global;
 }
 
@@ -19,4 +21,11 @@
 .error {
     composes: leading-normal from global;
     composes: text-error from global;
+}
+
+.price {
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 18px;
+    color: #191A1C;
 }

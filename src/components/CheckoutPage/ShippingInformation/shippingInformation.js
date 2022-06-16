@@ -21,7 +21,8 @@ const ShippingInformation = props => {
         onSuccess,
         toggleActiveContent,
         toggleSignInContent,
-        setGuestSignInUsername
+        setGuestSignInUsername,
+        activeSignInTab
     } = props;
     const talonProps = useShippingInformation({
         onSave,
@@ -38,8 +39,12 @@ const ShippingInformation = props => {
 
     const classes = useStyle(defaultClasses, propClasses);
 
-    const rootClassName = !doneEditing
+    const activeSignInTabClass = activeSignInTab
         ? classes.root_editMode
+        : classes.rootGuestTab;
+
+    const rootClassName = !doneEditing
+        ? activeSignInTabClass
         : hasUpdate
         ? classes.root_updated
         : classes.root;
@@ -105,6 +110,7 @@ const ShippingInformation = props => {
                     shippingData={shippingData}
                     toggleSignInContent={toggleSignInContent}
                     setGuestSignInUsername={setGuestSignInUsername}
+                    activeSignInTab={activeSignInTab}
                 />
             </div>
         </Fragment>

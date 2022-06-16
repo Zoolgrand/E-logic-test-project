@@ -142,6 +142,49 @@
     composes: lg_top-[6rem] from global;
 }
 
+.tabs {
+    display: flex;
+    align-items: center;
+    gap: 90px;
+}
+
+.tab {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    cursor: pointer;
+}
+
+.activeTab {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+    text-align: center;
+    color: #393D46;
+}
+
+.disabledTab {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+    text-align: center;
+    color: rgba(57, 61, 70, 0.5);
+}
+
+.divider {
+    height: 1px;
+    width: 149px;
+    background-color: black;
+}
+
+.divider_hidden {
+    composes: divider;
+    opacity: 0;
+}
+
+.tabs p {}
+
 @media (min-width: 960px) {
     .summaryContainer {
         grid-column: 2 / span 1;

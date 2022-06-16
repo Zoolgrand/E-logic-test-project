@@ -183,6 +183,7 @@ const GalleryItem = props => {
                                         price_range.maximum_price.regular_price
                                             .value
                                     }
+                                    .00
                                 </div>
                             )}
                         </div>

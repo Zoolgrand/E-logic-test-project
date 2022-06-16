@@ -24,9 +24,12 @@
     composes: lg_border-2 from global;
     composes: lg_border-solid from global;
     composes: lg_border-subtle from global;
-    composes: lg_p-md from global;
+    /* composes: lg_p-md from global; */
+    box-sizing: border-box;
     width: 790px;
     border: none;
+    background: #F6F7FB;
+    padding:38px 35px 40px 40px ;
 }
 
 .signInRoot {

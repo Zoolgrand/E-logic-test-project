@@ -10,6 +10,7 @@
 }
 
 .nameBlock,
+.emailBlock,
 .phoneBlock,
 .cityBlock {
     display: flex;
@@ -26,6 +27,7 @@
     border-radius: 0px;
     width: 335px;
 }
+
 .postcode input:focus {
     box-shadow: none;
     border: 2px solid black;
@@ -57,6 +59,7 @@
 .firstname input,
 .country,
 .city input,
+.email input,
 .region,
 .postcode,
 .telephone input,

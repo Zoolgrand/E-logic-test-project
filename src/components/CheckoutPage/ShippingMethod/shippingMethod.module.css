@@ -3,9 +3,29 @@
     composes: border-solid from global;
     composes: border-subtle from global;
     composes: grid from global;
-    composes: gap-y-xs from global;
-    composes: p-md from global;
+    /* composes: gap-y-xs from global; */
+    /* composes: p-md from global; */
     composes: rounded-md from global;
+    padding: 37px 40px 40px;
+    background: #F6F7FB;
+    margin-top: 20px;
+    border: none;
+}
+
+.continueToPayment {
+    border-radius: 60px;
+    height: 48px;
+    background-color: #393d46;
+    width: 710px;
+    font-weight: 600;
+    font-size: 13px;
+    line-height: 16px;
+    text-align: center;
+    text-transform: uppercase;
+    border: none;
+    color: white;
+    text-align: center;
+    margin-top: 40px;
 }
 
 .done {
@@ -17,11 +37,15 @@
 }
 
 .editingHeading {
-    composes: uppercase from global;
+    font-weight: 500;
+    font-size: 17px;
+    line-height: 20px;
+    color: #191A1C;
+    margin-bottom: 36px;
 }
 
 .form {
-    composes: gap-y-sm from global;
+    /* composes: gap-y-sm from global; */
     composes: grid from global;
     composes: grid-rows-autoLast from global;
 }

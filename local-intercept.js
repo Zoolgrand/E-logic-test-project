@@ -51,6 +51,15 @@ module.exports = targets => {
     const CheckoutPageComponent = require('./core-overrides/components/CheckoutPage/index.targetables');
     CheckoutPageComponent(targets);
 
+    const RadioGroupComponent = require('./core-overrides/components/RadioGroup/radioGroup.targetables');
+    RadioGroupComponent(targets);
+
+    const RadioComponent = require('./core-overrides/components/RadioGroup/radio.targetables');
+    RadioComponent(targets);
+
+    const DialogComponent = require('./core-overrides/components/Dialog/dialog.targetables');
+    DialogComponent(targets);
+
     targets.of('@magento/venia-ui').routes.tap(routes => {
         routes.push({
             exact: true,
