@@ -250,7 +250,7 @@ const SignIn = props => {
                         type="button"
                         onClick={handleCreateAccount}
                         classes={{
-                            root_normalPriority: classes.createAccBnt
+                            root_normalPriority: classes.checkoutCreateAccBtn
                         }}
                         data-cy="CreateAccount-initiateButton"
                     >

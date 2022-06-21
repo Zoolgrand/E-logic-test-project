@@ -4,7 +4,7 @@ import { useRegion } from '@magento/peregrine/lib/talons/Region/useRegion';
 
 import { useStyle } from '@magento/venia-ui/lib/classify';
 import Field from '@magento/venia-ui/lib/components/Field';
-import Select from '@magento/venia-ui/lib/components/Select';
+import Select from '../Select';
 import TextInput from '../TextInput';
 import defaultClasses from './region.module.css';
 import { GET_REGIONS_QUERY } from './region.gql';

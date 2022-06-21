@@ -63,6 +63,9 @@ module.exports = targets => {
     const OrderConfirmationPageFragment = require('./core-overrides/talons/CheckoutPage/OrderConfirmationPage/orderConfirmationPageFragmentGQL.targetables');
     OrderConfirmationPageFragment(targets);
     
+    const CountryComponent = require('./core-overrides/components/Country/country.targetables')
+    CountryComponent(targets)
+    
     targets.of('@magento/venia-ui').routes.tap(routes => {
         routes.push({
             exact: true,
