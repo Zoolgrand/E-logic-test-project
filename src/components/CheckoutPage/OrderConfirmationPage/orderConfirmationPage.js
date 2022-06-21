@@ -19,7 +19,6 @@ const OrderConfirmationPage = props => {
     });
 
     const { flatData, isSignedIn } = talonProps;
-
     const {
         city,
         country,

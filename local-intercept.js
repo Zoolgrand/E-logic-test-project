@@ -60,6 +60,9 @@ module.exports = targets => {
     const DialogComponent = require('./core-overrides/components/Dialog/dialog.targetables');
     DialogComponent(targets);
 
+    const OrderConfirmationPageFragment = require('./core-overrides/talons/CheckoutPage/OrderConfirmationPage/orderConfirmationPageFragmentGQL.targetables');
+    OrderConfirmationPageFragment(targets);
+    
     targets.of('@magento/venia-ui').routes.tap(routes => {
         routes.push({
             exact: true,

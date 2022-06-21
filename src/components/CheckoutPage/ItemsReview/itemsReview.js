@@ -16,7 +16,7 @@ import defaultClasses from './itemsReview.module.css';
  * @param {Object} props.data an optional static data object to render instead of making a query for data.
  */
 const ItemsReview = props => {
-    const { classes: propClasses } = props;
+    const { classes: propClasses, data } = props;
 
     const classes = useStyle(defaultClasses, propClasses);
     const history = useHistory();
@@ -35,7 +35,9 @@ const ItemsReview = props => {
         configurableThumbnailSource
     } = talonProps;
 
-    const items = itemsInCart.map((item, index) => (
+    const itemsToMaping = data ? data?.cart.items : itemsInCart;
+
+    const items = itemsToMaping.map(item => (
         <Item
             key={item.id}
             {...item}
@@ -61,12 +63,14 @@ const ItemsReview = props => {
         >
             <div className={classes.itemReviewHeading}>
                 <p>Summary</p>
-                <button onClick={editHandler}>
-                    <span className={classes.editContainer}>
-                        <img src={editIcon} alt="edit" />
-                        <p>Edit</p>
-                    </span>
-                </button>
+                {!data && (
+                    <button onClick={editHandler}>
+                        <span className={classes.editContainer}>
+                            <img src={editIcon} alt="edit" />
+                            <p>Edit</p>
+                        </span>
+                    </button>
+                )}
             </div>
             <div className={classes.items_container}>
                 {items}

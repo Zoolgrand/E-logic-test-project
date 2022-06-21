@@ -34,7 +34,6 @@ const Item = props => {
                         : product.thumbnail.url
                 }
             />
-
             <div className={classes.productInfo}>
                 <span className={classes.name}>{product.name}</span>
                 <ProductOptions
@@ -52,7 +51,7 @@ const Item = props => {
                 </span>
             </div>
 
-            {product ? (
+            {product?.price_range?.maximum_price && (
                 <div className={classes.price}>
                     <p className={classes.finalPrice}>
                         $
@@ -81,7 +80,7 @@ const Item = props => {
                         </p>
                     )}
                 </div>
-            ) : null}
+            )}
         </div>
     );
 };

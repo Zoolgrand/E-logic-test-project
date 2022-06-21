@@ -80,7 +80,7 @@ const CheckoutPage = props => {
         toggleSignInContent,
         handlePaymentSuccess,
         doneEditing,
-        setDoneEditing
+        setDoneEditing,
     } = talonProps;
 
     const [, { addToast }] = useToasts();
@@ -299,7 +299,7 @@ const CheckoutPage = props => {
                         : '')
                 }
             >
-                {itemsReview}
+                {!isCartEmpty && itemsReview}
                 <OrderSummary isUpdating={isUpdating} />
             </div>
         ) : null;
