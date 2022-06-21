@@ -48,7 +48,8 @@ const CreditCard = props => {
         onPaymentReady: onReady,
         onPaymentError: onError,
         resetShouldSubmit,
-        shouldSubmit
+        shouldSubmit,
+        setBillingFormOpen
     } = props;
     const { formatMessage } = useIntl();
 
@@ -87,6 +88,8 @@ const CreditCard = props => {
         resetShouldTeardownDropin,
         recaptchaWidgetProps
     } = talonProps;
+
+    setBillingFormOpen(isBillingAddressSame);
 
     const creditCardComponentClassName = isLoading
         ? classes.credit_card_root_hidden

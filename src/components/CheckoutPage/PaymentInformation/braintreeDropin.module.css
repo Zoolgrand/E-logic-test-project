@@ -1,5 +1,4 @@
-.root {
-}
+.root {}
 
 .error {
     composes: text-error from global;
@@ -22,5 +21,62 @@ div[class*='braintree-sheet__content--form'] {
       component. If we use padding-top instead it just
       overrides the padding-top not whole padding.
     */
-    padding: 1rem 0 0 0;
+    /* padding: 1rem 0 0 0; */
+    background: #F6F7FB;
+    padding: 0px;
 }
+
+div[class*='braintree-form-cardholder-name'] {
+    width: 710px;
+    margin: 0px !important;
+    padding: 0px !important;
+    padding-left: 15px !important;
+    padding-top: 16px !important;
+    padding-bottom: 14px !important;
+    margin-top: 11px !important;
+}
+
+div[class*='braintree-form__hosted-field '] {
+    margin: 0px !important;
+    padding: 0px !important;
+    width: 335px;
+}
+
+div [class*='braintree-form__field-group'] {
+    padding: 0px !important;
+}
+
+div[class='braintree-form__flexible-fields'] {
+    gap: 40px;
+    margin: 0px;
+    padding: 0px;
+}
+
+div[class*='braintree-form-number'] {
+
+    margin: 0px;
+    padding: 0px;
+    width: 710px;
+    padding-left: 15px !important;
+    padding-top: 16px !important;
+    padding-bottom: 14px !important;
+    margin-top: 11px !important;
+}
+
+div[class*='braintree-form-cvv'] {
+    padding-left: 15px !important;
+    padding-top: 16px !important;
+    padding-bottom: 14px !important;
+    margin-top: 11px !important;
+}
+
+div[class*='braintree-form-expiration'] {
+    padding-left: 15px !important;
+    padding-top: 16px !important;
+    padding-bottom: 14px !important;
+    margin-top: 11px !important;
+}
+
+/* div[class*='braintree-form-number'] {
+  
+} */

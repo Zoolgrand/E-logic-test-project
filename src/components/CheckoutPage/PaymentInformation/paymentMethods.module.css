@@ -1,32 +1,40 @@
 .root {
-    composes: grid from global;
-    composes: p-md from global;
-    composes: pb-xs from global;
+    display: flex;
+    flex-direction: column;
 }
 
 .radio_group {
-    composes: grid from global;
+    display: flex;
+    flex-direction: column;
+
 }
 
 .payment_method {
-    composes: border-b from global;
-    composes: border-solid from global;
-    composes: border-subtle from global;
-    composes: pb-xs from global;
-    composes: pt-xs from global;
 
-    composes: last_pt-0 from global;
+    border-top: 1px solid #E5E8EF;
+    border-bottom: 1px solid #E5E8EF;
+    height: 74px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 18px;
+    color: #191A1C;
+}
+
+.payment_method:last-child {
+    border-bottom: none;
 }
 
 /* TODO @TW: cannot compose */
 .payment_method:last-of-type {
     /* composes: border-b-0 from global; */
-    border-bottom-width: 0;
+    /* border-bottom-width: 0; */
 }
 
 .radio_label {
-    composes: font-semibold from global;
-    composes: justify-self-start from global;
+    width: 300px;
 }
 
 .payment_errors {

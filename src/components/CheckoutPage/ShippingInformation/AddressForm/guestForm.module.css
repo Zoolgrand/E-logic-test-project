@@ -84,6 +84,8 @@
     composes: grid-flow-col from global;
     composes: justify-self-center from global;
     composes: p-xs from global;
+    display: flex;
+    justify-content: space-around;
 }
 
 .submitBtn {

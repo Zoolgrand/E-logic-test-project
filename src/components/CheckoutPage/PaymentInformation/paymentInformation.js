@@ -1,9 +1,9 @@
-import React, { Suspense } from 'react';
+import React, { Suspense, useState } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { Form } from 'informed';
 import { shape, func, string, bool, instanceOf } from 'prop-types';
 
-import { usePaymentInformation } from '@magento/peregrine/lib/talons/CheckoutPage/PaymentInformation/usePaymentInformation';
+import { usePaymentInformation } from '../../../talons/CheckoutPage/PaymentInformation/usePaymentInformation';
 import CheckoutError from '@magento/peregrine/lib/talons/CheckoutPage/CheckoutError';
 
 import { useStyle } from '@magento/venia-ui/lib/classify';
@@ -21,27 +21,41 @@ const PaymentInformation = props => {
         resetShouldSubmit,
         setCheckoutStep,
         shouldSubmit,
-        checkoutError
+        checkoutError,
+        handlePlaceOrder,
+        placeOrderLoading,
+        doneEditing,
+        setDoneEditing
     } = props;
 
     const classes = useStyle(defaultClasses, propClasses);
+
+    const [isShowCard, setIsShowCard] = useState(false);
+    const [billingFormOpen, setBillingFormOpen] = useState(false);
+    const rootClass = !isShowCard
+        ? classes.root
+        : !billingFormOpen
+        ? classes.billingFormOpen
+        : classes.root_card_open;
 
     const talonProps = usePaymentInformation({
         onSave,
         checkoutError,
         resetShouldSubmit,
         setCheckoutStep,
-        shouldSubmit
+        shouldSubmit,
+        setDoneEditing
     });
 
     const {
-        doneEditing,
         handlePaymentError,
-        handlePaymentSuccess,
-        hideEditModal,
+
         isLoading,
+        showEditModal,
+        setBillingAddress,
+        shippingAddressOnCart,
         isEditModalActive,
-        showEditModal
+        hideEditModal
     } = talonProps;
 
     if (isLoading) {
@@ -61,9 +75,14 @@ const PaymentInformation = props => {
         <Form>
             <PaymentMethods
                 onPaymentError={handlePaymentError}
-                onPaymentSuccess={handlePaymentSuccess}
                 resetShouldSubmit={resetShouldSubmit}
                 shouldSubmit={shouldSubmit}
+                handlePlaceOrder={handlePlaceOrder}
+                placeOrderLoading={placeOrderLoading}
+                setIsShowCard={setIsShowCard}
+                setBillingFormOpen={setBillingFormOpen}
+                setBillingAddress={setBillingAddress}
+                shippingAddressOnCart={shippingAddressOnCart}
             />
         </Form>
     );
@@ -75,8 +94,13 @@ const PaymentInformation = props => {
     ) : null;
 
     return (
-        <div className={classes.root} data-cy="PaymentInformation-root">
+        <div className={rootClass} data-cy="PaymentInformation-root">
             <div className={classes.payment_info_container}>
+                {!doneEditing && (
+                    <h5 className={classes.title}>
+                        Select your payment method
+                    </h5>
+                )}
                 <Suspense fallback={null}>{paymentInformation}</Suspense>
             </div>
             {editModal}

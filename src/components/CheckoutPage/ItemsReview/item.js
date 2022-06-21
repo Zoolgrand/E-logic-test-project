@@ -52,32 +52,36 @@ const Item = props => {
                 </span>
             </div>
 
-            <div className={classes.price}>
-                <p className={classes.finalPrice}>
-                    $
-                    {product.price_range.maximum_price.final_price.value *
-                        quantity}
-                    .00
-                </p>
-                {product.price_range.maximum_price.discount.percent_off > 0 && (
-                    <p className={classes.initialPrice}>
+            {product ? (
+                <div className={classes.price}>
+                    <p className={classes.finalPrice}>
                         $
-                        {product.price_range.maximum_price.regular_price.value *
+                        {product.price_range.maximum_price.final_price.value *
                             quantity}
                         .00
                     </p>
-                )}
-                {product.price_range.maximum_price.discount.percent_off > 0 && (
-                    <p className={classes.discountPercentage}>
-                        -
-                        {Math.round(
-                            product.price_range.maximum_price.discount
-                                .percent_off
-                        )}
-                        %
-                    </p>
-                )}
-            </div>
+                    {product.price_range.maximum_price.discount.percent_off >
+                        0 && (
+                        <p className={classes.initialPrice}>
+                            $
+                            {product.price_range.maximum_price.regular_price
+                                .value * quantity}
+                            .00
+                        </p>
+                    )}
+                    {product.price_range.maximum_price.discount.percent_off >
+                        0 && (
+                        <p className={classes.discountPercentage}>
+                            -
+                            {Math.round(
+                                product.price_range.maximum_price.discount
+                                    .percent_off
+                            )}
+                            %
+                        </p>
+                    )}
+                </div>
+            ) : null}
         </div>
     );
 };

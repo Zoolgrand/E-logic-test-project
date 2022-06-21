@@ -9,3 +9,17 @@
     color: #ffffff;
     border-radius: 60px;
 }
+.header{
+    composes: h-[3.5rem] from global;
+    composes: pl-4 from global;
+    composes: pr-3 from global;
+    composes: py-0 from global;
+
+    /* The Header is itself a grid container for its children. */
+    composes: gap-x-xs from global;
+    composes: grid from global;
+    composes: grid-cols-autoLast from global;
+    composes: grid-flow-col from global;
+    composes: items-center from global;
+    border: none;
+}

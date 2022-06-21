@@ -16,7 +16,13 @@ const PaymentMethods = props => {
         onPaymentError,
         onPaymentSuccess,
         resetShouldSubmit,
-        shouldSubmit
+        shouldSubmit,
+        handlePlaceOrder,
+        placeOrderLoading,
+        setIsShowCard,
+        setBillingFormOpen,
+        shippingAddressOnCart,
+        setBillingAddress
     } = props;
 
     const { formatMessage } = useIntl();
@@ -36,6 +42,12 @@ const PaymentMethods = props => {
         return null;
     }
 
+    if (currentSelectedPaymentMethod === 'purchaseorder') {
+        setIsShowCard(true);
+    } else {
+        setIsShowCard(false);
+    }
+
     const radios = availablePaymentMethods
         .map(({ code, title }) => {
             // If we don't have an implementation for a method type, ignore it.
@@ -46,14 +58,22 @@ const PaymentMethods = props => {
             const id = `paymentMethod--${code}`;
             const isSelected = currentSelectedPaymentMethod === code;
             const PaymentMethodComponent = payments[code];
-            const renderedComponent = isSelected ? (
-                <PaymentMethodComponent
-                    onPaymentSuccess={onPaymentSuccess}
-                    onPaymentError={onPaymentError}
-                    resetShouldSubmit={resetShouldSubmit}
-                    shouldSubmit={shouldSubmit}
-                />
-            ) : null;
+            const renderedComponent =
+                // isSelected || code === 'purchaseorder' ? (
+                isSelected ? (
+                    <PaymentMethodComponent
+                        onPaymentSuccess={onPaymentSuccess}
+                        onPaymentError={onPaymentError}
+                        resetShouldSubmit={resetShouldSubmit}
+                        shouldSubmit={shouldSubmit}
+                        handlePlaceOrder={handlePlaceOrder}
+                        placeOrderLoading={placeOrderLoading}
+                        setBillingFormOpen={setBillingFormOpen}
+                        shippingAddressOnCart={shippingAddressOnCart}
+                        setBillingAddress={setBillingAddress}
+                        isSelected={isSelected}
+                    />
+                ) : null;
 
             return (
                 <div key={code} className={classes.payment_method}>

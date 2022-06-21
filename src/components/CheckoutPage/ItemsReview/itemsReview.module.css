@@ -4,7 +4,7 @@
 }
 
 .items_container {
-    composes: grid from global;
+    /* composes: grid from global; */
 }
 
 .total_quantity {}
@@ -24,7 +24,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 334px;
+    width: 390px;
     margin-bottom: 12px;
 }
 

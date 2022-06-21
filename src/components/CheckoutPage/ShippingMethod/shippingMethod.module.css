@@ -8,8 +8,8 @@
     composes: rounded-md from global;
     padding: 37px 40px 40px;
     background: #F6F7FB;
-    margin-top: 20px;
     border: none;
+    margin-bottom: 20px;
 }
 
 .continueToPayment {

@@ -8,6 +8,7 @@
     max-width: 390px;
     font-family: 'Poppins';
     font-style: normal;
+    margin-top: 29px;
 }
 
 .title {
@@ -32,7 +33,6 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding-right: 60px;
 }
 .lineItems:last-child{
     margin-top: 24px;

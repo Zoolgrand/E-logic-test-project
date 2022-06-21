@@ -8,7 +8,7 @@ import { useWindowSize, useToasts } from '@magento/peregrine';
 import {
     CHECKOUT_STEP,
     useCheckoutPage
-} from '@magento/peregrine/lib/talons/CheckoutPage/useCheckoutPage';
+} from '../../talons/CheckoutPage/useCheckoutPage';
 
 import { useStyle } from '@magento/venia-ui/lib/classify';
 import Button from '../Button';
@@ -77,11 +77,14 @@ const CheckoutPage = props => {
         reviewOrderButtonClicked,
         recaptchaWidgetProps,
         toggleAddressBookContent,
-        toggleSignInContent
+        toggleSignInContent,
+        handlePaymentSuccess,
+        doneEditing,
+        setDoneEditing
     } = talonProps;
 
     const [, { addToast }] = useToasts();
-    const [activeSignInTab, setActiveSignInTab] = useState(true)
+    const [activeSignInTab, setActiveSignInTab] = useState(true);
 
     useEffect(() => {
         if (hasError) {
@@ -210,6 +213,11 @@ const CheckoutPage = props => {
                     resetShouldSubmit={resetReviewOrderButtonClicked}
                     setCheckoutStep={setCheckoutStep}
                     shouldSubmit={reviewOrderButtonClicked}
+                    handlePlaceOrder={handlePlaceOrder}
+                    placeOrderLoading={placeOrderLoading}
+                    handlePaymentSuccess={handlePaymentSuccess}
+                    doneEditing={doneEditing}
+                    setDoneEditing={setDoneEditing}
                 />
             ) : (
                 <h3 className={classes.payment_information_heading}>
@@ -220,17 +228,17 @@ const CheckoutPage = props => {
                 </h3>
             );
 
-        const priceAdjustmentsSection =
-            checkoutStep === CHECKOUT_STEP.PAYMENT ? (
-                <div className={classes.price_adjustments_container}>
-                    <PriceAdjustments setPageIsUpdating={setIsUpdating} />
-                </div>
-            ) : null;
+        // const priceAdjustmentsSection =
+        //     checkoutStep === CHECKOUT_STEP.PAYMENT ? (
+        //         <div className={classes.price_adjustments_container}>
+        //             <PriceAdjustments setPageIsUpdating={setIsUpdating} />
+        //         </div>
+        //     ) : null;
 
         const reviewOrderButton =
             checkoutStep === CHECKOUT_STEP.PAYMENT ? (
                 <Button
-                    onClick={handleReviewOrder}
+                    onClick={handlePaymentSuccess}
                     priority="high"
                     className={classes.review_order_button}
                     data-cy="CheckoutPage-reviewOrderButton"
@@ -242,7 +250,7 @@ const CheckoutPage = props => {
                 >
                     <FormattedMessage
                         id={'checkoutPage.reviewOrder'}
-                        defaultMessage={'Review Order'}
+                        defaultMessage={'Review Your Order'}
                     />
                 </Button>
             ) : null;
@@ -296,27 +304,27 @@ const CheckoutPage = props => {
             </div>
         ) : null;
 
-        let headerText;
+        // let headerText;
 
-        if (isGuestCheckout) {
-            headerText = formatMessage({
-                id: 'checkoutPage.guestCheckout',
-                defaultMessage: 'Guest Checkout'
-            });
-        } else if (customer.default_shipping) {
-            headerText = formatMessage({
-                id: 'checkoutPage.reviewAndPlaceOrder',
-                defaultMessage: 'Review and Place Order'
-            });
-        } else {
-            headerText = formatMessage(
-                {
-                    id: 'checkoutPage.greeting',
-                    defaultMessage: 'Welcome {firstname}!'
-                },
-                { firstname: customer.firstname }
-            );
-        }
+        // if (isGuestCheckout) {
+        //     headerText = formatMessage({
+        //         id: 'checkoutPage.guestCheckout',
+        //         defaultMessage: 'Guest Checkout'
+        //     });
+        // } else if (customer.default_shipping) {
+        //     headerText = formatMessage({
+        //         id: 'checkoutPage.reviewAndPlaceOrder',
+        //         defaultMessage: 'Review and Place Order'
+        //     });
+        // } else {
+        //     headerText = formatMessage(
+        //         {
+        //             id: 'checkoutPage.greeting',
+        //             defaultMessage: 'Welcome {firstname}!'
+        //         },
+        //         { firstname: customer.firstname }
+        //     );
+        // }
 
         const checkoutContentClass =
             activeContent === 'checkout'
@@ -325,20 +333,62 @@ const CheckoutPage = props => {
 
         checkoutContent = (
             <div className={checkoutContentClass}>
-                <div>
-                    {checkoutStep === 1 && <div className={classes.tabs}>
-                        <div onClick={()=>{setActiveSignInTab(true)}} className={classes.tab}>
-                            <p className={activeSignInTab? classes.activeTab:classes.disabledTab}>Sign in</p>
-                            <div className={activeSignInTab? classes.divider:classes.divider_hidden} />
-                        </div>
+                <div className={classes.checkoutContentWrap}>
+                    {checkoutStep === 1 && (
+                        <div className={classes.tabs}>
+                            <div
+                                onClick={() => {
+                                    setActiveSignInTab(true);
+                                }}
+                                className={classes.tab}
+                            >
+                                <p
+                                    className={
+                                        activeSignInTab
+                                            ? classes.activeTab
+                                            : classes.disabledTab
+                                    }
+                                >
+                                    Sign in
+                                </p>
+                                <div
+                                    className={
+                                        activeSignInTab
+                                            ? classes.divider
+                                            : classes.divider_hidden
+                                    }
+                                />
+                            </div>
 
-                        <div onClick={()=>{setActiveSignInTab(false)}} className={classes.tab}>
-                            <p className={!activeSignInTab? classes.activeTab:classes.disabledTab} >Guest checkout</p>
-                            <div className={!activeSignInTab? classes.divider:classes.divider_hidden} />
+                            <div
+                                onClick={() => {
+                                    setActiveSignInTab(false);
+                                }}
+                                className={classes.tab}
+                            >
+                                <p
+                                    className={
+                                        !activeSignInTab
+                                            ? classes.activeTab
+                                            : classes.disabledTab
+                                    }
+                                >
+                                    Guest checkout
+                                </p>
+                                <div
+                                    className={
+                                        !activeSignInTab
+                                            ? classes.divider
+                                            : classes.divider_hidden
+                                    }
+                                />
+                            </div>
                         </div>
-                    </div>}
-                    {activeSignInTab &&checkoutStep === 1 && signInContainerElement}
-                    
+                    )}
+                    {activeSignInTab &&
+                        checkoutStep === 1 &&
+                        signInContainerElement}
+
                     <div className={classes.shipping_information_container}>
                         <ScrollAnchor ref={shippingInformationRef}>
                             <ShippingInformation
@@ -358,10 +408,10 @@ const CheckoutPage = props => {
                     </div>
                     <div className={classes.payment_information_container}>
                         {paymentInformationSection}
+                        {reviewOrderButton}
+                        {placeOrderButton}
                     </div>
-                    {priceAdjustmentsSection}
-                    {reviewOrderButton}
-                    {placeOrderButton}
+
                     <GoogleReCaptcha {...recaptchaWidgetProps} />
                 </div>
                 {orderSummary}
