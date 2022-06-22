@@ -11,6 +11,7 @@ import defaultClasses from './addressBook.module.css';
 import AddressCard from './addressCard';
 import Icon from '@magento/venia-ui/lib/components/Icon';
 import LinkButton from '@magento/venia-ui/lib/components/LinkButton';
+import closeIcon from '../../../assets/closeIcon.svg';
 
 const EditModal = React.lazy(() => import('../ShippingInformation/editModal'));
 
@@ -93,6 +94,12 @@ const AddressBook = props => {
         [classes.addButton, classes.addIcon, classes.addText, handleAddAddress]
     );
 
+    const closeModal = e => {
+        if (e.target === e.currentTarget) {
+            handleCancel();
+        }
+    };
+
     const addressElements = useMemo(() => {
         let defaultIndex;
         const addresses = customerAddresses.map((address, index) => {
@@ -132,37 +139,45 @@ const AddressBook = props => {
 
     return (
         <Fragment>
-            <div className={rootClass}>
-                <h1 className={classes.headerText}>
-                    <FormattedMessage
-                        id={'addressBook.headerText'}
-                        defaultMessage={'Change Shipping Information'}
-                    />
-                </h1>
-                <div className={classes.buttonContainer}>
-                    <Button
-                        disabled={isLoading}
-                        onClick={handleCancel}
-                        priority="low"
-                    >
-                        <FormattedMessage
-                            id={'addressBook.cancelButtonText'}
-                            defaultMessage={'Cancel'}
+            <div onClick={closeModal} className={rootClass}>
+                <div className={classes.adressWrap}>
+                    <div className={classes.headerWrap}>
+                        <h1 className={classes.headerText}>
+                            <FormattedMessage
+                                id={'addressBook.headerText'}
+                                defaultMessage={'Change Shipping Information'}
+                            />
+                        </h1>
+                        <img
+                            className={classes.closeButton}
+                            onClick={handleCancel}
+                            src={closeIcon}
                         />
-                    </Button>
-                    <Button
-                        disabled={isLoading}
-                        onClick={handleApplyAddress}
-                        priority="high"
-                    >
-                        <FormattedMessage
-                            id={'addressBook.applyButtonText'}
-                            defaultMessage={'Apply'}
-                        />
-                    </Button>
+                    </div>
+                    <div className={classes.content}>{addressElements}</div>
+                    <div className={classes.buttonContainer}>
+                        <Button
+                            disabled={isLoading}
+                            onClick={handleCancel}
+                            priority="low"
+                        >
+                            <FormattedMessage
+                                id={'addressBook.cancelButtonText'}
+                                defaultMessage={'Cancel'}
+                            />
+                        </Button>
+                        <Button
+                            disabled={isLoading}
+                            onClick={handleApplyAddress}
+                            priority="high"
+                        >
+                            <FormattedMessage
+                                id={'addressBook.applyButtonText'}
+                                defaultMessage={'Apply'}
+                            />
+                        </Button>
+                    </div>
                 </div>
-
-                <div className={classes.content}>{addressElements}</div>
             </div>
             <Suspense fallback={null}>
                 <EditModal onSuccess={onSuccess} shippingData={activeAddress} />

@@ -1,16 +1,37 @@
 .root {
     composes: hidden from global;
+
 }
 
 /* prettier-ignore */
 .root_active {
-    composes: gap-y-xs from global;
+    /* composes: gap-y-xs from global;
     composes: grid from global;
     composes: grid-cols-1 from global;
     composes: items-center from global;
     composes: justify-between from global;
+    composes: lg_grid-cols-autoAuto from global; */
+    position: fixed;
+    left: 0px;
+    top: 0px;
 
-    composes: lg_grid-cols-autoAuto from global;
+    background: rgba(0, 0, 0, 0.5);
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 50;
+
+}
+
+.adressWrap {
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    width: 900px;
+    padding: 16px;
 }
 
 .headerText {
@@ -20,6 +41,9 @@
     composes: min-h-[3.5rem] from global;
     composes: row-start-1 from global;
     composes: text-subtle from global;
+    font-family: 'Poppins';
+    font-style: normal;
+    align-self: flex-start;
 }
 
 .buttonContainer {
@@ -35,9 +59,11 @@
     composes: xs_grid-cols-auto from global;
     composes: lg_justify-end from global;
     composes: lg_row-start-1 from global;
+    align-self: center;
 }
 
 @media (max-width: 479px) {
+
     /* TODO @TW: cannot compose */
     .buttonContainer button {
         min-width: 8rem;
@@ -59,6 +85,7 @@
     composes: lg_col-span-2 from global;
     composes: lg_grid-cols-3 from global;
     composes: lg_pt-md from global;
+    padding-bottom: 40px;
 }
 
 .addButton {
@@ -75,4 +102,16 @@
     composes: focus_shadow-buttonFocus from global;
 
     composes: hover_border-brand-dark from global;
+}
+
+.headerWrap {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.closeButton {
+    cursor: pointer;
 }
