@@ -1,8 +1,7 @@
-import React, { Fragment, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { shape, string } from 'prop-types';
 import { FormattedMessage, useIntl } from 'react-intl';
 import { AlertCircle as AlertCircleIcon } from 'react-feather';
-import { Link } from 'react-router-dom';
 
 import { useWindowSize, useToasts } from '@magento/peregrine';
 import {
@@ -15,14 +14,11 @@ import Button from '../Button';
 import { StoreTitle } from '@magento/venia-ui/lib/components/Head';
 import Icon from '@magento/venia-ui/lib/components/Icon';
 import { fullPageLoadingIndicator } from '@magento/venia-ui/lib/components/LoadingIndicator';
-import StockStatusMessage from '@magento/venia-ui/lib/components/StockStatusMessage';
-import FormError from '@magento/venia-ui/lib/components/FormError';
 import AddressBook from './AddressBook';
 import GuestSignIn from './GuestSignIn';
 import OrderSummary from './OrderSummary';
 import PaymentInformation from './PaymentInformation';
 import payments from './PaymentInformation/paymentMethodCollection';
-import PriceAdjustments from './PriceAdjustments';
 import ShippingMethod from './ShippingMethod';
 import ShippingInformation from './ShippingInformation';
 import OrderConfirmationPage from './OrderConfirmationPage';
@@ -228,13 +224,6 @@ const CheckoutPage = props => {
                 </h3>
             );
 
-        // const priceAdjustmentsSection =
-        //     checkoutStep === CHECKOUT_STEP.PAYMENT ? (
-        //         <div className={classes.price_adjustments_container}>
-        //             <PriceAdjustments setPageIsUpdating={setIsUpdating} />
-        //         </div>
-        //     ) : null;
-
         const reviewOrderButton =
             checkoutStep === CHECKOUT_STEP.PAYMENT ? (
                 <Button
@@ -303,28 +292,6 @@ const CheckoutPage = props => {
                 <OrderSummary isUpdating={isUpdating} />
             </div>
         ) : null;
-
-        // let headerText;
-
-        // if (isGuestCheckout) {
-        //     headerText = formatMessage({
-        //         id: 'checkoutPage.guestCheckout',
-        //         defaultMessage: 'Guest Checkout'
-        //     });
-        // } else if (customer.default_shipping) {
-        //     headerText = formatMessage({
-        //         id: 'checkoutPage.reviewAndPlaceOrder',
-        //         defaultMessage: 'Review and Place Order'
-        //     });
-        // } else {
-        //     headerText = formatMessage(
-        //         {
-        //             id: 'checkoutPage.greeting',
-        //             defaultMessage: 'Welcome {firstname}!'
-        //         },
-        //         { firstname: customer.firstname }
-        //     );
-        // }
 
         const checkoutContentClass =
             activeContent === 'checkout'

@@ -9,7 +9,7 @@ import { isRequired } from '@magento/venia-ui/lib/util/formValidators';
 import Button from '../../../Button';
 import Checkbox from '../../../Checkbox';
 import Country from '@magento/venia-ui/lib/components/Country';
-import Field, { Message } from '@magento/venia-ui/lib/components/Field';
+import Field from '@magento/venia-ui/lib/components/Field';
 import FormError from '@magento/venia-ui/lib/components/FormError';
 import Region from '../../../Region';
 import Postcode from '../../../Postcode';
@@ -55,38 +55,6 @@ const CustomerForm = props => {
             </LoadingIndicator>
         );
     }
-
-    const emailRow = !hasDefaultShipping ? (
-        <div className={classes.email}>
-            <Field
-                id="email"
-                label={formatMessage({
-                    id: 'global.email',
-                    defaultMessage: 'Email'
-                })}
-            >
-                <TextInput
-                    disabled={true}
-                    field="email"
-                    id="email"
-                    validate={isRequired}
-                />
-            </Field>
-        </div>
-    ) : null;
-
-    const formMessageRow = !hasDefaultShipping ? (
-        <div data-cy="CustomerForm-formMessage" className={classes.formMessage}>
-            <Message>
-                <FormattedMessage
-                    id={'customerForm.formMessage'}
-                    defaultMessage={
-                        'The shipping address you enter will be saved to your address book and set as your default for future purchases.'
-                    }
-                />
-            </Message>
-        </div>
-    ) : null;
 
     const cancelButton = isUpdate ? (
         <Button disabled={isSaving} onClick={handleCancel} priority="low">

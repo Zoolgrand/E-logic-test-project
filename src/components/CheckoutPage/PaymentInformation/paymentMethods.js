@@ -59,7 +59,6 @@ const PaymentMethods = props => {
             const isSelected = currentSelectedPaymentMethod === code;
             const PaymentMethodComponent = payments[code];
             const renderedComponent =
-                // isSelected || code === 'purchaseorder' ? (
                 isSelected ? (
                     <PaymentMethodComponent
                         onPaymentSuccess={onPaymentSuccess}

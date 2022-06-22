@@ -29,8 +29,6 @@
 
 /* TODO @TW: cannot compose */
 .payment_method:last-of-type {
-    /* composes: border-b-0 from global; */
-    /* border-bottom-width: 0; */
 }
 
 .radio_label {
