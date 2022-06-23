@@ -13,9 +13,9 @@ import Image from '@magento/venia-ui/lib/components/Image';
 import GalleryItemShimmer from './item.shimmer';
 import defaultClasses from './sliderItem.module.css';
 import WishlistGalleryButton from '@magento/venia-ui/lib/components/Wishlist/AddToListButton';
-import CompareIcon from '../../assets/Vector8.svg';
 
 import AddToCartbutton from './addToCartButton';
+import AddToCompareButton from '../AddToCompareButton/addToCompareButton';
 // eslint-disable-next-line no-unused-vars
 
 // The placeholder image is 4:5, so we should make sure to size our product
@@ -33,9 +33,9 @@ const GalleryItem = props => {
         handleLinkClick,
         item,
         wishlistButtonProps,
-        isSupportedProductType
+        isSupportedProductType,
+        compareButtonProps
     } = useGalleryItem(props);
-
     const { storeConfig, items } = props;
 
     const [isFocused, setIsFocused] = useState(false);
@@ -65,12 +65,7 @@ const GalleryItem = props => {
         <WishlistGalleryButton {...wishlistButtonProps} />
     ) : null;
 
-    const compareButton = (
-        <button type="button">
-            <img src={CompareIcon} />
-        </button>
-    );
-
+    const compareButton = <AddToCompareButton {...compareButtonProps} />;
     const addButton = isSupportedProductType ? (
         <AddToCartbutton
             item={item}
@@ -131,6 +126,15 @@ const GalleryItem = props => {
                         />
                         {ratingAverage}
                     </Link>
+                    {price_range.maximum_price?.discount?.percent_off > 0 && (
+                        <div className={classes.discount}>
+                            -
+                            {Math.round(
+                                price_range.maximum_price?.discount?.percent_off
+                            )}
+                            % off
+                        </div>
+                    )}
                     {isFocused && (
                         <>
                             <div className={classes.wishListWrap}>
@@ -164,6 +168,17 @@ const GalleryItem = props => {
                                 value={priceSource.value}
                                 currencyCode={priceSource.currency}
                             />
+                            {price_range.maximum_price?.discount?.percent_off >
+                                0 && (
+                                <div className={classes.regularPrice}>
+                                    $
+                                    {
+                                        price_range.maximum_price.regular_price
+                                            .value
+                                    }
+                                    .00
+                                </div>
+                            )}
                         </div>
                     </>
                 )}

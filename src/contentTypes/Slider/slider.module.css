@@ -5,6 +5,7 @@
     user-select: none;
     --leftViewportElement: -99999px;
 }
+
 .root :global .slick-current {
     --leftViewportElement: 0;
 }
@@ -13,14 +14,17 @@
     composes: root from '@magento/pagebuilder/lib/ContentTypes/Banner/banner.module.css';
     min-height: inherit;
 }
+
 .bannerLink {
     composes: link from '@magento/pagebuilder/lib/ContentTypes/Banner/banner.module.css';
     min-height: inherit;
 }
+
 .bannerWrapper {
     composes: wrapper from '@magento/pagebuilder/lib/ContentTypes/Banner/banner.module.css';
     min-height: inherit;
 }
+
 .bannerPosterOverlay {
     composes: posterOverlay from '@magento/pagebuilder/lib/ContentTypes/Banner/banner.module.css';
     min-height: inherit;
@@ -57,7 +61,7 @@
     min-height: inherit;
 }
 
-.root :global .slick-track .slick-slide > div {
+.root :global .slick-track .slick-slide>div {
     min-height: inherit;
 }
 
@@ -89,6 +93,7 @@
 .root :global .slick-slide img {
     display: block;
 }
+
 .root :global .slick-slide.slick-loading img {
     display: none;
 }
@@ -130,21 +135,26 @@
     opacity: 0;
     transition: 0.3s;
 }
+
 .root:hover :global .slick-prev,
 .root:hover :global .slick-next {
     opacity: 1;
 }
 
 .root :global .slick-prev {
-    left: 1.6rem;
+    position: absolute;
+    right: 82px;
 }
+
 .root :global .slick-prev:before {
     content: url("data:image/svg+xml;charset=UTF-8, <svg xmlns='http://www.w3.org/2000/svg' width='32px' height='32px' viewBox='0 0 24 24' fill='none' stroke='black' strokeWidth='2' strokeLinecap='round' strokeLinejoin='round'><line x1='19' y1='12' x2='5' y2='12' /><polyline points='12 19 5 12 12 5' /></svg>");
 }
 
 .root :global .slick-next {
-    right: 1.6rem;
+    position: absolute;
+    right: 30px;
 }
+
 .root :global .slick-next:before {
     content: url("data:image/svg+xml;charset=UTF-8, <svg xmlns='http://www.w3.org/2000/svg' width='32px' height='32px' viewBox='0 0 24 24' fill='none' stroke='black' strokeWidth='2' strokeLinecap='round' strokeLinejoin='round'><line x1='5' y1='12' x2='19' y2='12' /><polyline points='12 5 19 12 12 19' /></svg>");
 }
@@ -163,7 +173,7 @@
     outline: none;
     padding: 0;
     position: absolute;
-    top: 50%;
+    top: -60px;
     transform: translate(0, -50%);
     width: 40px;
     z-index: 101;
@@ -177,6 +187,7 @@
     text-align: center;
     width: 100%;
 }
+
 .root :global .slick-dots li {
     cursor: pointer;
     display: inline-block;
@@ -187,6 +198,7 @@
     vertical-align: middle;
     width: 15px;
 }
+
 .root :global .slick-dots li button {
     outline: none;
     background: rgb(var(--venia-global-color-gray-dark));
@@ -201,9 +213,11 @@
     transition: 0.5s;
     width: 15px;
 }
+
 .root :global .slick-dots li button:hover {
     filter: brightness(80%);
 }
+
 .root :global .slick-dots li button:focus {
     outline: 1px solid;
 }

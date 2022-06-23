@@ -130,12 +130,12 @@ const GalleryItem = props => {
                             />
                             {ratingAverage}
                         </Link>
-                        {price_range.maximum_price.discount.percent_off > 0 && (
+                        {price_range.maximum_price?.discount?.percent_off > 0 && (
                             <div className={classes.discount}>
                                 -
                                 {Math.round(
-                                    price_range.maximum_price.discount
-                                        .percent_off
+                                    price_range.maximum_price?.discount
+                                        ?.percent_off
                                 )}
                                 % off
                             </div>
@@ -175,7 +175,7 @@ const GalleryItem = props => {
                                 }
                                 currencyCode={priceSource.currency}
                             />
-                            {price_range.maximum_price.discount.percent_off >
+                            {price_range.maximum_price?.discount?.percent_off >
                                 0 && (
                                 <div className={classes.regularPrice}>
                                     $
@@ -210,7 +210,7 @@ const GalleryItem = props => {
                                 }
                                 currencyCode={priceSource.currency}
                             />
-                            {price_range.maximum_price.discount.percent_off >
+                            {price_range.maximum_price?.discount?.percent_off >
                                 0 && (
                                 <div className={classes.regularPrice}>
                                     $

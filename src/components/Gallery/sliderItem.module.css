@@ -75,6 +75,9 @@
     text-align: center;
     color: #191a1c;
     margin-bottom: 11px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
 .unavailableContainer {
@@ -124,6 +127,39 @@
     position: absolute;
     top: 10px;
     left: 10px;
+}
+
+.regularPrice {
+    margin-left: 10px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    text-decoration-line: line-through;
+    color: rgba(57, 61, 70, 0.8);
+}
+
+.discount {
+    height: 30px;
+    width: 89px;
+    background: #F4442E;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 17px;
+    text-align: center;
+    text-transform: uppercase;
+    position: absolute;
+    top: 340px;
+    left: 10px;
+}
+
+.compareButtonWrap {
+    background: rgba(255, 255, 255, 0.8);
+    height: 44px;
+    width: 44px;
 }
 
 .btnBlock {
