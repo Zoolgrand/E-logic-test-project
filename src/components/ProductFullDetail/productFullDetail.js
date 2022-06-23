@@ -26,7 +26,7 @@ const WishlistButton = React.lazy(() =>
     import('@magento/venia-ui/lib/components/Wishlist/AddToListButton')
 );
 const Options = React.lazy(() =>
-    import('@magento/venia-ui/lib/components/ProductOptions')
+    import('../ProductOptions')
 );
 
 // Correlate a GQL error message to a field. GQL could return a longer error

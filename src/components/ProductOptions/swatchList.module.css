@@ -1,0 +1,4 @@
+.root {
+    composes: root from './tileList.module.css';
+    gap: 4px;
+}

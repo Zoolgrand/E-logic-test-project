@@ -1,0 +1,33 @@
+.root {
+    composes: gap-xs from global;
+    composes: grid from global;
+    composes: grid-flow-col from global;
+    grid-template-columns: repeat(auto-fit, minmax(3rem, max-content));
+}
+
+select {
+    box-sizing: border-box;
+    height: 48px;
+    width: 340px;
+    padding: 15px 15px 8px;
+    background-color: #fff;
+    border: 1px solid #C4C9D3;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 18px;
+    color: #4C4F57;
+    appearance: none;
+}
+
+.selectWrap {
+    position: relative;
+}
+
+.selectWrap img {
+    position: absolute;
+    top: 50%;
+    left: 315px;
+    transform: translateY(-50%);
+}
