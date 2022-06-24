@@ -18,7 +18,8 @@ const AddToCartModal = props => {
 
     const classes = useStyle(defaultClasses, props.classes);
 
-    const imageLink = new URL(item.small_image.url).pathname;
+    const imageLink = new URL(item.small_image.url || item.small_image)
+        .pathname;
 
     const clickHandler = () => {
         history.push('/cart');
@@ -33,8 +34,12 @@ const AddToCartModal = props => {
 
     const itemColorBlock = (
         <div className={classes.itemColorBlock}>
-            <div className={classes.color}>Color: Light aqua</div>
-            <div className={classes.color}>Size: M</div>
+            {item.color && (
+                <div className={classes.color}>Color: {item.color}</div>
+            )}
+            {item.size && (
+                <div className={classes.color}>Size: {item.size}</div>
+            )}
         </div>
     );
 
@@ -54,6 +59,10 @@ const AddToCartModal = props => {
         </Button>
     );
 
+    const itemDescription =
+        item.short_description &&
+        item.short_description.replace('<p>', '').replace('</p>', '');
+
     return (
         <div className={classes.root} onClick={closeModalHandler}>
             <div className={classes.content}>
@@ -69,10 +78,25 @@ const AddToCartModal = props => {
                     <div className={classes.itemInfo}>
                         <div className={classes.itemName}>{item.name}</div>
                         <div className={classes.description}>
-                            Regular Rise 7/8 Leggins In Takara Shine
+                            {itemDescription ||
+                                "This product don't have description"}
                         </div>
                         <div className={classes.itemName}>
-                            ${item.price_range.maximum_price.final_price.value}
+                            $
+                            {
+                                item?.price_range?.maximum_price?.final_price
+                                    ?.value
+                            }
+                            {item.price_range.maximum_price.discount
+                                .percent_off > 0 && (
+                                <div className={classes.regularPrice}>
+                                    $
+                                    {
+                                        item.price_range.maximum_price
+                                            .regular_price.value
+                                    }
+                                </div>
+                            )}
                         </div>
                         {itemColorBlock}
                         {wiewBagButton}
@@ -83,7 +107,11 @@ const AddToCartModal = props => {
                     CUSTOMERS LIKE YOU ALSO BOUGHT...
                 </div>
                 <div className={classes.carousel}>
-                    <Carousel type="Add to cart" items={items} />
+                    {items.length > 0 ? (
+                        <Carousel type="Add to cart" items={items} />
+                    ) : (
+                        "This product don't have related products"
+                    )}
                 </div>
             </div>
         </div>

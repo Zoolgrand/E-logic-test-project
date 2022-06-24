@@ -17,6 +17,7 @@ const AddToCartButton = props => {
         urlSuffix,
         items
     });
+
     const { handleAddToCart, isDisabled, isInStock } = talonProps;
     const { formatMessage } = useIntl();
 

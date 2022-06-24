@@ -48,10 +48,21 @@
 .itemName {
     font-size: 22px;
     font-weight: 500;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.regularPrice{
+    margin-left: 20px;
+    text-decoration: line-through;
+    color: rgba(76, 79, 87, 0.7);
+    font-weight: 400;
+    font-size: 16px;
 }
 
 .description {
     color: rgba(76, 79, 87, 0.7);
+    width: 460px;
 }
 
 .itemInfo {
@@ -64,7 +75,6 @@
     gap: 10px;
     display: flex;
     flex-direction: column;
-    margin: 20px 0px;
 }
 
 .checkoutButton {
