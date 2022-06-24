@@ -25,9 +25,7 @@ import { useHistory } from 'react-router-dom';
 const WishlistButton = React.lazy(() =>
     import('@magento/venia-ui/lib/components/Wishlist/AddToListButton')
 );
-const Options = React.lazy(() =>
-    import('../ProductOptions')
-);
+const Options = React.lazy(() => import('../ProductOptions'));
 
 // Correlate a GQL error message to a field. GQL could return a longer error
 // string but it may contain contextual info such as product id. We can use
@@ -59,15 +57,17 @@ const ProductFullDetail = props => {
         mediaGalleryEntries,
         productDetails,
         customAttributes,
-        wishlistButtonProps
+        wishlistButtonProps,
+        activeTab,
+        setActiveTab
     } = talonProps;
 
     const { formatMessage } = useIntl();
-    const history = useHistory()
+    const history = useHistory();
 
     const bannerBtnClickHandler = () => {
-        history.push('/shop-the-look')
-    }
+        history.push('/shop-the-look');
+    };
 
     const classes = useStyle(defaultClasses, props.classes);
 
@@ -261,7 +261,9 @@ const ProductFullDetail = props => {
             <div className={classes.bannerInfo}>
                 <p className={classes.bannerDiscount}>-30% OFF</p>
                 <p className={classes.bannerTitle}>Big Weekly Sale</p>
-                <p className={classes.bannerDescription}>Start sale 06/12/2021</p>
+                <p className={classes.bannerDescription}>
+                    Start sale 06/12/2021
+                </p>
                 <Button
                     data-cy="ProductFullDetail-addToCartButton"
                     priority="high"
@@ -275,6 +277,93 @@ const ProductFullDetail = props => {
             <img src={bannerImage} />
         </div>
     );
+
+    const tabsObj = [
+        {
+            name: 'description',
+            text: 'Long description'
+        },
+        {
+            name: 'tech',
+            text: 'Technical info'
+        },
+        {
+            name: 'attributes',
+            text: 'Attributes'
+        },
+        {
+            name: 'attachments',
+            text: 'Attachments'
+        }
+    ];
+
+    const tabs = (
+        <div className={classes.tabs}>
+            {tabsObj.map(item => (
+                <p
+                    onClick={() => setActiveTab(item.name)}
+                    className={
+                        activeTab === item.name
+                            ? classes.tab_active
+                            : classes.tab
+                    }
+                >
+                    {item.text}
+                </p>
+            ))}
+        </div>
+    );
+
+    const descriptionContent = (
+        <div className={classes.tabContent}>
+            <section className={classes.description}>
+                <span
+                    data-cy="ProductFullDetail-descriptionTitle"
+                    className={classes.descriptionTitle}
+                >
+                    <FormattedMessage
+                        id={'productFullDetail.description'}
+                        defaultMessage={'Description'}
+                    />
+                </span>
+                <RichContent html={productDetails.description} />
+            </section>
+        </div>
+    );
+
+    const techContent = (
+        <div className={classes.tabContent}>
+            <section className={classes.details}>
+                <span
+                    data-cy="ProductFullDetail-detailsTitle"
+                    className={classes.detailsTitle}
+                >
+                    <FormattedMessage
+                        id={'productFullDetail.details'}
+                        defaultMessage={'Details'}
+                    />
+                </span>
+                <CustomAttributes
+                    customAttributes={customAttributesDetails.list}
+                />
+            </section>
+        </div>
+    );
+
+    const attributesContent = (
+        <div className={classes.tabContent}>attributes</div>
+    );
+
+    const attachmentsContent = (
+        <div className={classes.tabContent}>attachments</div>
+    );
+
+    const activeTabContent = {
+        description: descriptionContent,
+        tech: techContent,
+        attributes: attributesContent,
+        attachments: attachmentsContent
+    };
 
     return (
         <Fragment>
@@ -334,34 +423,10 @@ const ProductFullDetail = props => {
                         <WishlistButton {...wishlistButtonProps} />
                     </Suspense>
                 </section>
-                <section className={classes.description}>
-                    <span
-                        data-cy="ProductFullDetail-descriptionTitle"
-                        className={classes.descriptionTitle}
-                    >
-                        <FormattedMessage
-                            id={'productFullDetail.description'}
-                            defaultMessage={'Description'}
-                        />
-                    </span>
-                    <RichContent html={productDetails.description} />
-                </section>
-                <section className={classes.details}>
-                    <span
-                        data-cy="ProductFullDetail-detailsTitle"
-                        className={classes.detailsTitle}
-                    >
-                        <FormattedMessage
-                            id={'productFullDetail.details'}
-                            defaultMessage={'Details'}
-                        />
-                    </span>
-                    <CustomAttributes
-                        customAttributes={customAttributesDetails.list}
-                    />
-                </section>
                 {pageBuilderAttributes}
             </Form>
+            {tabs}
+            {activeTabContent[activeTab]}
             {productBanner}
             {relatedProductsCarousel}
             {upsaleProductsCarousel}

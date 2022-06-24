@@ -127,6 +127,7 @@
     composes: lg_pl-sm from global;
     composes: lg_pr-sm from global;
     composes: lg_self-stretch from global;
+    border: none;
 }
 
 .descriptionTitle {
@@ -143,6 +144,7 @@
     composes: lg_pl-sm from global;
     composes: lg_pr-sm from global;
     composes: lg_self-stretch from global;
+    border: none;
 }
 
 .detailsPageBuilder {
@@ -268,7 +270,7 @@
     margin-bottom: 56px;
 }
 
-.bannerBtn{
+.bannerBtn {
     background: #393d46;
     border: none;
     height: 48px;
@@ -277,6 +279,41 @@
     font-size: 13px;
     line-height: 16px;
     color: #ffffff;
-    text-transform:uppercase;
+    text-transform: uppercase;
     border-radius: 60px;
+}
+
+.tabs {
+    box-sizing: border-box;
+    height: 54px;
+    width: 720px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.tab {
+    box-sizing: border-box;
+    height: 54px;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+    text-align: center;
+    color: rgba(57, 61, 70, 0.5);
+    width: 25%;
+    cursor: pointer;
+}
+
+.tab_active{
+    composes:tab;
+    color: #393D46;
+    border-bottom: 1px solid  #393D46;;
+}
+
+.tabContent{
+    /* height: 1223px; */
+    width: 1270px;
+    margin-bottom: 130px;
+    border-bottom: 1px solid #E5E8EF;;
 }

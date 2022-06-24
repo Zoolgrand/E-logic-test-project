@@ -348,6 +348,7 @@ export const useProductFullDetail = props => {
         return selectedOptions;
     }, [attributeIdToValuesMap, optionSelections]);
 
+    const [activeTab, setActiveTab] = useState('description');
 
 
 
@@ -578,6 +579,8 @@ const toastMessage = toastMessageItem + 'divider' + toastMessageItems;
         productDetails,
         customAttributes,
         wishlistButtonProps,
-        wishlistItemOptions
+        wishlistItemOptions,
+        activeTab,
+        setActiveTab
     };
 };
