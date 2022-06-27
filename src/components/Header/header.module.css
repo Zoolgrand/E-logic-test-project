@@ -40,7 +40,6 @@
 /* Large screen styles */
 .switchersContainer {
     composes: sm_block from global;
-
 }
 
 .open {
@@ -179,7 +178,6 @@
 }
 
 @keyframes pulse {
-
     0%,
     80%,
     100% {

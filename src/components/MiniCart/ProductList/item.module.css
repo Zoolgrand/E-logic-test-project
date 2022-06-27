@@ -105,13 +105,12 @@
     font-size: 13px;
     line-height: 20px;
     text-decoration-line: line-through;
-    color: rgba(57, 61, 70, 0.8)
+    color: rgba(57, 61, 70, 0.8);
 }
 
 .discount {
     font-weight: 600;
     font-size: 13px;
     line-height: 20px;
-    color: #F4442E;
-
+    color: #f4442e;
 }

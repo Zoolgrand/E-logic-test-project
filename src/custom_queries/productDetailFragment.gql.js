@@ -11,11 +11,11 @@ export const ProductDetailsFragment = gql`
             }
         }
         review_count
-        related_products{
+        related_products {
             id
             uid
             name
-            small_image{
+            small_image {
                 url
             }
             sku
@@ -25,10 +25,10 @@ export const ProductDetailsFragment = gql`
 
             price_range {
                 maximum_price {
-                    discount{
+                    discount {
                         percent_off
                     }
-                    regular_price{
+                    regular_price {
                         currency
                         value
                     }
@@ -39,11 +39,11 @@ export const ProductDetailsFragment = gql`
                 }
             }
         }
-        upsell_products{
+        upsell_products {
             id
             uid
             name
-            small_image{
+            small_image {
                 url
             }
             sku
@@ -53,10 +53,10 @@ export const ProductDetailsFragment = gql`
 
             price_range {
                 maximum_price {
-                    discount{
+                    discount {
                         percent_off
                     }
-                    regular_price{
+                    regular_price {
                         currency
                         value
                     }
@@ -95,10 +95,10 @@ export const ProductDetailsFragment = gql`
         }
         price_range {
             maximum_price {
-                discount{
+                discount {
                     percent_off
                 }
-                regular_price{
+                regular_price {
                     currency
                     value
                 }

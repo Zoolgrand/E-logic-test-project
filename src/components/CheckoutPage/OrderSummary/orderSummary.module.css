@@ -34,7 +34,7 @@
     align-items: center;
     justify-content: space-between;
 }
-.lineItems:last-child{
+.lineItems:last-child {
     margin-top: 24px;
 }
 

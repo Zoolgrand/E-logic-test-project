@@ -76,7 +76,7 @@ const CheckoutPage = props => {
         toggleSignInContent,
         handlePaymentSuccess,
         doneEditing,
-        setDoneEditing,
+        setDoneEditing
     } = talonProps;
 
     const [, { addToast }] = useToasts();

@@ -1,14 +1,65 @@
 .root {
-    composes: px-0 from global;
+    /* composes: px-0 from global;
     composes: py-xs from global;
 
     composes: lg_grid from global;
     composes: lg_grid-flow-row from global;
     composes: lg_items-start from global;
     composes: lg_px-xs from global;
-    composes: lg_py-md from global;
+    composes: lg_py-md from global; */
     font-family: 'Poppins';
     font-style: normal;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 30px;
+    margin-top: 47px;
+    margin-bottom: 160px;
+}
+
+.productTopSection {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.statusBlock {
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 20px;
+    color: #6b7990;
+    display: flex;
+    flex-direction: row;
+    gap: 43px;
+}
+
+.compareWrap {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.compareBtn {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #9c9ea3;
+    border-radius: 50%;
+}
+
+.stockStatus {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 6px;
+}
+
+.review {
 }
 
 @media (min-width: 960px) {
@@ -30,7 +81,7 @@
 }
 
 .section {
-    composes: border-solid from global;
+    /* composes: border-solid from global;
     composes: border-subtle from global;
     composes: border-t-0 from global;
     composes: border-r-0 from global;
@@ -39,44 +90,89 @@
     composes: my-0 from global;
     composes: mx-sm from global;
     composes: px-0 from global;
-    composes: py-xs from global;
+    composes: py-xs from global; */
 }
 
 .sectionTitle {
-    composes: flex from global;
+    /* composes: flex from global;
     composes: font-semibold from global;
     composes: items-center from global;
     composes: leading-normal from global;
     composes: mb-sm from global;
-    composes: text-colorDefault from global;
+    composes: text-colorDefault from global; */
 }
 
 .title {
-    composes: section;
+    /* composes: section;
     composes: gap-2 from global;
     composes: grid from global;
     composes: items-center from global;
     composes: leading-normal from global;
     composes: px-sm from global;
     composes: py-xs from global;
-    grid-area: title;
+    grid-area: title; */
 }
 
 .productName {
-    composes: font-semibold from global;
+    /* composes: font-semibold from global;
     composes: text-colorDefault from global;
 
     composes: lg_font-normal from global;
-    composes: lg_text-xl from global;
+    composes: lg_text-xl from global; */
+    font-weight: 300;
+    font-size: 38px;
+    line-height: 46px;
+    color: #393d46;
+    margin-bottom: 30px;
+}
+
+.stockStatus {
+    margin-bottom: 34px;
+}
+
+.price {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 10px;
+    margin-bottom: 31px;
 }
 
 .productPrice {
-    composes: block from global;
-    composes: mb-2 from global;
+    /* composes: block from global;
+    composes: mb-2 from global; */
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 24px;
+    /* text-align: center; */
+    color: #191a1c;
+}
+
+.regularPrise {
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 26px;
+    text-decoration-line: line-through;
+    color: rgba(57, 61, 70, 0.8);
+}
+
+.discount {
+    font-weight: 600;
+    font-size: 17px;
+    line-height: 26px;
+    color: #f4442e;
+}
+
+.shortDescription {
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 20px;
+    color: #5f6c81;
+    margin-bottom: 32px;
 }
 
 .imageCarousel {
-    grid-area: images;
+    /* grid-area: images;
     grid-column: 1 / 2;
     grid-row: 1 / fold;
     composes: max-w-[640px] from global;
@@ -85,40 +181,72 @@
 
     composes: lg_m-0 from global;
     composes: lg_px-0 from global;
-    composes: lg_py-sm from global;
+    composes: lg_py-sm from global; */
+    width: 784px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 4px;
 }
 
 .options {
-    grid-area: options;
+    /* grid-area: options; */
+    margin-bottom: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 40px;
+}
+
+.topActionCOntainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 50px;
+}
+
+.addToCartButton {
+    width: 340px;
+    height: 48px;
+    background: #393d46;
+    border-radius: 60px;
+
+    font-weight: 600;
+    font-size: 13px;
+    line-height: 16px;
+    text-align: center;
+    text-transform: uppercase;
+    color: #ffffff;
+    margin-top: 40px;
 }
 
 .formErrors {
-    composes: section;
-    grid-area: errors;
+    /* composes: section;
+    grid-area: errors; */
 }
 
 .quantity {
-    composes: section;
-    grid-area: quantity;
+    /* composes: section;
+    grid-area: quantity; */
 }
 
 .quantityTitle {
-    composes: title from '@magento/venia-ui/lib/components/ProductOptions/option.module.css';
+    /* composes: title from '@magento/venia-ui/lib/components/ProductOptions/option.module.css'; */
 }
 
 .actions {
-    composes: gap-y-sm from global;
+    /* composes: gap-y-sm from global;
     composes: grid from global;
     composes: items-center from global;
     composes: justify-items-center from global;
     composes: section;
     grid-area: cart;
 
-    composes: lg_border-b-0 from global;
+    composes: lg_border-b-0 from global; */
 }
 
 .description {
-    composes: section;
+    /* composes: section;
     grid-column: 1 / span 1;
     grid-row: fold / span 1;
 
@@ -127,15 +255,15 @@
     composes: lg_pl-sm from global;
     composes: lg_pr-sm from global;
     composes: lg_self-stretch from global;
-    border: none;
+    border: none; */
 }
 
 .descriptionTitle {
-    composes: sectionTitle;
+    /* composes: sectionTitle; */
 }
 
 .details {
-    composes: section;
+    /* composes: section;
     grid-column: 2 / span 1;
     grid-row: fold / span 1;
 
@@ -144,19 +272,19 @@
     composes: lg_pl-sm from global;
     composes: lg_pr-sm from global;
     composes: lg_self-stretch from global;
-    border: none;
+    border: none; */
 }
 
 .detailsPageBuilder {
-    composes: my-0 from global;
+    /* composes: my-0 from global;
     composes: mx-sm from global;
     composes: px-0 from global;
     composes: py-sm from global;
-    grid-column: 1 / span 2;
+    grid-column: 1 / span 2; */
 }
 
 .detailsPageBuilderList {
-    list-style: none;
+    /* list-style: none; */
 }
 
 @media (min-width: 1024px) {
@@ -170,17 +298,17 @@
 }
 
 .detailsTitle {
-    composes: sectionTitle;
+    /* composes: sectionTitle; */
 }
 
 .related {
-    composes: border-b-0 from global;
+    /* composes: border-b-0 from global;
     composes: section;
-    grid-column: 1 / span 2;
+    grid-column: 1 / span 2; */
 }
 
 .relatedTitle {
-    composes: sectionTitle;
+    /* composes: sectionTitle; */
 }
 
 .quantityRoot {
@@ -189,11 +317,11 @@
     grid-template-columns: 37px 36px 37px;
     composes: justify-start from global;
     width: 110px;
-    border-bottom: 1px solid #393D46;
+    border-bottom: 1px solid #393d46;
 }
 
 .unavailableContainer {
-    composes: bg-subtle from global;
+    /* composes: bg-subtle from global;
     composes: gap-x-2xs from global;
     composes: grid from global;
     composes: grid-flow-col from global;
@@ -202,7 +330,7 @@
     composes: justify-start from global;
     composes: p-3 from global;
     composes: text-subtle from global;
-    composes: w-full from global;
+    composes: w-full from global; */
 }
 
 .productsCarousel {
@@ -215,7 +343,7 @@
     font-weight: 300;
     font-size: 38px;
     line-height: 46px;
-    color: #393D46;
+    color: #393d46;
     margin-bottom: 12px;
 }
 
@@ -223,7 +351,7 @@
     font-weight: 400;
     font-size: 15px;
     line-height: 18px;
-    color: #5F6C81;
+    color: #5f6c81;
     margin-bottom: 46px;
 }
 
@@ -236,7 +364,7 @@
     align-items: center;
     justify-content: space-between;
     margin-bottom: 123px;
-    background: #F6F7FB;
+    background: #f6f7fb;
 }
 
 .bannerInfo {
@@ -250,7 +378,7 @@
     font-size: 20px;
     line-height: 30px;
     text-transform: uppercase;
-    color: #FF5E5B;
+    color: #ff5e5b;
     margin-bottom: 22px;
 }
 
@@ -258,7 +386,7 @@
     font-weight: 600;
     font-size: 90px;
     line-height: 76px;
-    color: #191A1C;
+    color: #191a1c;
     margin-bottom: 22px;
 }
 
@@ -266,7 +394,7 @@
     font-weight: 400;
     font-size: 17px;
     line-height: 20px;
-    color: #5F6C81;
+    color: #5f6c81;
     margin-bottom: 56px;
 }
 
@@ -303,17 +431,19 @@
     color: rgba(57, 61, 70, 0.5);
     width: 25%;
     cursor: pointer;
+    border-bottom: 1px solid #e5e8ef;
 }
 
-.tab_active{
-    composes:tab;
-    color: #393D46;
-    border-bottom: 1px solid  #393D46;;
+.tab_active {
+    composes: tab;
+    color: #393d46;
+    border-bottom: 1px solid #393d46;
 }
 
-.tabContent{
+.tabContent {
     /* height: 1223px; */
     width: 1270px;
     margin-bottom: 130px;
-    border-bottom: 1px solid #E5E8EF;;
+    border-bottom: 1px solid #e5e8ef;
+    margin-top: 91px;
 }

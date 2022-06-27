@@ -1,6 +1,5 @@
 .root {
     composes: hidden from global;
-
 }
 
 /* prettier-ignore */
@@ -63,7 +62,6 @@
 }
 
 @media (max-width: 479px) {
-
     /* TODO @TW: cannot compose */
     .buttonContainer button {
         min-width: 8rem;

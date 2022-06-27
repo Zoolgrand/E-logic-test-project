@@ -2,18 +2,18 @@
     /* composes: border-b from global;
     composes: border-solid from global;
     composes: border-subtle from global; */
-    composes: mx-sm from global;
-    composes: my-0 from global;
+    /* composes: mx-sm from global; */
+    /* composes: my-0 from global; */
     /* composes: px-0 from global; */
     /* composes: py-sm from global; */
-    margin-bottom: 40px;
+    /* margin-bottom: 40px; */
 }
 
 .title {
     font-weight: 500;
     font-size: 15px;
     line-height: 18px;
-    color: #191A1C;
+    color: #191a1c;
 }
 
 .selection {

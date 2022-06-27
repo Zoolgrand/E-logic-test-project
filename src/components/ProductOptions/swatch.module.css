@@ -14,7 +14,7 @@
 .root_selected {
     composes: root;
     border: 1px solid white;
-    outline: 1px solid #393D46;
+    outline: 1px solid #393d46;
 }
 
 .root_focused {

@@ -7,7 +7,7 @@
     width: 790px;
     font-family: 'Poppins';
     font-style: normal;
-    background: #F6F7FB;
+    background: #f6f7fb;
     box-sizing: border-box;
     padding: 37px 40px 40px;
     border: none;
@@ -30,8 +30,8 @@
     padding: 37px 40px 40px;
 }
 
-.rootGuestTab{
-    composes:root_editMode;
+.rootGuestTab {
+    composes: root_editMode;
     margin-top: 0px;
 }
 

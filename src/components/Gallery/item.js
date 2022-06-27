@@ -130,7 +130,8 @@ const GalleryItem = props => {
                             />
                             {ratingAverage}
                         </Link>
-                        {price_range.maximum_price?.discount?.percent_off > 0 && (
+                        {price_range.maximum_price?.discount?.percent_off >
+                            0 && (
                             <div className={classes.discount}>
                                 -
                                 {Math.round(

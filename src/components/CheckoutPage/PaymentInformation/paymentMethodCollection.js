@@ -6,16 +6,15 @@
  * @see [Payment definition object]{@link PaymentDefinition}
  */
 
-import checkmo from './checkmo'
+import checkmo from './checkmo';
 import cashondelivery from './cashondelivery';
-import purchaseorder from './creditCard'
+import purchaseorder from './creditCard';
 
 export default {
     checkmo,
     cashondelivery,
     purchaseorder
 };
-
 
 /**
  * A payment definition object that describes a payment in your storefront.

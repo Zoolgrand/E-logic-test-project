@@ -15,15 +15,15 @@ export const ProductListFragment = gql`
                     url
                 }
                 stock_status
-                price_range{
-                    maximum_price{
-                        discount{
+                price_range {
+                    maximum_price {
+                        discount {
                             percent_off
                         }
-                        final_price{
+                        final_price {
                             value
                         }
-                        regular_price{
+                        regular_price {
                             value
                         }
                     }

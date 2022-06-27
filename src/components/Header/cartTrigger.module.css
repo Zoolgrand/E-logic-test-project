@@ -1,5 +1,4 @@
 .counter {
-
     position: absolute;
     height: 22px;
     width: 22px;
@@ -11,7 +10,7 @@
     font-weight: 600;
     font-size: 13px;
     line-height: 20px;
-    color: #FFFFFF;
+    color: #ffffff;
     display: flex;
     align-items: center;
     justify-content: center;

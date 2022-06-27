@@ -350,8 +350,6 @@ export const useProductFullDetail = props => {
 
     const [activeTab, setActiveTab] = useState('description');
 
-
-
     const selectedOptionsValuesArray = useMemo(() => {
         const selectedOptions = [];
 
@@ -368,22 +366,22 @@ export const useProductFullDetail = props => {
         return selectedOptions;
     }, [attributeIdToValuesMap, optionSelections]);
 
-const itemForModal = {
-    id:product.id,
-    name:product.name,
-    price_range:product.price_range,
-    sku:product.sku,
-    small_image:product.small_image,
-    uid:product.uid,
-    url_key:product.url_key,
-    short_description:product.short_description.html,
-    color:selectedOptionsValuesArray[0]||null,
-    size:selectedOptionsValuesArray[1]||null
-}
+    const itemForModal = {
+        id: product.id,
+        name: product.name,
+        price_range: product.price_range,
+        sku: product.sku,
+        small_image: product.small_image,
+        uid: product.uid,
+        url_key: product.url_key,
+        short_description: product.short_description.html,
+        color: selectedOptionsValuesArray[0] || null,
+        size: selectedOptionsValuesArray[1] || null
+    };
 
-const toastMessageItem = JSON.stringify(itemForModal);
-const toastMessageItems = JSON.stringify(product.related_products);
-const toastMessage = toastMessageItem + 'divider' + toastMessageItems;
+    const toastMessageItem = JSON.stringify(itemForModal);
+    const toastMessageItems = JSON.stringify(product.related_products);
+    const toastMessage = toastMessageItem + 'divider' + toastMessageItems;
 
     const handleAddToCart = useCallback(
         async formValues => {
@@ -544,16 +542,7 @@ const toastMessage = toastMessageItem + 'divider' + toastMessageItems;
     }, [product, productType, selectedOptionsArray]);
 
     const wishlistButtonProps = {
-        buttonText: isSelected =>
-            isSelected
-                ? formatMessage({
-                      id: 'wishlistButton.addedText',
-                      defaultMessage: 'Added to Favorites'
-                  })
-                : formatMessage({
-                      id: 'wishlistButton.addText',
-                      defaultMessage: 'Add to Favorites'
-                  }),
+        buttonText: '',
         item: wishlistItemOptions,
         storeConfig: storeConfigData ? storeConfigData.storeConfig : {}
     };

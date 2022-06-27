@@ -9,7 +9,7 @@
     color: #ffffff;
     border-radius: 60px;
 }
-.header{
+.header {
     composes: h-[3.5rem] from global;
     composes: pl-4 from global;
     composes: pr-3 from global;

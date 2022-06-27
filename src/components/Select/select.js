@@ -11,9 +11,9 @@ import { FieldIcons, Message } from '@magento/venia-ui/lib/components/Field';
 import defaultClasses from './select.module.css';
 import Icon from '@magento/venia-ui/lib/components/Icon';
 // import { ChevronDown as ChevronDownIcon } from 'react-feather';
-import dropdownArrow from '../../assets/dropdownArrow.svg'
+import dropdownArrow from '../../assets/dropdownArrow.svg';
 
-const arrow = <img src={dropdownArrow}  />;
+const arrow = <img src={dropdownArrow} />;
 
 const Select = props => {
     const {

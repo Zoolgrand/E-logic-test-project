@@ -61,7 +61,7 @@
     min-height: inherit;
 }
 
-.root :global .slick-track .slick-slide>div {
+.root :global .slick-track .slick-slide > div {
     min-height: inherit;
 }
 

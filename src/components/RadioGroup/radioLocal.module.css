@@ -30,7 +30,7 @@
 }
 
 input:checked {
-    background-color: #393D46;
+    background-color: #393d46;
 }
 
 .icon {
@@ -42,7 +42,7 @@ input:checked {
 
 /* TODO @TW: cannot compose */
 .icon svg {
-    stroke: #393D46;
+    stroke: #393d46;
     height: 14px;
     width: 14px;
 }
@@ -54,8 +54,8 @@ input:checked {
 }
 
 /* TODO @TW: cannot compose */
-.input:checked+.icon svg {
-    stroke: #393D46;
+.input:checked + .icon svg {
+    stroke: #393d46;
 }
 
 .input_shimmer {

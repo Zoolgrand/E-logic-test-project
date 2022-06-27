@@ -9,16 +9,16 @@
     composes: leading-normal from global;
     grid-template-areas: 'input label';
     grid-template-columns: min-content 1fr;
-  
+
     height: 74px;
     align-items: center;
     box-sizing: border-box;
-    border-top: 1px solid #E5E8EF;
+    border-top: 1px solid #e5e8ef;
     gap: 8px;
 }
 
-.radioContainer:last-child{
-    border-bottom: 1px solid #E5E8EF;
+.radioContainer:last-child {
+    border-bottom: 1px solid #e5e8ef;
 }
 
 .message {

@@ -2,10 +2,9 @@
     composes: gap-xs from global;
     composes: grid from global;
     composes: grid-cols-1 from global;
-    background: #F6F7FB;
+    background: #f6f7fb;
     margin-top: 20px;
     padding: 37px 40px 0px;
-
 }
 
 .root_card_open {
@@ -40,6 +39,6 @@
     font-weight: 600;
     font-size: 17px;
     line-height: 20px;
-    color: #191A1C;
+    color: #191a1c;
     margin-bottom: 36px;
 }

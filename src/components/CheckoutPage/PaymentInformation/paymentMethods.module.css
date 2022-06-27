@@ -6,13 +6,11 @@
 .radio_group {
     display: flex;
     flex-direction: column;
-
 }
 
 .payment_method {
-
-    border-top: 1px solid #E5E8EF;
-    border-bottom: 1px solid #E5E8EF;
+    border-top: 1px solid #e5e8ef;
+    border-bottom: 1px solid #e5e8ef;
     height: 74px;
     display: flex;
     justify-content: space-between;
@@ -20,7 +18,7 @@
     font-weight: 400;
     font-size: 15px;
     line-height: 18px;
-    color: #191A1C;
+    color: #191a1c;
 }
 
 .payment_method:last-child {

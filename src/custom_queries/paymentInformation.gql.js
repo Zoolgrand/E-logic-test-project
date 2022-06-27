@@ -137,7 +137,10 @@ export const SET_CHECKMO_PAYMENT_METHOD_ON_CART = gql`
 export const SET_CASHONDELIVERY_PAYMENT_METHOD_ON_CART = gql`
     mutation setPaymentMethodOnCart($cartId: String!) {
         setPaymentMethodOnCart(
-            input: { cart_id: $cartId, payment_method: { code: "cashondelivery" } }
+            input: {
+                cart_id: $cartId
+                payment_method: { code: "cashondelivery" }
+            }
         ) {
             cart {
                 id
@@ -155,5 +158,5 @@ export default {
     getPaymentInformationQuery: GET_PAYMENT_INFORMATION,
     setBillingAddressMutation: SET_BILLING_ADDRESS,
     setFreePaymentMethodMutation: SET_FREE_PAYMENT_METHOD_ON_CART,
-    setCheckmoPaymentMethodMutation:SET_CHECKMO_PAYMENT_METHOD_ON_CART
+    setCheckmoPaymentMethodMutation: SET_CHECKMO_PAYMENT_METHOD_ON_CART
 };

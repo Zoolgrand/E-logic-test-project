@@ -11,13 +11,13 @@ select {
     width: 340px;
     padding: 15px 15px 8px;
     background-color: #fff;
-    border: 1px solid #C4C9D3;
+    border: 1px solid #c4c9d3;
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 500;
     font-size: 15px;
     line-height: 18px;
-    color: #4C4F57;
+    color: #4c4f57;
     appearance: none;
 }
 

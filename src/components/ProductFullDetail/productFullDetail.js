@@ -20,7 +20,11 @@ import CarouselCustom from '../../contentTypes/Products/Carousel';
 import CustomAttributes from './CustomAttributes';
 import defaultClasses from './productFullDetail.module.css';
 import bannerImage from '../../assets/Banner.png';
+import Image from '@magento/venia-ui/lib/components/Image';
 import { useHistory } from 'react-router-dom';
+import stockStatusIcon from '../../assets/stockStatus.svg';
+
+import AddToCompareButton from '../AddToCompareButton/addToCompareButton';
 
 const WishlistButton = React.lazy(() =>
     import('@magento/venia-ui/lib/components/Wishlist/AddToListButton')
@@ -62,6 +66,8 @@ const ProductFullDetail = props => {
         setActiveTab
     } = talonProps;
 
+    console.log(product);
+
     const { formatMessage } = useIntl();
     const history = useHistory();
 
@@ -69,7 +75,18 @@ const ProductFullDetail = props => {
         history.push('/shop-the-look');
     };
 
+    const compareButtonProps = {
+        buttonText: '',
+        item: {
+            id: product.id,
+            name: product.name
+        }
+    };
+
     const classes = useStyle(defaultClasses, props.classes);
+
+    const shouldShowDiscount =
+        product.price_range.maximum_price.discount.percent_off > 0;
 
     const options = isProductConfigurable(product) ? (
         <Suspense fallback={<ProductOptionsShimmer />}>
@@ -86,6 +103,22 @@ const ProductFullDetail = props => {
             currentProduct={productDetails.name}
         />
     ) : null;
+
+    const stockStatus = !isOutOfStock ? (
+        <div className={classes.stockStatus}>
+            <img src={stockStatusIcon} />
+            In stock
+        </div>
+    ) : (
+        <div className={classes.stockStatus}>Out of stock</div>
+    );
+
+    const reviews = (
+        <div className={classes.review}>
+            {' '}
+            <p>99 Reviews</p>
+        </div>
+    );
 
     // Fill a map with field/section -> error.
     const errors = new Map();
@@ -195,6 +228,7 @@ const ProductFullDetail = props => {
         <Button
             data-cy="ProductFullDetail-addToCartButton"
             disabled={isAddToCartDisabled}
+            classes={{ root_highPriority: classes.addToCartButton }}
             priority="high"
             type="submit"
         >
@@ -365,66 +399,111 @@ const ProductFullDetail = props => {
         attachments: attachmentsContent
     };
 
+    const images = mediaGalleryEntries.map(item => (
+        <Image resource={item.file} width={390} />
+    ));
+
     return (
         <Fragment>
             {breadcrumbs}
-            <Form
-                className={classes.root}
-                data-cy="ProductFullDetail-root"
-                onSubmit={handleAddToCart}
-            >
-                <section className={classes.imageCarousel}>
-                    <Carousel images={mediaGalleryEntries} />
-                </section>
-                <section className={classes.title}>
-                    <h1
-                        className={classes.productName}
-                        data-cy="ProductFullDetail-productName"
-                    >
-                        {productDetails.name}
-                    </h1>
-                    <p
-                        data-cy="ProductFullDetail-productPrice"
-                        className={classes.productPrice}
-                    >
-                        <Price
-                            currencyCode={productDetails.price.currency}
-                            value={productDetails.price.value}
+            <div className={classes.productConfig}>
+                <Form
+                    className={classes.root}
+                    data-cy="ProductFullDetail-root"
+                    onSubmit={handleAddToCart}
+                >
+                    <div>
+                        <section className={classes.imageCarousel}>
+                            {images}
+                        </section>
+                    </div>
+                    <div className={classes.productTopSection}>
+                        <section className={classes.title}>
+                            <h1
+                                className={classes.productName}
+                                data-cy="ProductFullDetail-productName"
+                            >
+                                {productDetails.name}
+                            </h1>
+                            <div className={classes.statusBlock}>
+                                {reviews}
+                                {stockStatus}
+                            </div>
+                            <div className={classes.price}>
+                                <p
+                                    data-cy="ProductFullDetail-productPrice"
+                                    className={classes.productPrice}
+                                >
+                                    <Price
+                                        currencyCode={
+                                            productDetails.price.currency
+                                        }
+                                        value={productDetails.price.value}
+                                    />
+                                </p>
+                                {shouldShowDiscount && (
+                                    <div className={classes.regularPrise}>
+                                        $
+                                        {
+                                            product.price_range.maximum_price
+                                                .regular_price.value
+                                        }
+                                        .00
+                                    </div>
+                                )}
+                                {shouldShowDiscount && (
+                                    <div className={classes.discount}>
+                                        -
+                                        {Math.round(
+                                            product.price_range.maximum_price
+                                                .discount.percent_off
+                                        )}
+                                        %
+                                    </div>
+                                )}
+                            </div>
+
+                            <div className={classes.shortDescription}>
+                                {shortDescription}
+                            </div>
+                        </section>
+                        <FormError
+                            classes={{
+                                root: classes.formErrors
+                            }}
+                            errors={errors.get('form') || []}
                         />
-                    </p>
-                    {shortDescription}
-                </section>
-                <FormError
-                    classes={{
-                        root: classes.formErrors
-                    }}
-                    errors={errors.get('form') || []}
-                />
-                <section className={classes.options}>{options}</section>
-                <section className={classes.quantity}>
-                    <span
-                        data-cy="ProductFullDetail-quantityTitle"
-                        className={classes.quantityTitle}
-                    >
-                        <FormattedMessage
-                            id={'global.quantity'}
-                            defaultMessage={'Quantity'}
-                        />
-                    </span>
-                    <QuantityStepper
-                        classes={{ root: classes.quantityRoot }}
-                        min={1}
-                        message={errors.get('quantity')}
-                    />
-                </section>
-                <section className={classes.actions}>
-                    {cartActionContent}
-                    <Suspense fallback={null}>
-                        <WishlistButton {...wishlistButtonProps} />
-                    </Suspense>
-                </section>
-                {pageBuilderAttributes}
-            </Form>
+                        <section className={classes.options}>{options}</section>
+
+                        <section className={classes.actions}>
+                            <div className={classes.topActionCOntainer}>
+                                <QuantityStepper
+                                    classes={{ root: classes.quantityRoot }}
+                                    min={1}
+                                    message={errors.get('quantity')}
+                                />
+                                <div className={classes.compareWrap}>
+                                    <AddToCompareButton
+                                        {...compareButtonProps}
+                                        classes={{
+                                            compareButtonWrap:
+                                                classes.compareBtn
+                                        }}
+                                    />
+                                </div>
+
+                                <Suspense fallback={null}>
+                                    <WishlistButton {...wishlistButtonProps} />
+                                </Suspense>
+                            </div>
+
+                            {cartActionContent}
+                        </section>
+
+                        {pageBuilderAttributes}
+                    </div>
+                </Form>
+            </div>
             {tabs}
             {activeTabContent[activeTab]}
             {productBanner}

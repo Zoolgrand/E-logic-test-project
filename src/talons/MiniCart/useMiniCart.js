@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 import { useQuery, useMutation } from '@apollo/client';
 
 import { useCartContext } from '@magento/peregrine/lib/context/cart';
-import { deriveErrorMessage } from '@magento/peregrine/lib/util/deriveErrorMessage'
+import { deriveErrorMessage } from '@magento/peregrine/lib/util/deriveErrorMessage';
 import mergeOperations from '@magento/peregrine/lib/util/shallowMerge';
 import DEFAULT_OPERATIONS from './miniCart.gql';
 

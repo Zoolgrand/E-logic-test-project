@@ -52,7 +52,7 @@
     flex-direction: row;
     align-items: center;
 }
-.regularPrice{
+.regularPrice {
     margin-left: 20px;
     text-decoration: line-through;
     color: rgba(76, 79, 87, 0.7);

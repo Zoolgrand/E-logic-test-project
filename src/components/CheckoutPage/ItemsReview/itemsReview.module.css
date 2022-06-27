@@ -7,7 +7,8 @@
     /* composes: grid from global; */
 }
 
-.total_quantity {}
+.total_quantity {
+}
 
 .total_quantity_amount {
     composes: font-semibold from global;
@@ -37,7 +38,7 @@
     font-weight: 300;
     font-size: 23px;
     line-height: 28px;
-    color: #393D46;
+    color: #393d46;
 }
 
 .editContainer p {
@@ -45,5 +46,5 @@
     font-weight: 400;
     font-size: 15px;
     line-height: 18px;
-    color: rgba(57, 61, 70, 0.9)
+    color: rgba(57, 61, 70, 0.9);
 }

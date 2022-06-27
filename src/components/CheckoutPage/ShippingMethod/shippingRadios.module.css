@@ -10,7 +10,7 @@
     font-weight: 400;
     font-size: 15px;
     line-height: 18px;
-    color: #191A1C;
+    color: #191a1c;
     composes: sm_grid-cols-autoAuto from global;
 }
 
@@ -27,5 +27,5 @@
     font-weight: 400;
     font-size: 15px;
     line-height: 18px;
-    color: #191A1C;
+    color: #191a1c;
 }
