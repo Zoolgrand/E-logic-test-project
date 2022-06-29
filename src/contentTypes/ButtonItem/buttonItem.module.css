@@ -1,0 +1,16 @@
+.linkButton {
+    text-decoration: underline;
+}
+
+.bannerButton {
+    background: #393d46;
+    border: none;
+    height: 48px;
+    width: 230px;
+    font-weight: 600;
+    font-size: 13px;
+    line-height: 16px;
+    color: #ffffff;
+    text-transform: uppercase;
+    border-radius: 60px;
+}

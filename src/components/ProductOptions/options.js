@@ -13,7 +13,6 @@ const Options = props => {
     });
 
     const { handleSelectionChange, selectedValueMap } = talonProps;
-
     // Render a list of options passing in any pre-selected values.
     return options.map(option => (
         <Option

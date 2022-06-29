@@ -10,7 +10,7 @@ const Notifications = () => {
             {toasts
                 .filter(toast => toast.visible)
                 .map(toast => (
-                    <AddToCartModal message={toast.message} />
+                    <AddToCartModal key={toast.id} message={toast.message} />
                 ))}
         </div>
     );

@@ -349,6 +349,7 @@ export const useProductFullDetail = props => {
     }, [attributeIdToValuesMap, optionSelections]);
 
     const [activeTab, setActiveTab] = useState('description');
+    const [rating, setRating] = useState(0);
 
     const selectedOptionsValuesArray = useMemo(() => {
         const selectedOptions = [];
@@ -365,6 +366,8 @@ export const useProductFullDetail = props => {
         });
         return selectedOptions;
     }, [attributeIdToValuesMap, optionSelections]);
+
+    
 
     const itemForModal = {
         id: product.id,
@@ -570,6 +573,8 @@ export const useProductFullDetail = props => {
         wishlistButtonProps,
         wishlistItemOptions,
         activeTab,
-        setActiveTab
+        setActiveTab,
+        rating,
+        setRating
     };
 };

@@ -68,7 +68,23 @@ const Option = props => {
     return (
         <div className={classes.root} data-cy="ProductOptions-Option-root">
             <span className={classes.title}>
-                {label}: {selectedValueText}
+                {attribute_code === 'fashion_color' && (
+                    <div className={classes.colorBlockTitle}>
+                        Colour: {selectedValueText}
+                    </div>
+                )}
+
+                {attribute_code === 'fashion_size' && (
+                    <div className={classes.sizeBlockTitle}>
+                        <span>
+                            {label}
+                            <span style={{ color: '#F4442E' }}>*</span>
+                        </span>
+                        <span className={classes.sizeDescription}>
+                            Size chart
+                        </span>
+                    </div>
+                )}
             </span>
             <ValueList
                 getItemKey={getItemKey}

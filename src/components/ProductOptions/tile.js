@@ -12,13 +12,10 @@ const Tile = props => {
 export default Tile;
 
 Tile.propTypes = {
-    hasFocus: bool,
-    isSelected: bool,
     item: shape({
         label: string.isRequired,
         value_index: oneOfType([number, string]).isRequired
-    }).isRequired,
-    onClick: func.isRequired
+    }).isRequired
 };
 
 Tile.defaultProps = {

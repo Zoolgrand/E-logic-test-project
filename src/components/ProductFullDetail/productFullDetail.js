@@ -3,6 +3,7 @@ import { FormattedMessage, useIntl } from 'react-intl';
 import { arrayOf, bool, number, shape, string } from 'prop-types';
 import { Form } from 'informed';
 import { Info } from 'react-feather';
+import { useQuery, gql } from '@apollo/client';
 
 import Price from '@magento/venia-ui/lib/components/Price';
 import { useProductFullDetail } from '../../talons/ProductFullDetail/useProductFullDetail';
@@ -11,7 +12,6 @@ import { isProductConfigurable } from '@magento/peregrine/lib/util/isProductConf
 import { useStyle } from '@magento/venia-ui/lib/classify';
 import Breadcrumbs from '../Breadcrumbs';
 import Button from '../Button';
-import Carousel from '@magento/venia-ui/lib/components/ProductImageCarousel';
 import FormError from '@magento/venia-ui/lib/components/FormError';
 import QuantityStepper from '../QuantityStepper';
 import RichContent from '@magento/venia-ui/lib/components/RichContent/richContent';
@@ -19,10 +19,12 @@ import { ProductOptionsShimmer } from '@magento/venia-ui/lib/components/ProductO
 import CarouselCustom from '../../contentTypes/Products/Carousel';
 import CustomAttributes from './CustomAttributes';
 import defaultClasses from './productFullDetail.module.css';
-import bannerImage from '../../assets/Banner.png';
+// import bannerImage from '../../assets/Banner.png';
 import Image from '@magento/venia-ui/lib/components/Image';
-import { useHistory } from 'react-router-dom';
+// import { useHistory } from 'react-router-dom';
 import stockStatusIcon from '../../assets/stockStatus.svg';
+import starActiveIcon from '../../assets/starActive.svg';
+import starDisabledIcon from '../../assets/starDisabled.svg';
 
 import AddToCompareButton from '../AddToCompareButton/addToCompareButton';
 
@@ -45,6 +47,17 @@ const ERROR_FIELD_TO_MESSAGE_MAPPING = {
     quantity: 'The requested quantity is not available.'
 };
 
+const GET_CONTACT_PAGE_CMS_BLOCKS = gql`
+    query GetContactPageCmsBlocks($cmsBlockIdentifiers: [String]) {
+        cmsBlocks(identifiers: $cmsBlockIdentifiers) {
+            items {
+                content
+                identifier
+            }
+        }
+    }
+`;
+
 const ProductFullDetail = props => {
     const { product } = props;
 
@@ -63,17 +76,39 @@ const ProductFullDetail = props => {
         customAttributes,
         wishlistButtonProps,
         activeTab,
-        setActiveTab
+        setActiveTab,
+        rating,
+        setRating
     } = talonProps;
 
-    console.log(product);
+    const starsBlockItems = [
+        { value: 1 },
+        { value: 2 },
+        { value: 3 },
+        { value: 4 },
+        { value: 5 }
+    ];
+
+    const ratingBlock = starsBlockItems.map(item => (
+        <button
+            key={item.value}
+            type="button"
+            onClick={() => {
+                setRating(item.value);
+            }}
+        >
+            <img
+                src={item.value <= rating ? starActiveIcon : starDisabledIcon}
+            />
+        </button>
+    ));
 
     const { formatMessage } = useIntl();
-    const history = useHistory();
+    // const history = useHistory();
 
-    const bannerBtnClickHandler = () => {
-        history.push('/shop-the-look');
-    };
+    // const bannerBtnClickHandler = () => {
+    //     history.push('/shop-the-look');
+    // };
 
     const compareButtonProps = {
         buttonText: '',
@@ -82,6 +117,15 @@ const ProductFullDetail = props => {
             name: product.name
         }
     };
+
+    const cmsBlockIdentifiers = ['productBanner'];
+
+    const { data: cmsBlocksData } = useQuery(GET_CONTACT_PAGE_CMS_BLOCKS, {
+        variables: {
+            cmsBlockIdentifiers
+        },
+        fetchPolicy: 'cache-and-network'
+    });
 
     const classes = useStyle(defaultClasses, props.classes);
 
@@ -115,8 +159,9 @@ const ProductFullDetail = props => {
 
     const reviews = (
         <div className={classes.review}>
-            {' '}
-            <p>99 Reviews</p>
+            <div className={classes.ratingBlock}>{ratingBlock}</div>
+            <p>{product.review_count} Reviews</p>
+            <div className={classes.verticalDivider} />
         </div>
     );
 
@@ -228,7 +273,11 @@ const ProductFullDetail = props => {
         <Button
             data-cy="ProductFullDetail-addToCartButton"
             disabled={isAddToCartDisabled}
-            classes={{ root_highPriority: classes.addToCartButton }}
+            classes={
+                !isAddToCartDisabled
+                    ? { root_highPriority: classes.addToCartButton }
+                    : { root_highPriority: classes.addToCartButton_disabled }
+            }
             priority="high"
             type="submit"
         >
@@ -290,27 +339,27 @@ const ProductFullDetail = props => {
             </div>
         ) : null;
 
-    const productBanner = (
-        <div className={classes.productBanner}>
-            <div className={classes.bannerInfo}>
-                <p className={classes.bannerDiscount}>-30% OFF</p>
-                <p className={classes.bannerTitle}>Big Weekly Sale</p>
-                <p className={classes.bannerDescription}>
-                    Start sale 06/12/2021
-                </p>
-                <Button
-                    data-cy="ProductFullDetail-addToCartButton"
-                    priority="high"
-                    type="button"
-                    onClick={bannerBtnClickHandler}
-                    classes={{ root_highPriority: classes.bannerBtn }}
-                >
-                    Show More
-                </Button>
-            </div>
-            <img src={bannerImage} />
-        </div>
-    );
+    // const productBanner = (
+    //     <div className={classes.productBanner}>
+    //         <div className={classes.bannerInfo}>
+    //             <p className={classes.bannerDiscount}>-30% OFF</p>
+    //             <p className={classes.bannerTitle}>Big Weekly Sale</p>
+    //             <p className={classes.bannerDescription}>
+    //                 Start sale 06/12/2021
+    //             </p>
+    //             <Button
+    //                 data-cy="ProductFullDetail-addToCartButton"
+    //                 priority="high"
+    //                 type="button"
+    //                 onClick={bannerBtnClickHandler}
+    //                 classes={{ root_highPriority: classes.bannerBtn }}
+    //             >
+    //                 Show More
+    //             </Button>
+    //         </div>
+    //         <img src={bannerImage} />
+    //     </div>
+    // );
 
     const tabsObj = [
         {
@@ -332,20 +381,24 @@ const ProductFullDetail = props => {
     ];
 
     const tabs = (
-        <div className={classes.tabs}>
-            {tabsObj.map(item => (
-                <p
-                    onClick={() => setActiveTab(item.name)}
-                    className={
-                        activeTab === item.name
-                            ? classes.tab_active
-                            : classes.tab
-                    }
-                >
-                    {item.text}
-                </p>
-            ))}
-        </div>
+        <>
+            <div className={classes.tabs}>
+                {tabsObj.map(item => (
+                    <p
+                        key={item.name}
+                        onClick={() => setActiveTab(item.name)}
+                        className={
+                            activeTab === item.name
+                                ? classes.tab_active
+                                : classes.tab
+                        }
+                    >
+                        {item.text}
+                    </p>
+                ))}
+            </div>
+            <div className={classes.border} />
+        </>
     );
 
     const descriptionContent = (
@@ -385,11 +438,38 @@ const ProductFullDetail = props => {
     );
 
     const attributesContent = (
-        <div className={classes.tabContent}>attributes</div>
+        <div className={classes.tabContent}>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis
+                cursus nisl sit amet mi accumsan placerat. Phasellus in augue
+                pellentesque, porta ipsum nec, molestie augue. Ut gravida
+                vulputate venenatis. Donec maximus pellentesque condimentum.
+                Morbi eu nunc eget ante rutrum egestas. Sed posuere dui dictum
+                nulla facilisis maximus. Donec vitae ipsum at tellus fermentum
+                vehicula ut eget risus. Duis sed mauris arcu. Phasellus at mi ac
+                arcu placerat tempus. Nunc suscipit ultricies risus, ac pretium
+                ex tincidunt vel. Aenean vulputate felis non elit egestas
+                vehicula. Ut sed nisi vel nisl porttitor porta.
+            </p>
+        </div>
     );
 
     const attachmentsContent = (
-        <div className={classes.tabContent}>attachments</div>
+        <div className={classes.tabContent}>
+            <p>
+                Curabitur risus est, varius id sollicitudin ut, scelerisque ac
+                erat. Donec tempus imperdiet sagittis. Nulla dolor neque,
+                tincidunt non erat in, mattis varius nisi. Donec vestibulum,
+                tellus vitae cursus feugiat, dolor sapien scelerisque arcu,
+                vitae efficitur nibh lorem a lectus. Donec facilisis id neque
+                vitae gravida. Vestibulum vitae turpis metus. Morbi imperdiet
+                eleifend semper. Proin bibendum pharetra leo, vitae mollis erat
+                laoreet rhoncus. Phasellus aliquet pharetra tortor vel congue.
+                Duis rutrum neque eget magna pharetra auctor. Duis mattis tortor
+                at rhoncus porta. Pellentesque ultrices bibendum ligula in
+                viverra. Nam finibus aliquet blandit.
+            </p>
+        </div>
     );
 
     const activeTabContent = {
@@ -400,7 +480,12 @@ const ProductFullDetail = props => {
     };
 
     const images = mediaGalleryEntries.map(item => (
-        <Image resource={item.file} width={390} />
+        <Image
+            key={item.uid}
+            resource={item.file}
+            alt={product.name}
+            width={390}
+        />
     ));
 
     return (
@@ -506,7 +591,11 @@ const ProductFullDetail = props => {
             </div>
             {tabs}
             {activeTabContent[activeTab]}
-            {productBanner}
+            {/* {productBanner} */}
+
+            {cmsBlocksData && (
+                <RichContent html={cmsBlocksData.cmsBlocks.items[0].content} />
+            )}
             {relatedProductsCarousel}
             {upsaleProductsCarousel}
         </Fragment>

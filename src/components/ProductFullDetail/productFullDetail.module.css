@@ -1,12 +1,4 @@
 .root {
-    /* composes: px-0 from global;
-    composes: py-xs from global;
-
-    composes: lg_grid from global;
-    composes: lg_grid-flow-row from global;
-    composes: lg_items-start from global;
-    composes: lg_px-xs from global;
-    composes: lg_py-md from global; */
     font-family: 'Poppins';
     font-style: normal;
     display: flex;
@@ -30,7 +22,8 @@
     color: #6b7990;
     display: flex;
     flex-direction: row;
-    gap: 43px;
+    gap: 22px;
+    align-items: start;
 }
 
 .compareWrap {
@@ -60,65 +53,12 @@
 }
 
 .review {
-}
-
-@media (min-width: 960px) {
-    .root {
-        grid-template-areas:
-            'images title'
-            'images errors'
-            'images options'
-            'images quantity'
-            'images cart'
-            'images .';
-        grid-template-columns: minmax(0, 1.5625fr) minmax(0, 1fr);
-        grid-template-rows: repeat(5, min-content) 1fr [fold];
-    }
-
-    .title {
-        grid-template-columns: 1fr max-content;
-    }
-}
-
-.section {
-    /* composes: border-solid from global;
-    composes: border-subtle from global;
-    composes: border-t-0 from global;
-    composes: border-r-0 from global;
-    composes: border-b from global;
-    composes: border-l-0 from global;
-    composes: my-0 from global;
-    composes: mx-sm from global;
-    composes: px-0 from global;
-    composes: py-xs from global; */
-}
-
-.sectionTitle {
-    /* composes: flex from global;
-    composes: font-semibold from global;
-    composes: items-center from global;
-    composes: leading-normal from global;
-    composes: mb-sm from global;
-    composes: text-colorDefault from global; */
-}
-
-.title {
-    /* composes: section;
-    composes: gap-2 from global;
-    composes: grid from global;
-    composes: items-center from global;
-    composes: leading-normal from global;
-    composes: px-sm from global;
-    composes: py-xs from global;
-    grid-area: title; */
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
 .productName {
-    /* composes: font-semibold from global;
-    composes: text-colorDefault from global;
-
-    composes: lg_font-normal from global;
-    composes: lg_text-xl from global; */
     font-weight: 300;
     font-size: 38px;
     line-height: 46px;
@@ -130,6 +70,13 @@
     margin-bottom: 34px;
 }
 
+.verticalDivider {
+    width: 1px;
+    height: 18px;
+    background-color: #E5E8EF;
+    margin-left: 20px;
+}
+
 .price {
     display: flex;
     flex-direction: row;
@@ -138,13 +85,15 @@
     margin-bottom: 31px;
 }
 
+.ratingBlock{
+    display: flex;
+    gap: 4px;
+}
+
 .productPrice {
-    /* composes: block from global;
-    composes: mb-2 from global; */
     font-weight: 600;
     font-size: 20px;
     line-height: 24px;
-    /* text-align: center; */
     color: #191a1c;
 }
 
@@ -172,16 +121,6 @@
 }
 
 .imageCarousel {
-    /* grid-area: images;
-    grid-column: 1 / 2;
-    grid-row: 1 / fold;
-    composes: max-w-[640px] from global;
-    composes: mx-auto from global;
-    composes: my-0 from global;
-
-    composes: lg_m-0 from global;
-    composes: lg_px-0 from global;
-    composes: lg_py-sm from global; */
     width: 784px;
     display: flex;
     flex-direction: row;
@@ -190,7 +129,6 @@
 }
 
 .options {
-    /* grid-area: options; */
     margin-bottom: 40px;
     display: flex;
     flex-direction: column;
@@ -210,7 +148,6 @@
     height: 48px;
     background: #393d46;
     border-radius: 60px;
-
     font-weight: 600;
     font-size: 13px;
     line-height: 16px;
@@ -220,95 +157,18 @@
     margin-top: 40px;
 }
 
-.formErrors {
-    /* composes: section;
-    grid-area: errors; */
-}
-
-.quantity {
-    /* composes: section;
-    grid-area: quantity; */
-}
-
-.quantityTitle {
-    /* composes: title from '@magento/venia-ui/lib/components/ProductOptions/option.module.css'; */
-}
-
-.actions {
-    /* composes: gap-y-sm from global;
-    composes: grid from global;
-    composes: items-center from global;
-    composes: justify-items-center from global;
-    composes: section;
-    grid-area: cart;
-
-    composes: lg_border-b-0 from global; */
-}
-
-.description {
-    /* composes: section;
-    grid-column: 1 / span 1;
-    grid-row: fold / span 1;
-
-    composes: lg_border-t from global;
-    composes: lg_m-0 from global;
-    composes: lg_pl-sm from global;
-    composes: lg_pr-sm from global;
-    composes: lg_self-stretch from global;
-    border: none; */
-}
-
-.descriptionTitle {
-    /* composes: sectionTitle; */
-}
-
-.details {
-    /* composes: section;
-    grid-column: 2 / span 1;
-    grid-row: fold / span 1;
-
-    composes: lg_border-t from global;
-    composes: lg_m-0 from global;
-    composes: lg_pl-sm from global;
-    composes: lg_pr-sm from global;
-    composes: lg_self-stretch from global;
-    border: none; */
-}
-
-.detailsPageBuilder {
-    /* composes: my-0 from global;
-    composes: mx-sm from global;
-    composes: px-0 from global;
-    composes: py-sm from global;
-    grid-column: 1 / span 2; */
-}
-
-.detailsPageBuilderList {
-    /* list-style: none; */
-}
-
-@media (min-width: 1024px) {
-    .details {
-        align-self: stretch;
-        border-top-width: 1px;
-        margin: 0;
-        padding-left: 1.5rem;
-        padding-right: 1.5rem;
-    }
-}
-
-.detailsTitle {
-    /* composes: sectionTitle; */
-}
-
-.related {
-    /* composes: border-b-0 from global;
-    composes: section;
-    grid-column: 1 / span 2; */
-}
-
-.relatedTitle {
-    /* composes: sectionTitle; */
+.addToCartButton_disabled {
+    background-color: #9c9ea3;
+    width: 340px;
+    height: 48px;
+    border-radius: 60px;
+    font-weight: 600;
+    font-size: 13px;
+    line-height: 16px;
+    text-align: center;
+    text-transform: uppercase;
+    color: #ffffff;
+    margin-top: 40px;
 }
 
 .quantityRoot {
@@ -321,7 +181,7 @@
 }
 
 .unavailableContainer {
-    /* composes: bg-subtle from global;
+    composes: bg-subtle from global;
     composes: gap-x-2xs from global;
     composes: grid from global;
     composes: grid-flow-col from global;
@@ -330,7 +190,7 @@
     composes: justify-start from global;
     composes: p-3 from global;
     composes: text-subtle from global;
-    composes: w-full from global; */
+    composes: w-full from global;
 }
 
 .productsCarousel {
@@ -419,6 +279,16 @@
     flex-direction: row;
     align-items: flex-start;
     justify-content: space-between;
+    font-family: 'Poppins';
+    font-style: normal;
+}
+
+.border {
+    height: 1px;
+    width: 100%;
+    background-color: #e5e8ef;
+    transform: translateY(-1px);
+    z-index: 5;
 }
 
 .tab {
@@ -438,12 +308,16 @@
     composes: tab;
     color: #393d46;
     border-bottom: 1px solid #393d46;
+    z-index: 10;
 }
 
 .tabContent {
-    /* height: 1223px; */
-    width: 1270px;
     margin-bottom: 130px;
     border-bottom: 1px solid #e5e8ef;
     margin-top: 91px;
+    padding-bottom: 100px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 21px;
+    color: #5F6C81;
 }

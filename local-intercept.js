@@ -72,6 +72,9 @@ module.exports = targets => {
     const ProductGQL = require('./core-overrides/talons/RootComponents/Product/productGQL.targetables');
     ProductGQL(targets);
 
+    const ConfigComponent = require('./core-overrides/pagebuilder/lib/config.targetables');
+    ConfigComponent(targets);
+
     targets.of('@magento/venia-ui').routes.tap(routes => {
         routes.push({
             exact: true,

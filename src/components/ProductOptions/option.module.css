@@ -33,3 +33,20 @@
     line-height: 20px;
     color: rgba(57, 61, 70, 0.6);
 }
+
+.sizeBlockTitle{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.sizeDescription {
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 20px;
+    color: rgba(57, 61, 70, 0.6);
+}
+.colorBlockTitle{
+    margin-bottom: 10px;
+}
