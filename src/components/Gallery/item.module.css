@@ -183,4 +183,8 @@
     .price {
         margin-bottom: 21px;
     }
+
+    .discount {
+        top: 230px;
+    }
 }

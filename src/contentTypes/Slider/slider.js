@@ -52,7 +52,8 @@ const Slider = props => {
         paddingBottom,
         paddingLeft,
         cssClasses = [],
-        children
+        children,
+        type
     } = props;
 
     const { styles: mediaQueryStyles } = useMediaQuery({ mediaQueries });
@@ -74,24 +75,16 @@ const Slider = props => {
         paddingLeft
     };
     const jarallaxInstances = {};
-    const sliderSettings = {
-        dots: showDots,
-        arrows: showArrows,
+
+    const responsiveSettings = {
+        dots: false,
+        infinite: true,
         lazyLoad: 'ondemand',
         afterChange: () => {
             Object.keys(jarallaxInstances).map(key => {
                 jarallax(jarallaxInstances[key].element, 'onScroll');
             });
         },
-        infinite,
-        autoplay,
-        autoplaySpeed,
-        fade
-    };
-
-    const settings = {
-        dots: false,
-        infinite: true,
         speed: 500,
         slidesToShow: 4,
         slidesToScroll: 4,
@@ -124,6 +117,21 @@ const Slider = props => {
         ]
     };
 
+    const simpleSetting = {
+        dots: true,
+        arrows: false,
+        infinite: true,
+        lazyLoad: 'ondemand',
+        afterChange: () => {
+            Object.keys(jarallaxInstances).map(key => {
+                jarallax(jarallaxInstances[key].element, 'onScroll');
+            });
+        },
+        speed: 500,
+        slidesToShow: 1,
+        slidesToScroll: 1
+    };
+
     // Override classes on banner to ensure min height is respected
     Children.map(children, (child, index) => {
         if (child.props && child.props.data) {
@@ -143,6 +151,9 @@ const Slider = props => {
         return child;
     });
 
+    const sliderSettings =
+        type === 'Product Image' ? simpleSetting : responsiveSettings;
+
     return (
         <div
             aria-live="polite"
@@ -150,7 +161,7 @@ const Slider = props => {
             className={[classes.root, ...cssClasses].join(' ')}
             style={{ ...dynamicStyles, ...mediaQueryStyles }}
         >
-            <SlickSlider {...settings}>{children}</SlickSlider>
+            <SlickSlider {...sliderSettings}>{children}</SlickSlider>
         </div>
     );
 };

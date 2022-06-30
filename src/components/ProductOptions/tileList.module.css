@@ -31,3 +31,20 @@ select {
     left: 315px;
     transform: translateY(-50%);
 }
+
+@media screen and (max-width: 768px) {
+    .selectWrap{
+        width: 100%;
+    }
+    select {
+        width: 100%;
+    }
+
+    .selectWrap img {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        left:unset;
+        right: 25px;
+    }
+}

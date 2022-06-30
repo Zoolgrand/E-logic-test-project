@@ -23,7 +23,7 @@
     display: flex;
     flex-direction: row;
     gap: 22px;
-    align-items: start;
+    align-items: flex-start;
 }
 
 .compareWrap {
@@ -85,7 +85,7 @@
     margin-bottom: 31px;
 }
 
-.ratingBlock{
+.ratingBlock {
     display: flex;
     gap: 4px;
 }
@@ -320,4 +320,125 @@
     font-size: 14px;
     line-height: 21px;
     color: #5F6C81;
+}
+
+.sku {
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 20px;
+    letter-spacing: 0.03em;
+    color: rgba(57, 61, 70, 0.6);
+    margin-bottom: 21px;
+}
+
+.mobileTabs {
+    padding: 0px 10px;
+    margin-bottom: 60px;
+    border-bottom: 1px solid #E5E8EF;
+}
+
+.mobileTab {
+    font-family: 'Poppins';
+    font-style: normal;
+    height: 60px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    color: #393D46;
+    border-top: 1px solid #E5E8EF;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-right: 20px;
+    cursor: pointer;
+}
+
+.triggerBtns {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    gap: 40px;
+}
+
+
+@media screen and (max-width: 768px) {
+    .root {
+        flex-direction: column;
+        margin-bottom: 60px;
+        align-items: center;
+    }
+
+    .productTopSection {
+        padding: 0px 10px;
+        width: 100%;
+    }
+
+    .title {
+        width: 100%;
+    }
+
+    .statusBlock {
+        justify-content: space-between;
+    }
+
+    .options {
+        width: 100%;
+        margin-bottom: 30px;
+        gap: 30px;
+    }
+
+    .quantityRoot {
+        width: 177px;
+        grid-template-columns: 59px 59px 59px;
+    }
+
+    .actions {
+        width: 100%;
+    }
+
+    .topActionCOntainer {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .addToCartButton,
+    .addToCartButton_disabled {
+        width: 100%;
+    }
+
+    .triggerBtns {
+        display: flex;
+        flex-direction: row;
+        align-items: baseline;
+        gap: 40px;
+    }
+
+    .tabContent {
+        border: none;
+        margin-top: 20px;
+        margin-bottom: 30px;
+        padding: 0px;
+    }
+
+    div[class*='cmsTextBlock'] {
+        order: 2;
+    }
+
+    div[class*='cmsImageBlock'] {
+        order: 1;
+    }
+
+    .imageCarousel {
+        width: 600px;
+        min-width: 375px;
+    }
+
+    .productsCarousel {
+        margin-top: 90px;
+        margin-bottom: 97px;
+    }
+
+    .banner {
+        margin-bottom: 90px;
+    }
 }

@@ -7,6 +7,10 @@
     grid-template-columns: 1fr 1fr 1fr;
 }
 
+.root button {
+    margin: auto;
+}
+
 .wrap {
     composes: flex from global;
     composes: items-center from global;
@@ -68,4 +72,10 @@
     padding: 0px;
     width: 34px;
     height: 34px;
+}
+
+@media screen and (max-width: 768px) {
+    .input {
+        width: 100%;
+    }
 }

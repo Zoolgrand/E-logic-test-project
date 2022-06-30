@@ -168,8 +168,12 @@
     position: relative;
 }
 
-@media (max-width: 768px) {
+@media screen and (max-width: 768px) {
     .price {
         margin-bottom: 21px;
+    }
+
+    .discount {
+        top: 230px;
     }
 }

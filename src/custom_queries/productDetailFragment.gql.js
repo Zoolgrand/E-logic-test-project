@@ -83,6 +83,9 @@ export const ProductDetailsFragment = gql`
             disabled
             file
         }
+        media_gallery {
+            url
+        }
         meta_description
         name
         price {

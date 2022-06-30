@@ -1,4 +1,4 @@
-import React, { useMemo, Fragment, Suspense } from 'react';
+import React, { useMemo, Fragment, Suspense, useState } from 'react';
 import { FormattedMessage, useIntl } from 'react-intl';
 import { arrayOf, bool, number, shape, string } from 'prop-types';
 import { Form } from 'informed';
@@ -8,6 +8,7 @@ import { useQuery, gql } from '@apollo/client';
 import Price from '@magento/venia-ui/lib/components/Price';
 import { useProductFullDetail } from '../../talons/ProductFullDetail/useProductFullDetail';
 import { isProductConfigurable } from '@magento/peregrine/lib/util/isProductConfigurable';
+import { useWindowSize } from '@magento/peregrine';
 
 import { useStyle } from '@magento/venia-ui/lib/classify';
 import Breadcrumbs from '../Breadcrumbs';
@@ -25,6 +26,8 @@ import Image from '@magento/venia-ui/lib/components/Image';
 import stockStatusIcon from '../../assets/stockStatus.svg';
 import starActiveIcon from '../../assets/starActive.svg';
 import starDisabledIcon from '../../assets/starDisabled.svg';
+import plusIcon from '../../assets/plusIcon.svg';
+import minusIcon from '../../assets/minusIcon.svg';
 
 import AddToCompareButton from '../AddToCompareButton/addToCompareButton';
 
@@ -80,6 +83,9 @@ const ProductFullDetail = props => {
         rating,
         setRating
     } = talonProps;
+
+    const windowSize = useWindowSize();
+    const isMobile = windowSize.innerWidth <= 768;
 
     const starsBlockItems = [
         { value: 1 },
@@ -161,7 +167,7 @@ const ProductFullDetail = props => {
         <div className={classes.review}>
             <div className={classes.ratingBlock}>{ratingBlock}</div>
             <p>{product.review_count} Reviews</p>
-            <div className={classes.verticalDivider} />
+            {!isMobile && <div className={classes.verticalDivider} />}
         </div>
     );
 
@@ -320,7 +326,7 @@ const ProductFullDetail = props => {
                 </p>
                 <CarouselCustom
                     items={product.related_products}
-                    isSliderItem={true}
+                    type={'Slider item'}
                 />
             </div>
         ) : null;
@@ -334,7 +340,7 @@ const ProductFullDetail = props => {
                 </p>
                 <CarouselCustom
                     items={product.upsell_products}
-                    isSliderItem={true}
+                    type={'Slider item'}
                 />
             </div>
         ) : null;
@@ -360,46 +366,6 @@ const ProductFullDetail = props => {
     //         <img src={bannerImage} />
     //     </div>
     // );
-
-    const tabsObj = [
-        {
-            name: 'description',
-            text: 'Long description'
-        },
-        {
-            name: 'tech',
-            text: 'Technical info'
-        },
-        {
-            name: 'attributes',
-            text: 'Attributes'
-        },
-        {
-            name: 'attachments',
-            text: 'Attachments'
-        }
-    ];
-
-    const tabs = (
-        <>
-            <div className={classes.tabs}>
-                {tabsObj.map(item => (
-                    <p
-                        key={item.name}
-                        onClick={() => setActiveTab(item.name)}
-                        className={
-                            activeTab === item.name
-                                ? classes.tab_active
-                                : classes.tab
-                        }
-                    >
-                        {item.text}
-                    </p>
-                ))}
-            </div>
-            <div className={classes.border} />
-        </>
-    );
 
     const descriptionContent = (
         <div className={classes.tabContent}>
@@ -472,6 +438,84 @@ const ProductFullDetail = props => {
         </div>
     );
 
+    const [activeMobileTabs, setActiveMobileTabs] = useState({
+        description: false,
+        tech: false,
+        attributes: false,
+        attachments: false
+    });
+    const tabsObj = [
+        {
+            name: 'description',
+            text: 'Long description',
+            isOpen: activeMobileTabs.description,
+            content: descriptionContent
+        },
+        {
+            name: 'tech',
+            text: 'Technical info',
+            isOpen: activeMobileTabs.tech,
+            content: techContent
+        },
+        {
+            name: 'attributes',
+            text: 'Attributes',
+            isOpen: activeMobileTabs.attributes,
+            content: attributesContent
+        },
+        {
+            name: 'attachments',
+            text: 'Attachments',
+            isOpen: activeMobileTabs.attachments,
+            content: attachmentsContent
+        }
+    ];
+
+    const tabs = (
+        <>
+            <div className={classes.tabs}>
+                {tabsObj.map(item => (
+                    <p
+                        key={item.name}
+                        onClick={() => setActiveTab(item.name)}
+                        className={
+                            activeTab === item.name
+                                ? classes.tab_active
+                                : classes.tab
+                        }
+                    >
+                        {item.text}
+                    </p>
+                ))}
+            </div>
+            <div className={classes.border} />
+        </>
+    );
+
+    const mobileTabs = (
+        <>
+            <div className={classes.mobileTabs}>
+                {tabsObj.map(item => (
+                    <div key={item.name}>
+                        <div
+                            className={classes.mobileTab}
+                            onClick={() => {
+                                setActiveMobileTabs(prev => ({
+                                    ...prev,
+                                    [item.name]: !item.isOpen
+                                }));
+                            }}
+                        >
+                            {item.text}
+                            <img src={item.isOpen ? minusIcon : plusIcon} />
+                        </div>
+                        {item.isOpen && <div>{item.content}</div>}
+                    </div>
+                ))}
+            </div>
+        </>
+    );
+
     const activeTabContent = {
         description: descriptionContent,
         tech: techContent,
@@ -488,6 +532,10 @@ const ProductFullDetail = props => {
         />
     ));
 
+    const mobileImages = product ? (
+        <CarouselCustom items={product.media_gallery} type={'Product Image'} />
+    ) : null;
+
     return (
         <Fragment>
             {breadcrumbs}
@@ -497,23 +545,42 @@ const ProductFullDetail = props => {
                     data-cy="ProductFullDetail-root"
                     onSubmit={handleAddToCart}
                 >
-                    <div>
-                        <section className={classes.imageCarousel}>
-                            {images}
-                        </section>
-                    </div>
+                    <section className={classes.imageCarousel}>
+                        {isMobile ? mobileImages : images}
+                    </section>
+
                     <div className={classes.productTopSection}>
                         <section className={classes.title}>
-                            <h1
-                                className={classes.productName}
-                                data-cy="ProductFullDetail-productName"
-                            >
-                                {productDetails.name}
-                            </h1>
-                            <div className={classes.statusBlock}>
-                                {reviews}
-                                {stockStatus}
-                            </div>
+                            {!isMobile && (
+                                <>
+                                    <h1
+                                        className={classes.productName}
+                                        data-cy="ProductFullDetail-productName"
+                                    >
+                                        {productDetails.name}
+                                    </h1>
+                                    <div className={classes.statusBlock}>
+                                        {reviews}
+                                        {stockStatus}
+                                    </div>
+                                </>
+                            )}
+
+                            {isMobile && (
+                                <>
+                                    <div className={classes.statusBlock}>
+                                        {reviews}
+                                        {stockStatus}
+                                    </div>
+                                    <h1
+                                        className={classes.productName}
+                                        data-cy="ProductFullDetail-productName"
+                                    >
+                                        {productDetails.name}
+                                    </h1>
+                                </>
+                            )}
+
                             <div className={classes.price}>
                                 <p
                                     data-cy="ProductFullDetail-productPrice"
@@ -547,6 +614,11 @@ const ProductFullDetail = props => {
                                     </div>
                                 )}
                             </div>
+                            {isMobile && (
+                                <div className={classes.sku}>
+                                    Sku: {product.sku}
+                                </div>
+                            )}
 
                             <div className={classes.shortDescription}>
                                 {shortDescription}
@@ -567,19 +639,23 @@ const ProductFullDetail = props => {
                                     min={1}
                                     message={errors.get('quantity')}
                                 />
-                                <div className={classes.compareWrap}>
-                                    <AddToCompareButton
-                                        {...compareButtonProps}
-                                        classes={{
-                                            compareButtonWrap:
-                                                classes.compareBtn
-                                        }}
-                                    />
-                                </div>
+                                <div className={classes.triggerBtns}>
+                                    <div className={classes.compareWrap}>
+                                        <AddToCompareButton
+                                            {...compareButtonProps}
+                                            classes={{
+                                                compareButtonWrap:
+                                                    classes.compareBtn
+                                            }}
+                                        />
+                                    </div>
 
-                                <Suspense fallback={null}>
-                                    <WishlistButton {...wishlistButtonProps} />
-                                </Suspense>
+                                    <Suspense fallback={null}>
+                                        <WishlistButton
+                                            {...wishlistButtonProps}
+                                        />
+                                    </Suspense>
+                                </div>
                             </div>
 
                             {cartActionContent}
@@ -589,12 +665,22 @@ const ProductFullDetail = props => {
                     </div>
                 </Form>
             </div>
-            {tabs}
-            {activeTabContent[activeTab]}
+            {!isMobile ? (
+                <>
+                    {tabs}
+                    {activeTabContent[activeTab]}
+                </>
+            ) : (
+                <>{mobileTabs}</>
+            )}
             {/* {productBanner} */}
 
             {cmsBlocksData && (
-                <RichContent html={cmsBlocksData.cmsBlocks.items[0].content} />
+                <div className={classes.banner}>
+                    <RichContent
+                        html={cmsBlocksData.cmsBlocks.items[0].content}
+                    />
+                </div>
             )}
             {relatedProductsCarousel}
             {upsaleProductsCarousel}
