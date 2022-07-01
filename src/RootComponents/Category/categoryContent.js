@@ -126,14 +126,16 @@ const CategoryContent = props => {
         return (
             <Fragment>
                 <section className={classes.gallery}>{gallery}</section>
-                <button
-                    type="button"
-                    className={loadMoreClasses}
-                    onClick={fetchMoreHandler}
-                    disabled={isLastPage}
-                >
-                    Load More
-                </button>
+                {!isLastPage && (
+                    <button
+                        type="button"
+                        className={loadMoreClasses}
+                        onClick={fetchMoreHandler}
+                        disabled={isLastPage}
+                    >
+                        Load More
+                    </button>
+                )}
                 <div className={classes.pagination}>{pagination}</div>
             </Fragment>
         );
